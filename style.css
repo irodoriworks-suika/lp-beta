@@ -14,3 +14,15 @@ h2{font-size:var(--fs-lg);line-height:1.25;margin:var(--space-6) 0 var(--space-2
 .btn--ghost{background:transparent;color:var(--primary);border:2px solid var(--primary)}
 .card{background:#fff;border-radius:var(--radius);box-shadow:0 6px 24px rgba(0,0,0,.08);padding:var(--space-6);margin:var(--space-6) 0;}
 @media(min-width:744px){.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}}
+/* レスポンシブ安全策 */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+img, video { max-width: 100%; height: auto; display: block; }
+body { overflow-x: hidden; }
+
+/* キーボード操作の見え方 */
+:focus-visible { outline: 3px solid #000; outline-offset: 2px; }
+
+/* タップ面積の担保（44px以上） */
+.btn { min-height: 44px; }
