@@ -1,278 +1,125 @@
-/* ========== 1. 基本リセット & トークン ========== */
+/* ========== Reset & Tokens ========== */
 *,
-*::before,
-*::after { box-sizing: border-box; }
-
-html, body { margin: 0; padding: 0; }
-img, video { max-width: 100%; height: auto; display: block; }
-
+*::before,*::after{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+img,video{ max-width:100%; height:auto; display:block; }
+html{ -webkit-text-size-adjust:100%; }
 :root{
-  /* Color */
-  --color-bg: #ffffff;
-  --color-surface: #ffffff;
-  --color-text: #222222;
-  --color-muted: #666666;
-  --color-border: #E6EBF2;
-  --color-primary: #5B8DEF; /* メイン色：後で差し替えOK */
-  --color-accent:  #7BC6B7;
+  /* Colors */
+  --page-bg:#F2FBF8;             /* 柔らかミント：背景（好みで後述の .bg-* に変更） */
+  --surface:#FFFFFF;              /* カード面 */
+  --text:#222; --muted:#666; --border:#E6EBF2;
+  --primary:#1EB2A6;             /* テーマ色（Teal×Mango 初期） */
+  --accent:#FFB347;
 
   /* Elevation / Radius */
-  --shadow-lg: 0 10px 30px rgba(0,0,0,.08);
-  --radius: 16px;
+  --shadow-lg:0 10px 30px rgba(0,0,0,.08);
+  --radius:16px;
 
-  /* Spacing scale */
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-8: 48px;
+  /* Spacing */
+  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s8:48px;
 
-  /* Typography */
-  --fs-sm: clamp(14px, 1.6vw, 15px);
-  --fs-md: clamp(16px, 1.8vw, 17px);
-  --fs-lg: clamp(20px, 2.4vw, 22px);
-  --fs-xl: clamp(28px, 4vw, 34px);
+  /* Type scale */
+  --fs-sm:clamp(14px,1.6vw,15px);
+  --fs-md:clamp(16px,1.8vw,17px);
+  --fs-lg:clamp(20px,2.4vw,22px);
+  --fs-xl:clamp(28px,4vw,34px);
 
   /* Layout */
-  --container: 1080px;
-  --pad-x: 16px;
+  --container:960px; --pad-x:16px;
 }
-
 body{
-  background: var(--color-bg);
-  color: var(--color-text);
-  font: 400 var(--fs-md)/1.7 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
-  overflow-x: hidden; /* 横スクロール保険 */
+  background:var(--page-bg); color:var(--text);
+  font:400 var(--fs-md)/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP",sans-serif;
+  overflow-x:hidden;
 }
+:focus-visible{ outline:3px solid #000; outline-offset:2px; }
+a{ color:inherit; }
 
-/* アクセシビリティ：フォーカス可視化 */
-:focus-visible{ outline: 3px solid #000; outline-offset: 2px; }
-
-/* ユーティリティ */
-.container{ max-width: var(--container); margin-inline: auto; padding-inline: var(--pad-x); }
-.lead{ color: var(--color-muted); font-size: var(--fs-lg); }
-
-/* 余白設計：marginの相殺を避けるためsectionはpaddingで管理 */
-section{ padding-block: var(--space-6); }
-h1,h2,h3,p,ul,ol{ margin-block: 0 var(--space-3); }
-
-/* スキップリンク（キーボード操作者向け） */
-.skip-link{
-  position: absolute; left: -9999px; top: auto; background:#000; color:#fff;
-  padding: 8px 12px; border-radius: 8px; z-index: 999;
-}
-.skip-link:focus{ left: 16px; top: 16px; }
-
-/* ========== 2. コンポーネント ========== */
-/* ヒーロー */
-.hero{
-  padding-block: var(--space-8);
-  background:
-    radial-gradient(1100px 500px at 10% -20%, rgba(91,141,239,.25), transparent 60%),
-    linear-gradient(180deg, #fff 0%, #f8fbff 100%);
-  border-bottom: 1px solid var(--color-border);
-}
-
-/* ボタン */
-.btn{
-  display: inline-block;
-  min-height: 44px; /* タップ面積 */
-  padding: 12px 20px;
-  border-radius: var(--radius);
-  background: var(--color-primary);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: var(--shadow-lg);
-  transition: transform .04s ease, filter .2s ease;
-}
-.btn:hover{ filter: brightness(1.03); }
-.btn:active{ transform: translateY(1px); }
-
-.btn--ghost{
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  box-shadow: none;
-}
-
-/* カード */
+/* ========== Layout / Rhythm ========== */
+.container{ max-width:var(--container); margin-inline:auto; padding-inline:var(--pad-x); }
+.lead{ color:var(--muted); font-size:var(--fs-lg); }
+section{ padding-block:var(--s6); }
+section + section{ margin-top:var(--s6); }
+@media(min-width:744px){ section + section{ margin-top:var(--s8); } }
 .card{
-  background: var(--color-surface);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  padding: var(--space-6);
+  background:var(--surface); border-radius:var(--radius);
+  box-shadow:var(--shadow-lg); padding:var(--s6); margin-block:var(--s6);
 }
 
-/* カード一覧（HUB） */
-.cards{ display: grid; gap: var(--space-4); }
-@media (min-width: 744px){ .cards{ grid-template-columns: 1fr 1fr; } }
-
-/* 小さなメタ文字 */
-.meta{ color: var(--color-muted); font-size: var(--fs-sm); }
-
-/* 2カラム（LPで使う） */
-.grid-2{ display: grid; gap: var(--space-6); }
-@media (min-width: 744px){ .grid-2{ grid-template-columns: 1fr 1fr; } }
-
-/* テーブル（料金） */
-.table{ width: 100%; border-collapse: collapse; }
-.table th, .table td{ padding: 10px 0; border-bottom: 1px solid var(--color-border); }
-.table thead th{ text-align: left; color: var(--color-muted); font-weight: 600; }
-.table td:last-child, .table th:last-child{ text-align: right; }
-
-/* 視覚的に隠す（スクリーンリーダー向け） */
+/* ========== A11y ========== */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; background:#000; color:#fff;
+  padding:8px 12px; border-radius:8px; z-index:999;
+}
+.skip-link:focus{ left:16px; top:16px; }
 .visually-hidden{
-  position: absolute !important;
-  width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
 }
 
-/* ========== 3. ヘッダー/フッター ========== */
-.site-footer{ padding: var(--space-8) 0; color: var(--color-muted); border-top: 1px solid var(--color-border); }
-.site-footer a{ color: inherit; text-decoration: underline; }
-
-/* ==== Theme presets (add class to <body>) ==== */
-
-/* Default（今のまま） */
-:root{ --color-primary:#5B8DEF; --color-accent:#7BC6B7; }
-
-/* 1. Indigo × Coral */
-.theme-indigo-coral{ --color-primary:#5B8DEF; --color-accent:#FF6B6B; }
-
-/* 2. Plum × Lime */
-.theme-plum-lime{ --color-primary:#6A4C93; --color-accent:#B8E986; }
-
-/* 3. Teal × Mango */
-.theme-teal-mango{ --color-primary:#1EB2A6; --color-accent:#FFB347; }
-
-/* 4. Midnight × Cyan（準ダーク：背景や文字も調整） */
-.theme-midnight-cyan{
-  --color-bg:#0F1A2B; --color-surface:#121E33; --color-text:#F5F7FA; --color-border:#22314B;
-  --color-primary:#1ED6FF; --color-accent:#5B8DEF;
+/* ========== Hero / Buttons / Grids ========== */
+.hero{
+  padding-block:var(--s8);
+  background:
+    radial-gradient(1100px 500px at 10% -20%, rgba(30,178,166,.15), transparent 60%),
+    linear-gradient(180deg,#fff 0%, #f7fcff 100%);
+  border-bottom:1px solid var(--border);
 }
+h1{ font-size:var(--fs-xl); line-height:1.2; }
+h2{ font-size:var(--fs-lg); line-height:1.25; margin-block:0 var(--s4); }
 
-/* 5. Forest × Blush */
-.theme-forest-blush{ --color-primary:#1B5E20; --color-accent:#FF7AA2; }
-
-/* 6. Charcoal × NeonMint */
-.theme-charcoal-mint{ --color-primary:#222222; --color-accent:#7CFFC4; }
-
-/* 7. Indigo × Saffron */
-.theme-indigo-saffron{ --color-primary:#3F51B5; --color-accent:#F4B400; }
-
-/* 8. Aubergine × Tangerine */
-.theme-aubergine-tangerine{ --color-primary:#4E2A84; --color-accent:#FF8C42; }
-
-/* A) 横スクロールの元凶を封じる：幅超え・長文・表 */
-html{ -webkit-text-size-adjust:100%; } /* iOSの予期せぬ拡大抑止 */
-p, li, td, th, a, h1, h2, h3{ overflow-wrap:anywhere; word-break:normal; }
-table{ width:100%; }
-.table{ min-width:560px; } /* 表は最小幅を確保しつつ… */
-.table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; } /* …横スクロール許可 */
-
-/* B) ボタンが狭い幅で詰む問題：横並び→自動で折り返し */
-.btn-row{ display:flex; gap:var(--space-4); flex-wrap:wrap; }
-.btn-row .btn{ flex:1 0 240px; }              /* 240px未満なら次段に回る */
-@media (max-width:480px){ .btn-row .btn{ flex:1 1 100%; } }
-
-/* C) リストの左右余白を軽く整える（テーマに依存しない安全策） */
-ul{ padding-left: 1.2em; }
-
-/* D) 画像の角丸がカードからはみ出る場合 */
-.card img{ border-radius: calc(var(--radius) - 4px); }
-
-/* E) 見出しの上下リズム微調整（詰まりすぎ防止） */
-section > h2{ margin-block: 0 var(--space-4); }
-
-/* ================== PC調整パック ================== */
-/* A) コンテナを少しだけ狭めて読みやすく（PC幅で間延び防止） */
-@media (min-width: 1280px){
-  .container{ max-width: 960px; } /* 1080→960pxに */
+.btn{
+  display:inline-block; min-height:44px; padding:12px 20px; border-radius:var(--radius);
+  background:var(--primary); color:#fff; text-decoration:none; font-weight:700; box-shadow:var(--shadow-lg);
+  transition:transform .04s ease, filter .2s ease;
 }
+.btn:hover{ filter:brightness(1.04); }
+.btn:active{ transform:translateY(1px); }
+.btn--ghost{ background:transparent; color:var(--primary); border:2px solid var(--primary); box-shadow:none; }
 
-/* B) ボタン行：PCでも綺麗に折り返し＆間隔均一 */
-.btn-row{ display:flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
-.btn-row .btn{ flex: 0 1 240px; }           /* 幅が足りなければ次段へ */
-@media (max-width: 480px){
-  .btn-row .btn{ flex: 1 1 100%; }
-}
+.btn-row{ display:flex; gap:var(--s4); flex-wrap:wrap; align-items:center; }
+.btn-row .btn{ flex:0 1 240px; }
+@media(max-width:480px){ .btn-row .btn{ flex:1 1 100%; } }
 
-/* C) 表：列幅を安定させる（“税込”が詰まる/内容が暴れる対策） */
-.table{ table-layout: fixed; }
-.table th, .table td{ vertical-align: top; }   /* 行高ブレ防止 */
-.table .col-plan  { width: 20%; }
-.table .col-price { width: 18%; }              /* 価格列は常に細め右寄せ */
-.table .col-desc  { width: auto; }             /* 説明は残り全部を受ける */
+.cards{ display:grid; gap:var(--s4); }
+@media(min-width:744px){ .cards{ grid-template-columns:1fr 1fr; } }
 
-/* スクロール逃し（狭いPC/ズーム時でも崩さない） */
-.table-wrap{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.table{ min-width: 560px; }                    /* 最低読みやすい幅を確保 */
+/* ========== Pricing (Mobile/Tablet = Cards, Desktop = Table) ========== */
+.price-list{ display:grid; gap:var(--s4); }
+.price-item{ background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-lg); padding:var(--s5); }
+.price-item__head{ display:flex; gap:var(--s4); align-items:baseline; justify-content:space-between; margin-bottom:var(--s3); }
+.price-item__title{ font-weight:700; font-size:var(--fs-lg); }
+.price-item__price{ font-weight:700; }
 
-/* D) リスト・見出しのリズム微調整（PCで詰まって見える対策） */
-.card ul{ padding-left: 1.2em; }
-section > h2{ margin-block: 0 var(--space-4); }
-
-/* E) 角丸のにじみ対策（カード内の画像がはみ出るケース） */
-.card img{ border-radius: calc(var(--radius) - 4px); 
-
-/* === ページ背景の柔色トーン（全体が白すぎて不気味 → 和らげる） === */
-:root{ --page-bg: #F6FAFF; }           /* デフォは淡いブルー。好みで下のクラスを併用可 */
-body{ background: var(--page-bg); }    /* 以前の body 背景指定をこれで上書き */
-
-/* バリエーション（<body>にクラス追加で切替） */
-.bg-vanilla { --page-bg:#FFFDF5; }     /* きなり */
-.bg-mint    { --page-bg:#F2FBF8; }     /* ミント霧 */
-.bg-rose    { --page-bg:#FFF6F8; }     /* 薄いローズ */
-.bg-blue    { --page-bg:#F6FAFF; }     /* 淡ブルー（既定） */
-
-/* === セクション間の“縦リズム”固定（間隔が0に見える → 揃えて付ける） === */
-section + section { margin-top: var(--space-6); }
-.card{ margin-block: var(--space-6); }
-@media (min-width:744px){
-  section + section { margin-top: var(--space-8); }
-  .card{ margin-block: var(--space-8); }
-}
-
-/* === 料金表：左寄せ/列安定/PCのみテーブルで見せる === */
-/* ラベル列（ライト/スタンダード）を常に左寄せ */
+.table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.table{ width:100%; border-collapse:collapse; table-layout:fixed; min-width:560px; }
+.table th,.table td{ padding:10px 0; border-bottom:1px solid var(--border); vertical-align:top; }
+.table thead th{ text-align:left; color:var(--muted); font-weight:700; }
 .table tbody th[scope="row"]{ text-align:left; font-weight:700; }
-/* テーブルの列幅を固定してブレ防止（PCで効く） */
-.table{ table-layout: fixed; }
-.table th, .table td{ vertical-align: top; }
 .table .col-plan{ width:20%; }
 .table .col-desc{ width:auto; }
 .table .col-price{ width:18%; text-align:right; }
 
-/* 表がはみ出る件は“PCだけテーブルを表示”して回避（下で切替） */
+/* 切り替え：~1023px=カードのみ / 1024px~=表のみ */
 .mobile-only{ display:block; }
 .desktop-only{ display:none; }
-@media (min-width:1280px){
-  .mobile-only{ display:none; }
-  .desktop-only{ display:block; }
-}
+@media(min-width:1024px){ .mobile-only{ display:none; } .desktop-only{ display:block; } }
 
-/* スクロール逃し保険（PCでもズーム時など） */
-.table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+/* ========== Footer ========== */
+.site-footer{ padding:var(--s8) 0; color:var(--muted); border-top:1px solid var(--border); }
+.site-footer a{ text-decoration:underline; }
 
-/* === モバイル/タブレット用：カード型の料金リスト === */
-.price-list{ display:grid; gap: var(--space-4); }
-.price-item{
-  background: var(--color-surface);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  padding: var(--space-5);
-}
-.price-item__head{
-  display:flex; gap: var(--space-4);
-  align-items: baseline; justify-content: space-between;
-  margin-bottom: var(--space-3);
-}
-.price-item__title{ font-weight:700; font-size: var(--fs-lg); }
-.price-item__price{ font-weight:700; }
+/* ========== Background presets (optional) ========== */
+/* <body> にクラス追加で背景だけ変えられます */
+.bg-vanilla{ --page-bg:#FFFDF5; }  /* きなり */
+.bg-mint{ --page-bg:#F2FBF8; }     /* ミント（初期と同等） */
+.bg-rose{ --page-bg:#FFF6F8; }     /* うすローズ */
+.bg-blue{ --page-bg:#F6FAFF; }     /* うすブルー */
 
-/* === ボタン行：幅に応じて自動で折り返す（ヒーロー/問い合わせ） === */
-.btn-row{ display:flex; gap: var(--space-4); flex-wrap:wrap; align-items:center; }
-.btn-row .btn{ flex: 0 1 240px; }
-@media (max-width:480px){ .btn-row .btn{ flex:1 1 100%; } }
+/* ========== Theme color presets (optional) ========== */
+/* <body> にクラス追加で色味を切替 */
+.theme-indigo-coral{ --primary:#5B8DEF; --accent:#FF6B6B; }
+.theme-plum-lime{   --primary:#6A4C93; --accent:#B8E986; }
+.theme-forest-blush{--primary:#1B5E20; --accent:#FF7AA2; }
+.theme-indigo-saffron{ --primary:#3F51B5; --accent:#F4B400; }
