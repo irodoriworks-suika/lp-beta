@@ -164,3 +164,24 @@ h1,h2,h3,p,ul,ol{ margin-block: 0 var(--space-3); }
 
 /* 8. Aubergine × Tangerine */
 .theme-aubergine-tangerine{ --color-primary:#4E2A84; --color-accent:#FF8C42; }
+
+/* A) 横スクロールの元凶を封じる：幅超え・長文・表 */
+html{ -webkit-text-size-adjust:100%; } /* iOSの予期せぬ拡大抑止 */
+p, li, td, th, a, h1, h2, h3{ overflow-wrap:anywhere; word-break:normal; }
+table{ width:100%; }
+.table{ min-width:560px; } /* 表は最小幅を確保しつつ… */
+.table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; } /* …横スクロール許可 */
+
+/* B) ボタンが狭い幅で詰む問題：横並び→自動で折り返し */
+.btn-row{ display:flex; gap:var(--space-4); flex-wrap:wrap; }
+.btn-row .btn{ flex:1 0 240px; }              /* 240px未満なら次段に回る */
+@media (max-width:480px){ .btn-row .btn{ flex:1 1 100%; } }
+
+/* C) リストの左右余白を軽く整える（テーマに依存しない安全策） */
+ul{ padding-left: 1.2em; }
+
+/* D) 画像の角丸がカードからはみ出る場合 */
+.card img{ border-radius: calc(var(--radius) - 4px); }
+
+/* E) 見出しの上下リズム微調整（詰まりすぎ防止） */
+section > h2{ margin-block: 0 var(--space-4); }
