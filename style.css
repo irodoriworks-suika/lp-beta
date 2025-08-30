@@ -216,3 +216,63 @@ section > h2{ margin-block: 0 var(--space-4); }
 
 /* E) 角丸のにじみ対策（カード内の画像がはみ出るケース） */
 .card img{ border-radius: calc(var(--radius) - 4px); 
+
+/* === ページ背景の柔色トーン（全体が白すぎて不気味 → 和らげる） === */
+:root{ --page-bg: #F6FAFF; }           /* デフォは淡いブルー。好みで下のクラスを併用可 */
+body{ background: var(--page-bg); }    /* 以前の body 背景指定をこれで上書き */
+
+/* バリエーション（<body>にクラス追加で切替） */
+.bg-vanilla { --page-bg:#FFFDF5; }     /* きなり */
+.bg-mint    { --page-bg:#F2FBF8; }     /* ミント霧 */
+.bg-rose    { --page-bg:#FFF6F8; }     /* 薄いローズ */
+.bg-blue    { --page-bg:#F6FAFF; }     /* 淡ブルー（既定） */
+
+/* === セクション間の“縦リズム”固定（間隔が0に見える → 揃えて付ける） === */
+section + section { margin-top: var(--space-6); }
+.card{ margin-block: var(--space-6); }
+@media (min-width:744px){
+  section + section { margin-top: var(--space-8); }
+  .card{ margin-block: var(--space-8); }
+}
+
+/* === 料金表：左寄せ/列安定/PCのみテーブルで見せる === */
+/* ラベル列（ライト/スタンダード）を常に左寄せ */
+.table tbody th[scope="row"]{ text-align:left; font-weight:700; }
+/* テーブルの列幅を固定してブレ防止（PCで効く） */
+.table{ table-layout: fixed; }
+.table th, .table td{ vertical-align: top; }
+.table .col-plan{ width:20%; }
+.table .col-desc{ width:auto; }
+.table .col-price{ width:18%; text-align:right; }
+
+/* 表がはみ出る件は“PCだけテーブルを表示”して回避（下で切替） */
+.mobile-only{ display:block; }
+.desktop-only{ display:none; }
+@media (min-width:1280px){
+  .mobile-only{ display:none; }
+  .desktop-only{ display:block; }
+}
+
+/* スクロール逃し保険（PCでもズーム時など） */
+.table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+/* === モバイル/タブレット用：カード型の料金リスト === */
+.price-list{ display:grid; gap: var(--space-4); }
+.price-item{
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-5);
+}
+.price-item__head{
+  display:flex; gap: var(--space-4);
+  align-items: baseline; justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+.price-item__title{ font-weight:700; font-size: var(--fs-lg); }
+.price-item__price{ font-weight:700; }
+
+/* === ボタン行：幅に応じて自動で折り返す（ヒーロー/問い合わせ） === */
+.btn-row{ display:flex; gap: var(--space-4); flex-wrap:wrap; align-items:center; }
+.btn-row .btn{ flex: 0 1 240px; }
+@media (max-width:480px){ .btn-row .btn{ flex:1 1 100%; } }
