@@ -132,3 +132,35 @@ h1,h2,h3,p,ul,ol{ margin-block: 0 var(--space-3); }
 /* ========== 3. ヘッダー/フッター ========== */
 .site-footer{ padding: var(--space-8) 0; color: var(--color-muted); border-top: 1px solid var(--color-border); }
 .site-footer a{ color: inherit; text-decoration: underline; }
+
+/* ==== Theme presets (add class to <body>) ==== */
+
+/* Default（今のまま） */
+:root{ --color-primary:#5B8DEF; --color-accent:#7BC6B7; }
+
+/* 1. Indigo × Coral */
+.theme-indigo-coral{ --color-primary:#5B8DEF; --color-accent:#FF6B6B; }
+
+/* 2. Plum × Lime */
+.theme-plum-lime{ --color-primary:#6A4C93; --color-accent:#B8E986; }
+
+/* 3. Teal × Mango */
+.theme-teal-mango{ --color-primary:#1EB2A6; --color-accent:#FFB347; }
+
+/* 4. Midnight × Cyan（準ダーク：背景や文字も調整） */
+.theme-midnight-cyan{
+  --color-bg:#0F1A2B; --color-surface:#121E33; --color-text:#F5F7FA; --color-border:#22314B;
+  --color-primary:#1ED6FF; --color-accent:#5B8DEF;
+}
+
+/* 5. Forest × Blush */
+.theme-forest-blush{ --color-primary:#1B5E20; --color-accent:#FF7AA2; }
+
+/* 6. Charcoal × NeonMint */
+.theme-charcoal-mint{ --color-primary:#222222; --color-accent:#7CFFC4; }
+
+/* 7. Indigo × Saffron */
+.theme-indigo-saffron{ --color-primary:#3F51B5; --color-accent:#F4B400; }
+
+/* 8. Aubergine × Tangerine */
+.theme-aubergine-tangerine{ --color-primary:#4E2A84; --color-accent:#FF8C42; }
