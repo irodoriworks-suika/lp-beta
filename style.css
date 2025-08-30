@@ -185,3 +185,34 @@ ul{ padding-left: 1.2em; }
 
 /* E) 見出しの上下リズム微調整（詰まりすぎ防止） */
 section > h2{ margin-block: 0 var(--space-4); }
+
+/* ================== PC調整パック ================== */
+/* A) コンテナを少しだけ狭めて読みやすく（PC幅で間延び防止） */
+@media (min-width: 1280px){
+  .container{ max-width: 960px; } /* 1080→960pxに */
+}
+
+/* B) ボタン行：PCでも綺麗に折り返し＆間隔均一 */
+.btn-row{ display:flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
+.btn-row .btn{ flex: 0 1 240px; }           /* 幅が足りなければ次段へ */
+@media (max-width: 480px){
+  .btn-row .btn{ flex: 1 1 100%; }
+}
+
+/* C) 表：列幅を安定させる（“税込”が詰まる/内容が暴れる対策） */
+.table{ table-layout: fixed; }
+.table th, .table td{ vertical-align: top; }   /* 行高ブレ防止 */
+.table .col-plan  { width: 20%; }
+.table .col-price { width: 18%; }              /* 価格列は常に細め右寄せ */
+.table .col-desc  { width: auto; }             /* 説明は残り全部を受ける */
+
+/* スクロール逃し（狭いPC/ズーム時でも崩さない） */
+.table-wrap{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table{ min-width: 560px; }                    /* 最低読みやすい幅を確保 */
+
+/* D) リスト・見出しのリズム微調整（PCで詰まって見える対策） */
+.card ul{ padding-left: 1.2em; }
+section > h2{ margin-block: 0 var(--space-4); }
+
+/* E) 角丸のにじみ対策（カード内の画像がはみ出るケース） */
+.card img{ border-radius: calc(var(--radius) - 4px); 
