@@ -1,168 +1,75 @@
-/* ========== Reset & Tokens ========== */
-*,
-*::before,*::after{ box-sizing: border-box; }
-html,body{ margin:0; padding:0; }
-img,video{ max-width:100%; height:auto; display:block; }
-html{ -webkit-text-size-adjust:100%; }
+/* ========== Clean Reset ========== */
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+img { max-width:100%; height:auto; display:block; }
+a { text-decoration: none; }
+
+/* ========== Theme Tokens ========== */
 :root{
-  /* Colors */
-  --page-bg:#F2FBF8;             /* 柔らかミント：背景（好みで後述の .bg-* に変更） */
-  --surface:#FFFFFF;              /* カード面 */
-  --text:#222; --muted:#666; --border:#E6EBF2;
-  --primary:#1EB2A6;             /* テーマ色（Teal×Mango 初期） */
-  --accent:#FFB347;
+  /* spacing */
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem; --s6:2rem; --s7:3rem;
 
-  /* Elevation / Radius */
-  --shadow-lg:0 10px 30px rgba(0,0,0,.08);
-  --radius:16px;
-
-  /* Spacing */
-  --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s8:48px;
-
-  /* Type scale */
-  --fs-sm:clamp(14px,1.6vw,15px);
-  --fs-md:clamp(16px,1.8vw,17px);
-  --fs-lg:clamp(20px,2.4vw,22px);
-  --fs-xl:clamp(28px,4vw,34px);
-
-  /* Layout */
-  --container:960px; --pad-x:16px;
-}
-body{
-  background:var(--page-bg); color:var(--text);
-  font:400 var(--fs-md)/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP",sans-serif;
-  overflow-x:hidden;
-}
-:focus-visible{ outline:3px solid #000; outline-offset:2px; }
-a{ color:inherit; }
-
-/* ========== Layout / Rhythm ========== */
-.container{ max-width:var(--container); margin-inline:auto; padding-inline:var(--pad-x); }
-.lead{ color:var(--muted); font-size:var(--fs-lg); }
-section{ padding-block:var(--s6); }
-section + section{ margin-top:var(--s6); }
-@media(min-width:744px){ section + section{ margin-top:var(--s8); } }
-.card{
-  background:var(--surface); border-radius:var(--radius);
-  box-shadow:var(--shadow-lg); padding:var(--s6); margin-block:var(--s6);
-}
-
-/* ========== A11y ========== */
-.skip-link{
-  position:absolute; left:-9999px; top:auto; background:#000; color:#fff;
-  padding:8px 12px; border-radius:8px; z-index:999;
-}
-.skip-link:focus{ left:16px; top:16px; }
-.visually-hidden{
-  position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
-  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-}
-
-/* ========== Hero / Buttons / Grids ========== */
-.hero{
-  padding-block:var(--s8);
-  background:
-    radial-gradient(1100px 500px at 10% -20%, rgba(30,178,166,.15), transparent 60%),
-    linear-gradient(180deg,#fff 0%, #f7fcff 100%);
-  border-bottom:1px solid var(--border);
-}
-h1{ font-size:var(--fs-xl); line-height:1.2; }
-h2{ font-size:var(--fs-lg); line-height:1.25; margin-block:0 var(--s4); }
-
-.btn{
-  display:inline-block; min-height:44px; padding:12px 20px; border-radius:var(--radius);
-  background:var(--primary); color:#fff; text-decoration:none; font-weight:700; box-shadow:var(--shadow-lg);
-  transition:transform .04s ease, filter .2s ease;
-}
-.btn:hover{ filter:brightness(1.04); }
-.btn:active{ transform:translateY(1px); }
-.btn--ghost{ background:transparent; color:var(--primary); border:2px solid var(--primary); box-shadow:none; }
-
-.btn-row{ display:flex; gap:var(--s4); flex-wrap:wrap; align-items:center; }
-.btn-row .btn{ flex:0 1 240px; }
-@media(max-width:480px){ .btn-row .btn{ flex:1 1 100%; } }
-
-.cards{ display:grid; gap:var(--s4); }
-@media(min-width:744px){ .cards{ grid-template-columns:1fr 1fr; } }
-
-/* ========== Pricing (Mobile/Tablet = Cards, Desktop = Table) ========== */
-.price-list{ display:grid; gap:var(--s4); }
-.price-item{ background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow-lg); padding:var(--s5); }
-.price-item__head{ display:flex; gap:var(--s4); align-items:baseline; justify-content:space-between; margin-bottom:var(--s3); }
-.price-item__title{ font-weight:700; font-size:var(--fs-lg); }
-.price-item__price{ font-weight:700; }
-
-.table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
-.table{ width:100%; border-collapse:collapse; table-layout:fixed; min-width:560px; }
-.table th,.table td{ padding:10px 0; border-bottom:1px solid var(--border); vertical-align:top; }
-.table thead th{ text-align:left; color:var(--muted); font-weight:700; }
-.table tbody th[scope="row"]{ text-align:left; font-weight:700; }
-.table .col-plan{ width:20%; }
-.table .col-desc{ width:auto; }
-.table .col-price{ width:18%; text-align:right; }
-
-/* 切り替え：~1023px=カードのみ / 1024px~=表のみ */
-.mobile-only{ display:block; }
-.desktop-only{ display:none; }
-@media(min-width:1024px){ .mobile-only{ display:none; } .desktop-only{ display:block; } }
-
-/* ========== Footer ========== */
-.site-footer{ padding:var(--s8) 0; color:var(--muted); border-top:1px solid var(--border); }
-.site-footer a{ text-decoration:underline; }
-
-/* ========== Background presets (optional) ========== */
-/* <body> にクラス追加で背景だけ変えられます */
-.bg-vanilla{ --page-bg:#FFFDF5; }  /* きなり */
-.bg-mint{ --page-bg:#F2FBF8; }     /* ミント（初期と同等） */
-.bg-rose{ --page-bg:#FFF6F8; }     /* うすローズ */
-.bg-blue{ --page-bg:#F6FAFF; }     /* うすブルー */
-
-/* ========== Theme color presets (optional) ========== */
-/* <body> にクラス追加で色味を切替 */
-.theme-indigo-coral{ --primary:#5B8DEF; --accent:#FF6B6B; }
-.theme-plum-lime{   --primary:#6A4C93; --accent:#B8E986; }
-.theme-forest-blush{--primary:#1B5E20; --accent:#FF7AA2; }
-.theme-indigo-saffron{ --primary:#3F51B5; --accent:#F4B400; }
-
-/* ===== Theme: Clean Luxury (PNG版) ===== */
-:root{
-  /* スペーシングの保険（未定義でも動くように） */
-  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem; --s6:2rem;
-  --border:#E5EAF0;
-
-  /* PNGヒーロー画像（ここだけ差し替えればOK） */
-  --hero-image: url('../assets/hero-clean.png');
-}
-
-body.theme-clean{
+  /* color & shadow */
   --primary:#3F51B5;   /* indigo */
   --accent:#D4A373;    /* warm amber */
   --page-bg:#F7F5F1;   /* soft cream */
   --surface:#FFFFFF;
   --text:#1A1A1A;
   --muted:#5F6B7A;
+  --border:#E5EAF0;
   --radius:16px;
   --shadow-lg:0 10px 30px rgba(0,0,0,.08);
+
+  /* hero image (PNG)  ※CSSから見た相対パス */
+  --hero-image: url('assets/hero-clean.png');
 }
 
-body{ background:var(--page-bg); color:var(--text); }
-.card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow-lg); }
-.btn{ background:var(--primary); color:#fff; border-radius:999px; padding:.85em 1.2em; border:0; }
-.btn--ghost{ background:transparent; color:var(--primary); border:1px solid var(--primary); }
-.btn:hover{ filter:brightness(.92); }
+/* ========== Base ========== */
+body {
+  background: var(--page-bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  line-height: 1.7;
+  font-size: 16px;
+}
 
-/* ===== Visual & Trust add-ons (v1.1・PNG対応) ===== */
-/* HERO：写真背景＋ダークグラデ */
+.container { max-width: 1120px; margin: 0 auto; padding: 0 var(--s4); }
+section { margin: var(--s7) 0; }
+h1, h2, h3 { margin: 0 0 var(--s3); line-height: 1.25; }
+h1 { font-size: clamp(28px, 5vw, 40px); }
+h2 { font-size: clamp(20px, 3.4vw, 26px); }
+h3 { font-size: clamp(18px, 2.8vw, 20px); }
+p  { margin: var(--s2) 0; color: var(--text); }
+small, .muted { color: var(--muted); }
+
+/* cards & buttons */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: var(--s6);
+}
+.btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  gap: .5em; padding: .85em 1.2em;
+  background: var(--primary); color:#fff; border:0; border-radius:999px;
+}
+.btn--ghost { background: transparent; color: var(--primary); border:1px solid var(--primary); }
+.btn:where(:hover,:focus-visible){ filter: brightness(.92); }
+
+/* ========== Hero (image background) ========== */
+.hero { margin: 0 0 var(--s7); }
 .hero--image{
   position:relative; isolation:isolate; color:#fff;
-  background:#0e0f12; min-height:46vh; display:flex; align-items:center;
+  background:#0e0f12; min-height: 46vh; display:flex; align-items:center;
   border-bottom:1px solid var(--border);
 }
 .hero--image::before{
   content:""; position:absolute; inset:0; z-index:-2;
   background-image: var(--hero-image);
   background-size:cover; background-position:center;
-  filter:saturate(1.05) contrast(1.05) brightness(.9);
+  filter: saturate(1.02) contrast(1.04) brightness(.92);
 }
 .hero--image::after{
   content:""; position:absolute; inset:0; z-index:-1;
@@ -170,47 +77,55 @@ body{ background:var(--page-bg); color:var(--text); }
     radial-gradient(1200px 600px at 10% -20%, rgba(0,0,0,.35), transparent 60%),
     linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.65));
 }
-.hero--image .lead{ color:#eaf1ff; }
+.hero .lead { color:#eaf1ff; margin-top: var(--s2); }
+.btn-row { display:flex; flex-wrap:wrap; gap: var(--s3); margin-top: var(--s4); }
 
-/* 声（顔写真なし版） */
-.trust{ display:grid; gap:var(--s4); }
-@media(min-width:744px){ .trust{ grid-template-columns:1fr 1fr; } }
-.voice{ display:grid; gap:var(--s3); }
-.voice-item{
-  background:var(--surface); border:1px solid var(--border);
-  border-radius:var(--radius); padding:var(--s5);
-  display:grid; grid-template-columns:1fr; gap:var(--s4); align-items:center;
-  position: relative;
+/* ========== “選ばれる理由” ========== */
+.features ul { margin: var(--s3) 0 0 1.1em; padding:0; }
+.features li { margin: .35em 0; }
+
+/* ========== Gallery ========== */
+.gallery { display:grid; gap: var(--s3); }
+.gallery img { width:100%; height:100%; object-fit: cover; border-radius: 12px; }
+@media (min-width: 744px){
+  .gallery { grid-template-columns: 1fr 1fr 1fr; }
 }
-.voice-item::before{
-  content: "“";
-  position: absolute; top: 12px; left: 12px;
-  color: var(--primary); font-size: 32px; line-height: 1; opacity: .35;
+@media (min-width: 1024px){
+  .gallery { grid-template-columns: 2fr 1fr 1fr; }
 }
-.voice .quote{ margin:0; padding-left:28px; }
-.voice .meta{ color:var(--muted); font-size:14px; padding-left:28px; }
-.voice .disclaimer{ color:var(--muted); font-size:12px; }
 
-/* ギャラリー */
-.gallery{ display:grid; gap:var(--s3); }
-.gallery img{ width:100%; height:100%; object-fit:cover; border-radius:12px; }
-@media(min-width:744px){ .gallery{ grid-template-columns:1fr 1fr 1fr; } }
-@media(min-width:1024px){ .gallery{ grid-template-columns:2fr 1fr 1fr; } }
-
-/* プロフィール */
-.profile{ display:grid; gap:var(--s4); align-items:center; }
-@media(min-width:744px){ .profile{ grid-template-columns:120px 1fr; } }
-.profile img{ width:120px; height:120px; border-radius:50%; object-fit:cover; }
-
-/* 人気バッジ／CTA帯 */
+/* ========== Pricing ========== */
+.pricing-grid { display:grid; gap: var(--s4); }
+@media (min-width: 744px){
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
+}
+.plan h3 { font-weight: 700; }
 .badge-pop{
   display:inline-block; background:#fff3c4; color:#7a5400;
   border:1px solid #ffe08a; border-radius:999px; padding:2px 8px; font-size:12px; margin-left:8px;
 }
-.cta-band{
-  background:linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-  color:#fff; border-radius:var(--radius); padding:var(--s5);
-  box-shadow:var(--shadow-lg); display:flex; gap:var(--s4); align-items:center; justify-content:space-between; flex-wrap:wrap;
-}
-.cta-band .btn{ background:#000; }
+.plan ul { margin: var(--s3) 0 0 1.1em; }
+.plan li { margin: .35em 0; }
 
+/* ========== Profile & CTA band ========== */
+.profile { display:grid; gap: var(--s4); align-items:center; }
+.profile img { width:120px; height:120px; border-radius:50%; object-fit:cover; }
+@media (min-width: 744px){ .profile { grid-template-columns: 120px 1fr; } }
+
+.cta-band{
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  color:#fff; border-radius: var(--radius); padding: var(--s5);
+  box-shadow: var(--shadow-lg); display:flex; gap: var(--s4);
+  align-items:center; justify-content:space-between; flex-wrap:wrap;
+}
+.cta-band .btn { background:#000; }
+
+/* ========== Helpers ========== */
+.center { text-align:center; }
+.stack-s { display:grid; gap: var(--s3); }
+.stack-m { display:grid; gap: var(--s4); }
+.stack-l { display:grid; gap: var(--s6); }
+
+/* ========== Accessibility ========== */
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.btn { min-height: 44px; }
