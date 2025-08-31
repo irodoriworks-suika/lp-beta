@@ -123,3 +123,94 @@ h2{ font-size:var(--fs-lg); line-height:1.25; margin-block:0 var(--s4); }
 .theme-plum-lime{   --primary:#6A4C93; --accent:#B8E986; }
 .theme-forest-blush{--primary:#1B5E20; --accent:#FF7AA2; }
 .theme-indigo-saffron{ --primary:#3F51B5; --accent:#F4B400; }
+
+/* ===== Theme: Clean Luxury (PNG版) ===== */
+:root{
+  /* スペーシングの保険（未定義でも動くように） */
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.5rem; --s6:2rem;
+  --border:#E5EAF0;
+
+  /* PNGヒーロー画像（ここだけ差し替えればOK） */
+  --hero-image: url('../assets/hero-clean.png');
+}
+
+body.theme-clean{
+  --primary:#3F51B5;   /* indigo */
+  --accent:#D4A373;    /* warm amber */
+  --page-bg:#F7F5F1;   /* soft cream */
+  --surface:#FFFFFF;
+  --text:#1A1A1A;
+  --muted:#5F6B7A;
+  --radius:16px;
+  --shadow-lg:0 10px 30px rgba(0,0,0,.08);
+}
+
+body{ background:var(--page-bg); color:var(--text); }
+.card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow-lg); }
+.btn{ background:var(--primary); color:#fff; border-radius:999px; padding:.85em 1.2em; border:0; }
+.btn--ghost{ background:transparent; color:var(--primary); border:1px solid var(--primary); }
+.btn:hover{ filter:brightness(.92); }
+
+/* ===== Visual & Trust add-ons (v1.1・PNG対応) ===== */
+/* HERO：写真背景＋ダークグラデ */
+.hero--image{
+  position:relative; isolation:isolate; color:#fff;
+  background:#0e0f12; min-height:46vh; display:flex; align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.hero--image::before{
+  content:""; position:absolute; inset:0; z-index:-2;
+  background-image: var(--hero-image);
+  background-size:cover; background-position:center;
+  filter:saturate(1.05) contrast(1.05) brightness(.9);
+}
+.hero--image::after{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:
+    radial-gradient(1200px 600px at 10% -20%, rgba(0,0,0,.35), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.65));
+}
+.hero--image .lead{ color:#eaf1ff; }
+
+/* 声（顔写真なし版） */
+.trust{ display:grid; gap:var(--s4); }
+@media(min-width:744px){ .trust{ grid-template-columns:1fr 1fr; } }
+.voice{ display:grid; gap:var(--s3); }
+.voice-item{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:var(--s5);
+  display:grid; grid-template-columns:1fr; gap:var(--s4); align-items:center;
+  position: relative;
+}
+.voice-item::before{
+  content: "“";
+  position: absolute; top: 12px; left: 12px;
+  color: var(--primary); font-size: 32px; line-height: 1; opacity: .35;
+}
+.voice .quote{ margin:0; padding-left:28px; }
+.voice .meta{ color:var(--muted); font-size:14px; padding-left:28px; }
+.voice .disclaimer{ color:var(--muted); font-size:12px; }
+
+/* ギャラリー */
+.gallery{ display:grid; gap:var(--s3); }
+.gallery img{ width:100%; height:100%; object-fit:cover; border-radius:12px; }
+@media(min-width:744px){ .gallery{ grid-template-columns:1fr 1fr 1fr; } }
+@media(min-width:1024px){ .gallery{ grid-template-columns:2fr 1fr 1fr; } }
+
+/* プロフィール */
+.profile{ display:grid; gap:var(--s4); align-items:center; }
+@media(min-width:744px){ .profile{ grid-template-columns:120px 1fr; } }
+.profile img{ width:120px; height:120px; border-radius:50%; object-fit:cover; }
+
+/* 人気バッジ／CTA帯 */
+.badge-pop{
+  display:inline-block; background:#fff3c4; color:#7a5400;
+  border:1px solid #ffe08a; border-radius:999px; padding:2px 8px; font-size:12px; margin-left:8px;
+}
+.cta-band{
+  background:linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  color:#fff; border-radius:var(--radius); padding:var(--s5);
+  box-shadow:var(--shadow-lg); display:flex; gap:var(--s4); align-items:center; justify-content:space-between; flex-wrap:wrap;
+}
+.cta-band .btn{ background:#000; }
+
