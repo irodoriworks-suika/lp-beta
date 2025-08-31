@@ -1,47 +1,95 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>いろどりワークス｜デモHUB</title>
-<meta name="description" content="いろどりワークスのデモ集。β版LPや資料の入口。">
-<link rel="stylesheet" href="style.css">
-<meta name="robots" content="noindex"><!-- 公開直前に外す -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>いろどりワークス｜スマホ最適化LP（テンプレ＋半カスタム）</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-mint theme-indigo-coral"><!-- 背景/テーマは好きに変更OK -->
-<a href="#main" class="skip-link">本文へスキップ</a>
+<body>
 
-<header class="container hero">
-  <h1>いろどりワークス｜デモHUB</h1>
-  <p class="lead">β版のLPやドキュメントへの入口。レビューしやすい導線にまとめています。</p>
-<div class="btn-row">
-  <a class="btn" href="/lp/">LP β を開く</a>
-  <a class="btn btn--ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSfNh2xVe-bDgS5WsyXwro9YdnwuMQ4D3pE2JoA_hrithut_8w/viewform?usp=dialog" target="_blank" rel="noopener">事前審査フォーム</a>
-</div>
-
-</header>
-
-<main id="main" class="container">
-  <section class="cards">
-    <article class="card">
-      <h2>LP β｜ヨガ/サロン向け</h2>
-      <p>スマホ最適化の1枚LP（テンプレ＋半カスタム）。まずはこちらからご確認ください。</p>
+  <!-- ===== HERO ===== -->
+  <header class="hero hero--image">
+    <div class="container">
+      <h1>“雰囲気で選ばれる”スマホLP</h1>
+      <p class="lead">写真と余白で安心感。予約まで2タップの導線はそのままに、見栄えを強化します。</p>
       <div class="btn-row">
-        <a class="btn" href="/lp/">LPを見る</a>
-        <a class="btn btn--ghost" href="https://github.com/irodoriworks-suika/lp-beta" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="YOUR_FORM_URL" target="_blank" rel="noopener">事前審査フォーム</a>
+        <a class="btn btn--ghost" href="mailto:hello@irodori-works.biz?subject=%E3%80%90LP%E7%9B%B8%E8%AB%87%E3%80%91">メールで相談</a>
       </div>
-    </article>
+    </div>
+  </header>
 
-    <article class="card">
-      <h2>連絡先</h2>
-      <p>お問い合わせはメールが確実です（24h以内に返信目標）。</p>
-      <a class="btn" href="mailto:hello@irodori-works.biz">hello@irodori-works.biz</a>
-    </article>
-  </section>
-</main>
+  <main class="container stack-l">
 
-<footer class="container site-footer">
-  © いろどりワークス｜<a href="mailto:hello@irodori-works.biz">hello@irodori-works.biz</a>
-</footer>
+    <!-- ===== 選ばれる理由（B案） ===== -->
+    <section class="card features">
+      <h2>選ばれる理由</h2>
+      <ul>
+        <li><strong>見栄え×信頼：</strong>写真と余白で上品に。読みやすい情報設計。</li>
+        <li><strong>スマホ最適：</strong>予約まで2タップ。大きめボタン＆迷子にならない導線。</li>
+        <li><strong>明朗な条件：</strong>β価格・修正回数・納期を明記。連絡はメールで一元管理。</li>
+      </ul>
+    </section>
+
+    <!-- ===== ギャラリー ===== -->
+    <section class="card">
+      <h2>ギャラリー</h2>
+      <div class="gallery">
+        <img src="assets/g1.png" alt="道具・アロマの静物（上品なトーン）" width="1600" height="1200" loading="lazy">
+        <img src="assets/g2.png" alt="受付や備品のディテール" width="1600" height="1200" loading="lazy">
+        <img src="assets/g3.png" alt="自然光が入る空間の一角" width="1600" height="1200" loading="lazy">
+      </div>
+    </section>
+
+    <!-- ===== 料金 ===== -->
+    <section id="pricing" class="card">
+      <h2>料金 <span class="badge-pop">人気：スタンダード</span></h2>
+      <div class="pricing-grid">
+        <div class="plan card">
+          <h3>ライト <small class="muted">¥34,800（税込）</small></h3>
+          <ul>
+            <li>1ページ構成固定</li>
+            <li>色・画像差し替え</li>
+            <li>修正2回</li>
+            <li>納期7–10日（素材到着後）</li>
+          </ul>
+        </div>
+        <div class="plan card">
+          <h3>スタンダード <small class="muted">¥69,800（税込）</small></h3>
+          <ul>
+            <li>料金・アクセス・SNSの微調整追加</li>
+            <li>修正3回</li>
+            <li>納期10–14日（素材到着後）</li>
+          </ul>
+        </div>
+      </div>
+      <p class="muted">※ ドメイン/サーバー費用は含みません。</p>
+    </section>
+
+    <!-- ===== プロフィール ===== -->
+    <section class="card profile">
+      <img src="assets/owner.png" alt="いろどりワークス ロゴ">
+      <div>
+        <h2>制作者について</h2>
+        <p>スマホ導線特化で“2タップで予約”をめざすLPを作ります。写真と余白で“安心”を演出しつつ、読みやすさ重視で設計します。</p>
+      </div>
+    </section>
+
+    <!-- ===== 仕上げCTA ===== -->
+    <section>
+      <div class="cta-band">
+        <div><strong>先着3件のβプラン</strong>｜最短7日で公開。まずは事前審査から。</div>
+        <a class="btn" href="YOUR_FORM_URL" target="_blank" rel="noopener">事前審査フォーム</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container" style="margin: var(--s7) 0 var(--s6);">
+    <small class="muted">© 2025 irodori-works.biz / hello@irodori-works.biz</small>
+  </footer>
+
 </body>
 </html>
