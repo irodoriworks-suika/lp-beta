@@ -1,8 +1,8 @@
 /* ========== Clean Reset ========== */
-* { box-sizing: border-box; }
-html, body { margin:0; padding:0; }
-img { max-width:100%; height:auto; display:block; }
-a { text-decoration: none; }
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none}
 
 /* ========== Theme Tokens ========== */
 :root{
@@ -20,176 +20,103 @@ a { text-decoration: none; }
   --radius:16px;
   --shadow-lg:0 10px 30px rgba(0,0,0,.08);
 
-  /* hero image (PNG)  ※CSSから見た相対パス */
-  --hero-image: url('assets/hero-clean.png');
+  /* デモ用ヒーロー画像のデフォルト（後日/demosで使用） */
+  --hero-image:url('assets/demos/yoga/hero.png');
 }
 
 /* ========== Base ========== */
-body {
-  background: var(--page-bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
-  line-height: 1.7;
-  font-size: 16px;
+body{
+  background:var(--page-bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans JP","Yu Gothic","Meiryo",sans-serif;
+  line-height:1.7;
+  font-size:16px;
 }
-
-.container { max-width: 1120px; margin: 0 auto; padding: 0 var(--s4); }
-section { margin: var(--s7) 0; }
-h1, h2, h3 { margin: 0 0 var(--s3); line-height: 1.25; }
-h1 { font-size: clamp(28px, 5vw, 40px); }
-h2 { font-size: clamp(20px, 3.4vw, 26px); }
-h3 { font-size: clamp(18px, 2.8vw, 20px); }
-p  { margin: var(--s2) 0; color: var(--text); }
-small, .muted { color: var(--muted); }
+.container{max-width:1120px;margin:0 auto;padding:0 var(--s4)}
+section{margin:var(--s6) 0}             /* 間延び防止 */
+h1,h2,h3{margin:0 0 var(--s3);line-height:1.25}
+h1{font-size:clamp(28px,5vw,40px)}
+h2{font-size:clamp(20px,3.4vw,26px)}
+h3{font-size:clamp(18px,2.8vw,20px)}
+p{margin:var(--s2) 0;color:var(--text)}
+small,.muted{color:var(--muted)}
 
 /* cards & buttons */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  padding: var(--s6);
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);
+  padding:var(--s5);
 }
-.btn {
-  display:inline-flex; align-items:center; justify-content:center;
-  gap: .5em; padding: .85em 1.2em;
-  background: var(--primary); color:#fff; border:0; border-radius:999px;
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:.5em;padding:.85em 1.2em;background:var(--primary);color:#fff;border:0;border-radius:999px;
+  min-height:44px;
 }
-.btn--ghost { background: transparent; color: var(--primary); border:1px solid var(--primary); }
-.btn:where(:hover,:focus-visible){ filter: brightness(.92); }
+.btn--ghost{background:transparent;color:var(--primary);border:1px solid var(--primary)}
+.btn:where(:hover,:focus-visible){filter:brightness(.92)}
 
-/* ========== Hero (image background) ========== */
-.hero { margin: 0 0 var(--s7); }
-.hero--image{
-  position:relative; isolation:isolate; color:#fff;
-  background:#0e0f12; min-height: 46vh; display:flex; align-items:center;
-  border-bottom:1px solid var(--border);
-}
-.hero--image::before{
-  content:""; position:absolute; inset:0; z-index:-2;
-  background-image: var(--hero-image);
-  background-size:cover; background-position:center;
-  filter: saturate(1.02) contrast(1.04) brightness(.92);
-}
-.hero--image::after{
-  content:""; position:absolute; inset:0; z-index:-1;
-  background:
-    radial-gradient(1200px 600px at 10% -20%, rgba(0,0,0,.35), transparent 60%),
-    linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.65));
-}
-.hero .lead { color:#eaf1ff; margin-top: var(--s2); }
-.btn-row { display:flex; flex-wrap:wrap; gap: var(--s3); margin-top: var(--s4); }
+/* ========== Site Nav (HUB) ========== */
+.site-nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.85);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--border)}
+.nav-row{display:flex;align-items:center;gap:var(--s4);padding:var(--s3) 0}
+.brand{display:flex;align-items:center;gap:.75rem;font-weight:700}
+.brand img{width:36px;height:36px;border-radius:50%}
+.links{margin-left:auto;display:flex;align-items:center;gap:var(--s4)}
+.links a{color:var(--text)}
+.links .btn{padding:.6em 1em}
 
-/* ========== “選ばれる理由” ========== */
-.features ul { margin: var(--s3) 0 0 1.1em; padding:0; }
-.features li { margin: .35em 0; }
-
-/* ========== Gallery ========== */
-.gallery { display:grid; gap: var(--s3); }
-.gallery img { width:100%; height:100%; object-fit: cover; border-radius: 12px; }
-@media (min-width: 744px){
-  .gallery { grid-template-columns: 1fr 1fr 1fr; }
-}
-@media (min-width: 1024px){
-  .gallery { grid-template-columns: 2fr 1fr 1fr; }
-}
-
-/* ========== Pricing ========== */
-.pricing-grid { display:grid; gap: var(--s4); }
-@media (min-width: 744px){
-  .pricing-grid { grid-template-columns: 1fr 1fr; }
-}
-.plan h3 { font-weight: 700; }
-.badge-pop{
-  display:inline-block; background:#fff3c4; color:#7a5400;
-  border:1px solid #ffe08a; border-radius:999px; padding:2px 8px; font-size:12px; margin-left:8px;
-}
-.plan ul { margin: var(--s3) 0 0 1.1em; }
-.plan li { margin: .35em 0; }
-
-/* ========== Profile & CTA band ========== */
-.profile { display:grid; gap: var(--s4); align-items:center; }
-.profile img { width:120px; height:120px; border-radius:50%; object-fit:cover; }
-@media (min-width: 744px){ .profile { grid-template-columns: 120px 1fr; } }
-
-.cta-band{
-  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-  color:#fff; border-radius: var(--radius); padding: var(--s5);
-  box-shadow: var(--shadow-lg); display:flex; gap: var(--s4);
-  align-items:center; justify-content:space-between; flex-wrap:wrap;
-}
-.cta-band .btn { background:#000; }
-
-/* ========== Helpers ========== */
-.center { text-align:center; }
-.stack-s { display:grid; gap: var(--s3); }
-.stack-m { display:grid; gap: var(--s4); }
-.stack-l { display:grid; gap: var(--s6); }
-
-/* ========== Accessibility ========== */
-:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
-.btn { min-height: 44px; }
-
-/* === PATCH 2025-09-01: contrast + spacing + gallery fix === */
-
-/* 1) ヒーロー内のゴーストボタンを見やすく */
-.hero .btn--ghost{
-  color:#fff;
-  border:2px solid rgba(255,255,255,.85);
-  background: rgba(255,255,255,.12);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset;
-}
-.hero .btn--ghost:hover,
-.hero .btn--ghost:focus-visible{
-  background: rgba(255,255,255,.2);
-  border-color:#fff;
-}
-
-/* 2) セクションの開き過ぎを締める（余白＆内側パディング） */
-section{ margin: var(--s6) 0; }     /* 旧: var(--s7)  */
-.card{ padding: var(--s5); }        /* 旧: var(--s6)  */
-.hero{  margin: 0 0 var(--s6); }
-@media (max-width: 480px){
-  section{ margin: var(--s5) 0; }
-  .card{   padding: var(--s4); }
-}
-
-/* 3) ギャラリー：PCで均等3列＆画像の比率を固定（潰れ防止） */
-.gallery img{
-  width:100%;
-  aspect-ratio: 4 / 3;   /* 高さを自動で揃える */
-  height:auto;
-  object-fit: cover;
-  border-radius:12px;
-}
-@media (min-width:1024px){
-  .gallery{ grid-template-columns: 1fr 1fr 1fr; } /* 旧: 2fr 1fr 1fr */
-}
-
-/* === HUB: ナビ & ブランドヒーロー === */
-.site-nav{ position:sticky; top:0; z-index:20; background:rgba(255,255,255,.85); backdrop-filter:saturate(140%) blur(6px); border-bottom:1px solid var(--border); }
-.nav-row{ display:flex; align-items:center; gap:var(--s4); padding: var(--s3) 0; }
-.brand{ display:flex; align-items:center; gap:.75rem; font-weight:700; }
-.brand img{ width:36px; height:36px; border-radius:50%; }
-.links{ margin-left:auto; display:flex; align-items:center; gap: var(--s4); }
-.links a{ color:var(--text); }
-.links .btn{ padding:.6em 1em; }
-
+/* ========== Brand Hero (HUB) ========== */
+.hero{margin:0 0 var(--s6)}
 .hero--brand{
-  position:relative; color:#fff; min-height:42vh; display:flex; align-items:center; border-bottom:1px solid var(--border);
+  position:relative;color:#fff;min-height:42vh;display:flex;align-items:center;border-bottom:1px solid var(--border)
 }
 .hero--brand::before{
-  content:""; position:absolute; inset:0; z-index:-1;
-  background: linear-gradient(135deg, var(--primary) 0%, #5465c4 40%, var(--accent) 100%);
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(135deg,var(--primary) 0%,#5465c4 40%,var(--accent) 100%)
 }
-.hero--brand .btn--ghost{
-  color:#fff; border:2px solid rgba(255,255,255,.85); background:rgba(255,255,255,.12);
+.hero--brand .lead{color:#eaf1ff;margin-top:var(--s2)}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s4)}
+.hero--brand .btn--ghost{color:#fff;border:2px solid rgba(255,255,255,.85);background:rgba(255,255,255,.12);box-shadow:0 0 0 1px rgba(255,255,255,.08) inset}
+.hero--brand .btn--ghost:hover,.hero--brand .btn--ghost:focus-visible{background:rgba(255,255,255,.2);border-color:#fff}
+
+/* ========== (将来のデモで使う) 画像ヒーロー ========== */
+.hero--image{
+  position:relative;isolation:isolate;color:#fff;background:#0e0f12;min-height:46vh;display:flex;align-items:center;border-bottom:1px solid var(--border)
 }
-.hero--brand .btn--ghost:hover{ background:rgba(255,255,255,.2); border-color:#fff; }
+.hero--image::before{
+  content:"";position:absolute;inset:0;z-index:-2;background-image:var(--hero-image);
+  background-size:cover;background-position:center;filter:saturate(1.02) contrast(1.04) brightness(.92)
+}
+.hero--image::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(1200px 600px at 10% -20%,rgba(0,0,0,.35),transparent 60%),
+             linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.65))
+}
+.hero--image .lead{color:#eaf1ff}
 
-/* === デモページ用：業種ごとにヒーロー画像を切り替え === */
-.demo{ /* 共通：theme-clean を前提 */ }
-.demo.yoga{ --hero-image: url('assets/demos/yoga/hero.png'); }
-.demo.cafe{ --hero-image: url('assets/demos/cafe/hero.png'); }
-.demo.gym { --hero-image: url('assets/demos/gym/hero.png'); }
+/* ========== Features / Gallery / Pricing / Profile / CTA ========== */
+.features ul{margin:var(--s3) 0 0 1.1em;padding:0}
+.features li{margin:.35em 0}
 
+.gallery{display:grid;gap:var(--s3)}
+.gallery img{width:100%;aspect-ratio:4/3;height:auto;object-fit:cover;border-radius:12px}
+@media(min-width:744px){.gallery{grid-template-columns:1fr 1fr 1fr}}
+@media(min-width:1024px){.gallery{grid-template-columns:1fr 1fr 1fr}}
+
+.pricing-grid{display:grid;gap:var(--s4)}
+@media(min-width:744px){.pricing-grid{grid-template-columns:1fr 1fr}}
+.plan h3{font-weight:700}
+.badge-pop{display:inline-block;background:#fff3c4;color:#7a5400;border:1px solid #ffe08a;border-radius:999px;padding:2px 8px;font-size:12px;margin-left:8px}
+.plan ul{margin:var(--s3) 0 0 1.1em}
+.plan li{margin:.35em 0}
+
+.profile{display:grid;gap:var(--s4);align-items:center}
+.profile img{width:120px;height:120px;border-radius:50%;object-fit:cover}
+@media(min-width:744px){.profile{grid-template-columns:120px 1fr}}
+
+.cta-band{background:linear-gradient(90deg,var(--primary) 0%,var(--accent) 100%);color:#fff;border-radius:var(--radius);padding:var(--s5);box-shadow:var(--shadow-lg);display:flex;gap:var(--s4);align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta-band .btn{background:#000}
+
+/* ========== Accessibility ========== */
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
