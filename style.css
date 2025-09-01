@@ -165,3 +165,31 @@ section{ margin: var(--s6) 0; }     /* 旧: var(--s7)  */
 @media (min-width:1024px){
   .gallery{ grid-template-columns: 1fr 1fr 1fr; } /* 旧: 2fr 1fr 1fr */
 }
+
+/* === HUB: ナビ & ブランドヒーロー === */
+.site-nav{ position:sticky; top:0; z-index:20; background:rgba(255,255,255,.85); backdrop-filter:saturate(140%) blur(6px); border-bottom:1px solid var(--border); }
+.nav-row{ display:flex; align-items:center; gap:var(--s4); padding: var(--s3) 0; }
+.brand{ display:flex; align-items:center; gap:.75rem; font-weight:700; }
+.brand img{ width:36px; height:36px; border-radius:50%; }
+.links{ margin-left:auto; display:flex; align-items:center; gap: var(--s4); }
+.links a{ color:var(--text); }
+.links .btn{ padding:.6em 1em; }
+
+.hero--brand{
+  position:relative; color:#fff; min-height:42vh; display:flex; align-items:center; border-bottom:1px solid var(--border);
+}
+.hero--brand::before{
+  content:""; position:absolute; inset:0; z-index:-1;
+  background: linear-gradient(135deg, var(--primary) 0%, #5465c4 40%, var(--accent) 100%);
+}
+.hero--brand .btn--ghost{
+  color:#fff; border:2px solid rgba(255,255,255,.85); background:rgba(255,255,255,.12);
+}
+.hero--brand .btn--ghost:hover{ background:rgba(255,255,255,.2); border-color:#fff; }
+
+/* === デモページ用：業種ごとにヒーロー画像を切り替え === */
+.demo{ /* 共通：theme-clean を前提 */ }
+.demo.yoga{ --hero-image: url('assets/demos/yoga/hero.png'); }
+.demo.cafe{ --hero-image: url('assets/demos/cafe/hero.png'); }
+.demo.gym { --hero-image: url('assets/demos/gym/hero.png'); }
+
