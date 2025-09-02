@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow"><!-- デモは索引除外 -->
   <title>デモLP｜ヨガ｜いろどりワークス</title>
-  <link rel="stylesheet" href="../../../style.css">
+
+  <!-- CSSはドメインルートからの絶対パス -->
+  <link rel="stylesheet" href="/style.css">
 </head>
-<body class="theme-clean">
-  <!-- ▼ ヒーロー画像は style.css の :root --hero-image を使用（docs からの相対: assets/demos/yoga/hero.png） -->
+<body class="theme-clean"
+      style="--hero-image:url('/assets/demos/yoga/hero.png')"><!-- 念のためここで明示 -->
+
+  <!-- HERO（写真背景は上の --hero-image で指定） -->
   <header class="hero hero--image">
     <div class="container">
       <h1>“雰囲気で選ばれる”スマホLP（ヨガ）</h1>
       <p class="lead">写真と余白で安心感。予約まで2タップの導線を実装。</p>
       <div class="btn-row">
         <a class="btn" href="https://example.invalid" target="_blank" rel="noopener">予約導線の例</a>
-        <a class="btn btn--ghost" href="../../?utm_source=demo" rel="noopener">事業サイトへ戻る</a>
+        <a class="btn btn--ghost" href="/?utm_source=demo" rel="noopener">事業サイトへ戻る</a>
       </div>
     </div>
   </header>
@@ -33,9 +37,9 @@
     <section class="card">
       <h2>ギャラリー</h2>
       <div class="gallery">
-        <img src="../../assets/demos/yoga/g1.png" alt="静物" width="1600" height="1200" loading="lazy">
-        <img src="../../assets/demos/yoga/g2.png" alt="設備ディテール" width="1600" height="1200" loading="lazy">
-        <img src="../../assets/demos/yoga/g3.png" alt="空間の一角" width="1600" height="1200" loading="lazy">
+        <img src="/assets/demos/yoga/g1.png" alt="静物" width="1600" height="1200" loading="lazy">
+        <img src="/assets/demos/yoga/g2.png" alt="設備ディテール" width="1600" height="1200" loading="lazy">
+        <img src="/assets/demos/yoga/g3.png" alt="空間の一角" width="1600" height="1200" loading="lazy">
       </div>
     </section>
 
