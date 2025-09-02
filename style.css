@@ -187,3 +187,18 @@ small,.muted{color:var(--muted)}
     padding: .7em 1.1em;
   }
 }
+
+/* === PATCH: nav tinted glass (subtle) === */
+.site-nav{
+  background:
+    linear-gradient(180deg, rgba(63,81,181,.06), rgba(255,255,255,.88));
+  border-bottom: 1px solid rgba(63,81,181,.12);
+  backdrop-filter: saturate(160%) blur(10px);
+  box-shadow: 0 4px 14px rgba(63,81,181,.06);
+}
+
+/* スマホでの段間＆中央寄せはそのままに、少しだけ詰める */
+@media (max-width: 743.98px){
+  .nav-row{ gap: var(--s2); }
+}
+
