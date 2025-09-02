@@ -201,4 +201,24 @@ small,.muted{color:var(--muted)}
 @media (max-width: 743.98px){
   .nav-row{ gap: var(--s2); }
 }
+/* === PATCH: nav inset on tablet/desktop (left/right gap) === */
+@media (min-width: 744px){
+  /* ナビ本体は透明にして、背景は内側の .container に持たせる */
+  .site-nav{
+    background: transparent;
+    border-bottom: none;
+    padding: var(--s3) 0;              /* ヘッダー上下に少し空き */
+  }
+  .site-nav .container{
+    background:
+      linear-gradient(180deg, rgba(63,81,181,.06), rgba(255,255,255,.88));
+    border: 1px solid rgba(63,81,181,.12);
+    border-radius: 14px;               /* 角を少し丸く */
+    box-shadow: 0 4px 14px rgba(63,81,181,.06);
+    backdrop-filter: saturate(160%) blur(10px);
+    padding: var(--s3) var(--s4);      /* 内側の余白 */
+  }
+  /* 既存の .nav-row のパディングはここで打ち消し → 二重余白を防ぐ */
+  .nav-row{ padding: 0; }
+}
 
