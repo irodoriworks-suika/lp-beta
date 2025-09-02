@@ -149,3 +149,41 @@ small,.muted{color:var(--muted)}
 
 /* ========== Accessibility ========== */
 :focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+
+/* === PATCH 2025-09-02: mobile nav center alignment === */
+@media (max-width: 743.98px){
+  /* ナビ全体を2段中央寄せ */
+  .nav-row{
+    flex-direction: column;
+    align-items: center;         /* ←1段目の中央寄せ */
+    gap: var(--s2);              /* 段間の不自然な余白を調整 */
+    padding: var(--s3) 0;
+  }
+  .brand{
+    width: 100%;
+    justify-content: center;     /* ロゴ＋名称を中央に */
+    text-align: center;
+  }
+  .brand span{ white-space: nowrap; }  /* 文字の1文字折返し防止 */
+
+  /* 2段目：中央寄せ＆折返し可。ボタンは下段でセンター固定 */
+  .links{
+    width: 100%;
+    display: flex;
+    justify-content: center;     /* ←中央寄せ */
+    align-items: center;
+    flex-wrap: wrap;             /* メニューが多い時に折返す */
+    gap: var(--s4);
+    overflow: visible;           /* 横スクロールをオフ */
+  }
+  .links a{ white-space: nowrap; } /* 1文字ずつ改行しない */
+
+  /* 「相談する」は1行占有で中央に配置（下段） */
+  .links .btn{
+    order: 2;                    /* 常に最後に来る */
+    flex-basis: 100%;            /* 横幅いっぱい使って */
+    max-width: 220px;            /* でも大きすぎないよう制限 */
+    margin: 0 auto;              /* 真ん中に */
+    padding: .7em 1.1em;
+  }
+}
