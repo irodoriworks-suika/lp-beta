@@ -1,60 +1,238 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow"><!-- デモは索引除外 -->
-  <title>デモLP｜ヨガ｜いろどりワークス</title>
-
-  <!-- 同じく /lp-beta/ を基準にする -->
-  <base href="/lp-beta/">
-  
-  <!-- CSSはドメインルートからの絶対パス -->
-  <link rel="stylesheet" href="style.css?v=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Yoga Studio | 体験レッスン受付中</title>
+  <meta name="description" content="ヨガスタジオの体験レッスン予約ページ。初心者歓迎、少人数制、インストラクター紹介、料金プラン、FAQ、アクセス。" />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="theme-clean"
-      style="--hero-image:url('assets/demos/yoga/hero-clean.png')"><!-- 念のためここで明示 -->
-
-  <!-- HERO（写真背景は上の --hero-image で指定） -->
-  <header class="hero hero--image">
-    <div class="container">
-      <h1>“雰囲気で選ばれる”スマホLP（ヨガ）</h1>
-      <p class="lead">写真と余白で安心感。予約まで2タップの導線を実装。</p>
-      <div class="btn-row">
-        <a class="btn" href="https://example.invalid" target="_blank" rel="noopener">予約導線の例</a>
-        <a class="btn btn--ghost" href="" rel="noopener">事業サイトへ戻る</a>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#hero" class="brand" aria-label="ホームへ">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <span>Studio Sora（仮）</span>
+      </a>
+      <nav class="nav__links" aria-label="主要メニュー">
+        <a href="#about">スタジオ</a>
+        <a href="#teachers">インストラクター</a>
+        <a href="#pricing">料金</a>
+        <a href="#faq">FAQ</a>
+        <a href="#visit">アクセス</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="btn btn--ghost" href="#pricing">料金</a>
+        <a class="btn btn--primary" href="#visit">体験を予約</a>
       </div>
     </div>
   </header>
 
-  <main class="container stack-l">
-    <section class="card features">
-      <h2>選ばれる理由</h2>
-      <ul>
-        <li><strong>見栄え×信頼：</strong>写真と余白で上品に。読みやすい情報設計。</li>
-        <li><strong>スマホ最適：</strong>予約まで2タップ。大きめボタン＆迷子にならない導線。</li>
-        <li><strong>明朗な条件：</strong>β価格・修正回数・納期を明記。</li>
-      </ul>
+  <main>
+    <!-- Section 1: HERO -->
+    <section id="hero" class="hero">
+      <div class="container hero__grid">
+        <div>
+          <div class="eyebrow">初心者歓迎・少人数制</div>
+          <h1>呼吸が整う。<br>毎日が軽くなるヨガ。</h1>
+          <p>姿勢・睡眠・肩こりの悩みを、ゆったり60分のクラスで。駅徒歩5分、マット無料レンタル。</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#visit">体験レッスンを予約</a>
+            <a class="btn" href="#about">スタジオについて</a>
+          </div>
+          <div class="trust" aria-label="実績・安心の根拠">
+            <div class="trust__item">Google★4.8</div>
+            <div class="trust__item">女性インストラクター常駐</div>
+            <div class="trust__item">マット&更衣室あり</div>
+          </div>
+        </div>
+        <figure class="hero__image">
+          <picture>
+            <source type="image/webp" srcset="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=1600&auto=format&fit=crop&fm=webp" />
+            <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=1600&auto=format&fit=crop" alt="スタジオで座位の瞑想をする3人の女性" width="1600" height="1200" loading="eager" fetchpriority="high" />
+          </picture>
+        </figure>
+      </div>
     </section>
 
-<main class="container">
-  <section class="card">
-    <h2>ギャラリー</h2>
-    <div class="gallery">
-      <img src="assets/demos/yoga/g1.png" alt="静物" width="1600" height="1200" loading="lazy">
-      <img src="assets/demos/yoga/g2.png" alt="設備ディテール" width="1600" height="1200" loading="lazy">
-      <img src="assets/demos/yoga/g3.png" alt="空間の一角" width="1600" height="1200" loading="lazy">
-    </div>
-  </section>
+    <!-- Section 2: ABOUT -->
+    <section id="about" class="about">
+      <div class="container about__grid">
+        <figure class="about__media">
+          <picture>
+            <source type="image/webp" srcset="https://images.unsplash.com/photo-1518617840859-acd542e13b4b?q=80&w=1600&auto=format&fit=crop&fm=webp" />
+            <img src="https://images.unsplash.com/photo-1518617840859-acd542e13b4b?q=80&w=1600&auto=format&fit=crop" alt="木床と自然光の入る落ち着いたスタジオ内観" width="1600" height="1000" loading="lazy" />
+          </picture>
+        </figure>
+        <div>
+          <h2>スタジオについて</h2>
+          <p>Studio Sora は、毎日を少し軽くするための街の小さなヨガスタジオ。初心者の方が安心して続けられるよう、呼吸に寄り添うやさしいクラスを中心に用意しています。</p>
+          <ul class="checklist" style="margin-top: var(--space-4)">
+            <li>駅徒歩5分・更衣室完備</li>
+            <li>マット無料レンタル・手ぶらOK</li>
+            <li>少人数制（最大8名）で丁寧にサポート</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <section id="pricing" class="card">
-      <h2>料金 <span class="badge-pop">人気：スタンダード</span></h2>
-      <p class="muted">※ 本ページはデモです。実際のご案内は事業サイトをご覧ください。</p>
+    <!-- Section 3: TEACHERS -->
+    <section id="teachers" class="teachers">
+      <div class="container">
+        <h2>インストラクター</h2>
+        <div class="teacher-grid">
+          <article class="teacher">
+            <figure class="teacher__photo">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop&fm=webp" />
+                <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop" alt="インストラクター Aya のポートレート" width="800" height="800" loading="lazy" />
+              </picture>
+            </figure>
+            <div class="teacher__name">Aya</div>
+            <p class="teacher__bio">リラックスヨガ担当。解剖学に基づくやさしい誘導で、初めての方も安心です。</p>
+            <a class="btn" href="#visit">この講師で体験予約</a>
+          </article>
+          <article class="teacher">
+            <figure class="teacher__photo">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop&fm=webp" />
+                <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" alt="インストラクター Mei のポートレート" width="800" height="800" loading="lazy" />
+              </picture>
+            </figure>
+            <div class="teacher__name">Mei</div>
+            <p class="teacher__bio">姿勢改善・ベーシック担当。デスクワークの肩こり・腰回りを整えます。</p>
+            <a class="btn" href="#visit">この講師で体験予約</a>
+          </article>
+          <article class="teacher">
+            <figure class="teacher__photo">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&fm=webp" />
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop" alt="インストラクター Rina のポートレート" width="800" height="800" loading="lazy" />
+              </picture>
+            </figure>
+            <div class="teacher__name">Rina</div>
+            <p class="teacher__bio">朝ヨガ・フロー担当。1日の始まりに呼吸とリズムを整えます。</p>
+            <a class="btn" href="#visit">この講師で体験予約</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: PRICING -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2>料金プラン</h2>
+        <div class="pricing__grid">
+          <article class="card" aria-labelledby="p1">
+            <h3 id="p1">体験レッスン</h3>
+            <div class="price">¥1,000 / 60分</div>
+            <ul class="features">
+              <li>動きやすい服だけでOK</li>
+              <li>マット無料レンタル</li>
+              <li>当日入会で体験料キャッシュバック</li>
+            </ul>
+            <a class="btn btn--primary" href="#visit">体験を予約</a>
+          </article>
+          <article class="card" aria-labelledby="p2">
+            <h3 id="p2">月4回プラン</h3>
+            <div class="price">¥6,980 / 月</div>
+            <ul class="features">
+              <li>振替OK（翌月まで）</li>
+              <li>オンライン動画つき</li>
+              <li>初心者・リラックス向け</li>
+            </ul>
+            <a class="btn" href="#visit">このプランで予約</a>
+          </article>
+          <article class="card" aria-labelledby="p3">
+            <h3 id="p3">通い放題</h3>
+            <div class="price">¥9,980 / 月</div>
+            <ul class="features">
+              <li>1日1レッスンまで</li>
+              <li>全クラス参加OK</li>
+              <li>マット保管サービス</li>
+            </ul>
+            <a class="btn" href="#visit">このプランで予約</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: FAQ -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <h2>よくある質問</h2>
+        <details>
+          <summary>初心者ですが大丈夫ですか？</summary>
+          <p>大丈夫です。クラスはレベル分けをし、初めての方向けはゆったりとした動きと呼吸に集中します。無理のない範囲でご参加ください。</p>
+        </details>
+        <details>
+          <summary>持ち物を教えてください。</summary>
+          <p>動きやすい服装・お水・タオルをご用意ください。マットは無料レンタルがあります。</p>
+        </details>
+        <details>
+          <summary>更衣室やシャワーはありますか？</summary>
+          <p>更衣室はございます。シャワーの用意はありません。</p>
+        </details>
+        <details>
+          <summary>支払い方法は？</summary>
+          <p>現金・クレジットカード・QR決済に対応予定です。</p>
+        </details>
+        <details>
+          <summary>キャンセルはできますか？</summary>
+          <p>開始24時間前までのキャンセルは無料です。それ以降は1回分消化となります。</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Section 6: VISIT (Access + Reservation) -->
+    <section id="visit" class="visit">
+      <div class="container">
+        <h2>アクセス・予約（デモ）</h2>
+        <div class="visit__grid">
+          <!-- Map: Tokyo Skytree -->
+          <div class="map-wrap" aria-label="スタジオ所在地の地図">
+            <iframe title="東京スカイツリー（デモ）"
+              src="https://www.google.com/maps?q=Tokyo+Skytree&output=embed"
+              width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <!-- Reservation (no in-site form) -->
+          <div class="contact-card" role="group" aria-label="予約・問い合わせ">
+            <div>
+              <p class="small">このデモではサイト内フォームは使用していません。実運用ではGoogleフォームに接続します。</p>
+            </div>
+            <div class="actions">
+              <a class="btn btn--primary" aria-disabled="true" style="pointer-events:none;opacity:.7" href="#">デモ：予約フォーム（未接続）</a>
+              <a class="btn" href="#form-spec">フォーム仕様を見る</a>
+            </div>
+            <small class="small">※ 個人情報の入力は本番環境でのみ行います。</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: FORM SPEC (for handover) -->
+    <section id="form-spec" class="form-spec">
+      <div class="container">
+        <h2>フォーム仕様（ハンドオフ用）</h2>
+        <ul class="checklist">
+          <li>送信先：Googleフォーム（別ページ遷移）</li>
+          <li>項目：お名前（必須）／メール（必須）／電話（任意）／第1〜第3希望日時（任意）／メッセージ（任意）</li>
+          <li>完了：サンクスページ（予約の流れ・持ち物・アクセス案内を記載）</li>
+          <li>計測：CVイベントは「フォーム送信ボタンのクリック」をGA4で計測</li>
+        </ul>
+      </div>
     </section>
   </main>
 
-  <footer class="container" style="margin: var(--s7) 0 var(--s6);">
-    <small class="muted">Demo only. © 2025 irodori-works.biz</small>
+  <footer>
+    <div class="container">
+      <small>© 2025 Studio Sora. All rights reserved.</small>
+    </div>
   </footer>
+
 </body>
 </html>
