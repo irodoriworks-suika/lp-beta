@@ -274,55 +274,90 @@ html, body { overflow-x: hidden; }
   .hero__grid > :first-child { margin: 0 1rem; padding: clamp(.75rem, 2.2vw, 1.25rem); }
 }
 
+
 /* =============================
-   HERO full-bleed + overlay + natural line breaks
-   （強制上書き。既存ルールより下に置いてください）
+   Patch 4: ヒーローをフルブリード＋自然改行＋薄モザイク
+   - 画像は横幅いっぱい（100vw）
+   - 文字は左右に余白を持って中央寄せ、自然な改行
+   - PC/Tabletではカード内を左右2カラム、スマホは縦積み
+   - 既存HTMLのまま
 ============================= */
 .hero { position: relative; isolation: isolate; padding: 0 0 var(--space-12); }
 .hero__grid { position: relative; display: grid; min-height: clamp(560px, 72vh, 820px); }
 
-/* 背景画像をビューポート幅いっぱいに（コンテナ外まで） */
-.hero__image {
-  position: absolute; inset: 0; z-index: 0;
-  width: 100vw !important; left: 50%; transform: translateX(-50%);
-  border-radius: 0 !important; box-shadow: none !important;
-}
+/* 背景画像：コンテナ外までフルブリード */
+.hero__image { position: absolute; inset: 0; z-index: 0; width: 100vw; height: 100%; left: 50%; transform: translateX(-50%); border-radius: 0; box-shadow: none; }
 .hero__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* 薄めスクリーン：文字を浮かせる（濃すぎる場合は数値を下げてOK） */
-.hero__image::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
+/* 読みやすさ用の薄めスクリーン（濃すぎる場合は数値↓） */
+.hero__image::after { content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.22) 70%);
 }
 
-/* テキストパネルを画像“上”に重ねる（HTML変更なし） */
-.hero .hero__grid > div:first-of-type {
-  z-index: 1; justify-self: center; align-self: center;
-  width: min(100% - 2rem, 1100px);
+/* オーバーレイのテキストパネル */
+.hero__grid > :first-child {
+  z-index: 1; justify-self: center; align-self: center; /* センター */
+  width: min(100% - 2rem, 1100px); /* 左右に余白を確保 */
   padding: clamp(1rem, 2.6vw, 2rem);
   text-align: center; color: #fff;
-  background: color-mix(in oklab, black 25%, transparent);
+  background: color-mix(in oklab, black 25%, transparent); /* 薄め */
   border: 1px solid color-mix(in oklab, white 12%, transparent);
   border-radius: var(--radius);
   box-shadow: var(--shadow-1);
   backdrop-filter: blur(2px) saturate(1.02);
 }
-
-/* 自然な改行に（見出し）＋読みやすさ */
+/* 見出しの読みやすさ向上＆不自然な改行を抑制 */
 .hero h1 { max-width: 18ch; margin-inline: auto; text-shadow: 0 2px 12px rgba(0,0,0,.28); }
 .hero .eyebrow { color: color-mix(in oklab, var(--color-primary) 75%, white); }
 .hero p { color: color-mix(in oklab, white 86%, var(--color-muted)); max-width: 48ch; margin-inline: auto; }
 
-/* PC/Tablet：カード内を左右2カラム、中央寄せ */
+/* PC/Tablet：カード内を2カラムで中央寄せ（左=テキスト、右=CTA&実績） */
 @container (min-width: 760px) {
-  .hero .hero__grid > div:first-of-type {
-    display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(1rem, 2vw, 2rem); text-align: left;
-  }
+  .hero__grid > :first-child { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(1rem, 2vw, 2rem); text-align: left; }
   .hero .eyebrow, .hero h1, .hero p { grid-column: 1; justify-self: start; }
   .hero .actions, .hero .trust { grid-column: 2; align-self: center; justify-self: center; text-align: left; }
 }
 
-/* スマホ：縦積み（現状の見やすさ維持） */
+/* スマホ：縦積み（現状維持） */
+@container (max-width: 759px) {
+  .hero__grid > :first-child { display: block; text-align: center; }
+}
+
+
+/* =============================
+   Patch 5: ヒーロー高さを短く / 2行見出し / 左右24px余白 / 薄モザイク
+   （HTML変更なし。末尾で既存ルールを上書き）
+============================= */
+/* 1) 高さを縮める（13インチ以内でも余裕） */
+.hero__grid { min-height: clamp(420px, 58vh, 620px); }
+
+/* 2) フルブリード画像はそのまま。スクリーンをさらに薄く */
+.hero__image::after { background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 70%); }
+
+/* 3) テキストパネルの横幅 = 画像幅いっぱい - 24px×2（左右余白） */
+.hero .hero__grid > div:first-of-type {
+  width: min(calc(100vw - 48px), 1100px);
+  padding: clamp(12px, 2vw, 24px);
+}
+
+/* 4) 見出しを“2行”想定に。<br>を活かして強制3行化を回避 */
+.hero h1 {
+  max-width: none;               /* 18ch制限を解除 */
+  white-space: pre-line;          /* <br> を改行として採用 */
+  word-break: keep-all;           /* 和文の途中改行を極力抑止 */
+  line-height: 1.15;              /* 2行でもタイトに見せる */
+  text-shadow: 0 2px 12px rgba(0,0,0,.28);
+}
+
+/* 5) PC/Tablet のカード2カラムは維持（中央寄せ） */
+@container (min-width: 760px) {
+  .hero .hero__grid > div:first-of-type { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(1rem, 2vw, 2rem); text-align: left; }
+  .hero .eyebrow, .hero h1, .hero p { grid-column: 1; justify-self: start; }
+  .hero .actions, .hero .trust { grid-column: 2; align-self: center; justify-self: center; text-align: left; }
+}
+
+/* 6) スマホは縦積み（見出しが窮屈なら一時的に幅制御） */
 @container (max-width: 759px) {
   .hero .hero__grid > div:first-of-type { display: block; text-align: center; }
+  .hero h1 { max-width: 22ch; margin-inline: auto; }
 }
+
