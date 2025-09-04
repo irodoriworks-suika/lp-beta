@@ -3,29 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- 公開前は noindex 推奨。公開OKになったら削除 -->
-  <!-- <meta name="robots" content="noindex, nofollow" /> -->
+
   <title>いろどりワークス｜スマホ最適化LP制作（テンプレ＋半カスタム）</title>
   <meta name="description" content="ヨガ/サロンなど個人事業向け。見栄えと導線を両立。最短7日で公開。β価格あり。" />
 
   <!-- 相対パスは /lp-beta/ を基準に -->
   <base href="/lp-beta/">
   <meta name="color-scheme" content="light dark" />
-  <link rel="stylesheet" href="style.css?v=business-v2" />
+  <link rel="stylesheet" href="style.css?v=business-v5" />
 
-  <!-- OGP（必要ならドメインに合わせて og:image を差し替え） -->
+  <!-- canonical / OGP -->
+  <link rel="canonical" href="https://irodoriworks-suika.github.io/lp-beta/">
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="いろどりワークス" />
   <meta property="og:title" content="いろどりワークス｜スマホ最適化LP制作" />
   <meta property="og:description" content="テンプレ＋半カスタムで、見栄えと導線を両立。最短7日で公開。β価格あり。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://irodoriworks-suika.github.io/lp-beta/ogp.jpg" />
+  <meta property="og:url" content="https://irodoriworks-suika.github.io/lp-beta/" />
+  <meta property="og:image" content="https://irodoriworks-suika.github.io/lp-date/img/ogp_default.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- GA4：計測IDを G-XXXX... に差し替えで有効化 -->
+  <!-- 体感高速化：ヒーロー画像を先読み（CSS背景で使用） -->
+  <link rel="preload" as="image" href="/lp-date/img/lp-hero-01.png" imagesrcset="/lp-date/img/lp-hero-01.png 1x">
+
+  <!-- GA4：ID差し替え必須（同意バナーなしなら consent 行は外す or granted に） -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-    // 同意が無い前提の最小モード（任意）
-    gtag('consent','default',{ ad_storage:'denied', analytics_storage:'denied' });
+
+    /* ▼Cookie同意を運用していない場合は以下2行は削除 or grantedに変更 */
+    // gtag('consent','default',{ ad_storage:'denied', analytics_storage:'denied' });
+
     gtag('js', new Date());
     gtag('config','G-XXXXXXXXXX'); // ←あなたのGA4 IDに置換
 
@@ -44,6 +52,7 @@
     });
   </script>
 </head>
+
 <body>
 
   <!-- Header -->
