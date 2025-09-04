@@ -160,8 +160,8 @@ h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-lin
 ============================= */
 :root{
   /* ヒーロー実画像 & デモ・サムネ */
-  --hero-img: url("lp-hero-01.png");
-  --thumb-yoga: url("lp-yoga-01.png");
+  --hero-img: url("img/lp-hero-01.png");
+  --thumb-yoga: url("img/lp-yoga-01.png");
 }
 
 /* -----------------------------
