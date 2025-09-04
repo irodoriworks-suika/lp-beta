@@ -1,29 +1,20 @@
 /* -----------------------------
-   Design Tokens
+   Design Tokens (A: Calm Indigo × Sage)
+   ※ ライト/ダークはOS設定に追随
 ----------------------------- */
 :root {
-  /* Yoga Studio palette */
-  --color-bg: #F7F5F1;          /* Cream / 背景 */
-  --color-fg: #1F2933;          /* Slate / 文字（真っ黒回避） */
-  --color-primary: #4F63C7;     /* Calm Indigo / CTA・強調 */
-  --color-accent: #8FBFA3;      /* Sage / 補助アクセント */
-  --color-primary-ink: #fff;
-  --color-muted: #5F6B76;       /* サブテキスト */
-  --color-surface: #ffffff;     /* カード等の面 */
-  --color-border: #E6E8EC;      /* 枠線 */
+  --color-bg: #F7F5F1;      /* Cream */
+  --color-surface: #FFFFFF; /* Surface */
+  --color-fg: #1F2933;      /* Text (Slate) */
+  --color-primary: #4F63C7; /* Indigo */
+  --color-accent: #8FBFA3;  /* Sage */
+  --color-primary-ink: #FFFFFF;
+  --color-muted: #5F6B76;
+  --color-border: #E6E8EC;
   --shadow-1: 0 1px 2px rgba(0,0,0,.05), 0 6px 20px rgba(0,0,0,.06);
 
   /* spacing (8px scale) */
-  --space-1: .25rem;
-  --space-2: .5rem;
-  --space-3: .75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-7: 1.75rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-7: 1.75rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
 
   /* radius */
   --radius: 14px;
@@ -36,18 +27,17 @@
   --fs-h3: clamp(1.15rem, 0.95rem + 1.2vw, 1.4rem);
   --fs-body: clamp(0.98rem, 0.94rem + 0.3vw, 1.05rem);
 
-  /* layout */
   --container-max: 1200px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0f1115;
-    --color-fg: #E9EEF5;
-    --color-surface: #141820;
+    --color-bg: #0f1115;      /* Deep Night */
+    --color-surface: #141820; /* Card */
+    --color-fg: #E9EEF5;      /* Text */
     --color-border: #1f2530;
-    --color-primary: #7C8DE6;  /* 少し明るめ */
-    --color-accent: #9AD2B2;   /* 少し明るめ */
+    --color-primary: #7C8DE6; /* Indigo (lighter in dark) */
+    --color-accent: #9AD2B2;  /* Sage (lighter in dark) */
     --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.28);
   }
 }
@@ -57,10 +47,7 @@
 ----------------------------- */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-body {
-  margin: 0; color: var(--color-fg); background: var(--color-bg);
-  font: 400 var(--fs-body)/var(--leading) var(--font-sans);
-}
+body { margin: 0; color: var(--color-fg); background: var(--color-bg); font: 400 var(--fs-body)/var(--leading) var(--font-sans); }
 img { max-width: 100%; display: block; height: auto; }
 a { color: inherit; text-decoration: none; }
 .container { width: min(100% - 2rem, var(--container-max)); margin-inline: auto; }
@@ -71,26 +58,19 @@ a { color: inherit; text-decoration: none; }
 /* sections as containers for CQs */
 section { padding: var(--space-12) 0; container-type: inline-size; }
 
-/* link hover (控えめ) */
+/* subtle link hover */
 .nav__links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* -----------------------------
    Header
 ----------------------------- */
-.site-header {
-  position: sticky; top: 0; z-index: 100; backdrop-filter: saturate(1.2) blur(6px);
-  background: color-mix(in oklab, var(--color-bg) 80%, transparent);
-  border-bottom: 1px solid var(--color-border);
-}
+.site-header { position: sticky; top: 0; z-index: 100; backdrop-filter: saturate(1.2) blur(6px); background: color-mix(in oklab, var(--color-bg) 80%, transparent); border-bottom: 1px solid var(--color-border); }
 .nav { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-4); padding: var(--space-4) 0; }
 .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; }
 .brand__logo { width: 28px; aspect-ratio:1; border-radius: 999px; background: var(--color-primary); box-shadow: var(--shadow-1); }
 .nav__links { display: none; gap: 1rem; align-items: center; }
 .nav__cta { display: flex; gap: .6rem; align-items: center; }
-@media (min-width: 860px) {
-  .nav { grid-template-columns: auto 1fr auto; }
-  .nav__links { display: flex; }
-}
+@media (min-width: 860px) { .nav { grid-template-columns: auto 1fr auto; } .nav__links { display: flex; } }
 
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; padding: .7rem 1rem; border-radius: 999px; border: 1px solid var(--color-border); background: var(--color-surface); font-weight: 600; text-align: center; box-shadow: var(--shadow-1); }
 .btn--primary { background: var(--color-primary); color: var(--color-primary-ink); border-color: transparent; }
@@ -108,6 +88,20 @@ section { padding: var(--space-12) 0; container-type: inline-size; }
 @container (min-width: 760px) { .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center; } }
 .hero__image { position: relative; aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-1); }
 .hero__image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 10%, transparent), transparent); pointer-events: none; }
+
+/* === Mobile: 画像を上・テキストを重ね気味に === */
+@container (max-width: 759px) {
+  .hero__image { order: -1; height: min(52vh, 420px); }
+  .hero__grid > :first-child {
+    margin-top: calc(-1 * var(--space-8));
+    background: color-mix(in oklab, var(--color-surface) 88%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-1);
+    backdrop-filter: saturate(1.05) blur(6px);
+  }
+}
 
 /* -----------------------------
    About (Section 2)
@@ -174,6 +168,4 @@ section { padding: var(--space-12) 0; container-type: inline-size; }
 footer { border-top: 1px solid var(--color-border); padding: var(--space-8) 0; color: var(--color-muted); }
 
 /* motion safety */
-@media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
-}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
