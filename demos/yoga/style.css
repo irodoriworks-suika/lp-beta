@@ -169,3 +169,20 @@ footer { border-top: 1px solid var(--color-border); padding: var(--space-8) 0; c
 
 /* motion safety */
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+
+/* =============================
+   Patch: モバイル横スクロール解消 & 画像フィット
+   （既存定義の“後ろ”に置くことで上書き）
+============================= */
+html, body { overflow-x: hidden; }
+
+/* コンテナは width 計算をやめ、左右パディングで余白を確保 */
+.container { max-width: var(--container-max); margin-inline: auto; padding-inline: 1rem; width: auto; }
+
+/* ヒーロー画像が親の高さにフィットしつつ横幅100%に */
+.hero__image { width: 100%; }
+.hero__image img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Map iframe のはみ出し防止 */
+.map-wrap iframe { display: block; width: 100% !important; }
