@@ -102,3 +102,19 @@ h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-lin
 .contact__grid .actions{margin-top:var(--s6)}
 .site-footer{border-top:1px solid var(--border);padding:var(--s8) 0;color:var(--muted)}
 .site-footer address{font-style:normal;display:block;margin-bottom:.5rem}
+
+/* === Contrast Fix: secondary buttons inside HERO (light/dark両対応) === */
+/* 継承を断って常に読みやすい色に */
+.btn { color: var(--ink); }                 /* 文字色を明示（継承しない） */
+.btn.btn--primary { color: var(--ink-on); } /* プライマリは従来どおり */
+
+.hero .btn:not(.btn--primary) {
+  /* セカンダリ（例: メールで相談）をはっきり表示 */
+  background: var(--surface);
+  color: var(--ink);
+  border-color: color-mix(in oklab, var(--surface) 40%, var(--border));
+}
+
+/* もしヘッダーのゴーストボタンが薄すぎる場合の軽い補強（任意） */
+.btn.btn--ghost { background: var(--surface); color: var(--ink); }
+
