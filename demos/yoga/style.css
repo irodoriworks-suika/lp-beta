@@ -1,27 +1,27 @@
 /* -----------------------------
    Design Tokens (A: Calm Indigo × Sage)
-   ※ ライト/ダークはOS設定に追随
 ----------------------------- */
 :root {
-  --color-bg: #F7F5F1;      /* Cream */
-  --color-surface: #FFFFFF; /* Surface */
-  --color-fg: #1F2933;      /* Text (Slate) */
-  --color-primary: #4F63C7; /* Indigo */
-  --color-accent: #8FBFA3;  /* Sage */
+  --color-bg: #F7F5F1;
+  --color-surface: #FFFFFF;
+  --color-fg: #1F2933;
+  --color-primary: #4F63C7;
+  --color-accent: #8FBFA3;
   --color-primary-ink: #FFFFFF;
   --color-muted: #5F6B76;
   --color-border: #E6E8EC;
   --shadow-1: 0 1px 2px rgba(0,0,0,.05), 0 6px 20px rgba(0,0,0,.06);
 
-  /* spacing (8px scale) */
-  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-7: 1.75rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem;
+  --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-7: 1.75rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
 
-  /* radius */
   --radius: 14px;
 
-  /* type */
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP",
+               "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
   --leading: 1.7;
+
   --fs-h1: clamp(2rem, 1.1rem + 3vw, 3.2rem);
   --fs-h2: clamp(1.4rem, 1.05rem + 1.6vw, 2rem);
   --fs-h3: clamp(1.15rem, 0.95rem + 1.2vw, 1.4rem);
@@ -32,12 +32,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0f1115;      /* Deep Night */
-    --color-surface: #141820; /* Card */
-    --color-fg: #E9EEF5;      /* Text */
+    --color-bg: #0f1115;
+    --color-surface: #141820;
+    --color-fg: #E9EEF5;
     --color-border: #1f2530;
-    --color-primary: #7C8DE6; /* Indigo (lighter in dark) */
-    --color-accent: #9AD2B2;  /* Sage (lighter in dark) */
+    --color-primary: #7C8DE6;
+    --color-accent: #9AD2B2;
     --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 6px 20px rgba(0,0,0,.28);
   }
 }
@@ -47,24 +47,19 @@
 ----------------------------- */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
-body { margin: 0; color: var(--color-fg); background: var(--color-bg); font: 400 var(--fs-body)/var(--leading) var(--font-sans); }
+body { margin: 0; color: var(--color-fg); background: var(--color-bg);
+  font: 400 var(--fs-body)/var(--leading) var(--font-sans); }
 img { max-width: 100%; display: block; height: auto; }
 a { color: inherit; text-decoration: none; }
 .container { width: min(100% - 2rem, var(--container-max)); margin-inline: auto; }
-
-/* focus */
 :focus-visible { outline: 3px solid color-mix(in oklab, var(--color-primary) 70%, white); outline-offset: 3px; border-radius: 10px; }
-
-/* sections as containers for CQs */
-section { padding: var(--space-12) 0; container-type: inline-size; }
-
-/* subtle link hover */
-.nav__links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+section { padding: var(--space-12) 0; }
 
 /* -----------------------------
    Header
 ----------------------------- */
-.site-header { position: sticky; top: 0; z-index: 100; backdrop-filter: saturate(1.2) blur(6px); background: color-mix(in oklab, var(--color-bg) 80%, transparent); border-bottom: 1px solid var(--color-border); }
+.site-header { position: sticky; top: 0; z-index: 100; backdrop-filter: saturate(1.2) blur(6px);
+  background: color-mix(in oklab, var(--color-bg) 80%, transparent); border-bottom: 1px solid var(--color-border); }
 .nav { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-4); padding: var(--space-4) 0; }
 .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; }
 .brand__logo { width: 28px; aspect-ratio:1; border-radius: 999px; background: var(--color-primary); box-shadow: var(--shadow-1); }
@@ -72,64 +67,58 @@ section { padding: var(--space-12) 0; container-type: inline-size; }
 .nav__cta { display: flex; gap: .6rem; align-items: center; }
 @media (min-width: 860px) { .nav { grid-template-columns: auto 1fr auto; } .nav__links { display: flex; } }
 
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; padding: .7rem 1rem; border-radius: 999px; border: 1px solid var(--color-border); background: var(--color-surface); font-weight: 600; text-align: center; box-shadow: var(--shadow-1); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  padding: .7rem 1rem; border-radius: 999px; border: 1px solid var(--color-border);
+  background: var(--color-surface); font-weight: 600; box-shadow: var(--shadow-1); }
 .btn--primary { background: var(--color-primary); color: var(--color-primary-ink); border-color: transparent; }
-.btn--ghost { background: transparent; }
 
 /* -----------------------------
-   Hero (Section 1)
+   HERO (full-bleed)
 ----------------------------- */
-.hero { padding-top: var(--space-12); padding-bottom: var(--space-12); }
-.hero__grid { display: grid; gap: var(--space-8); }
-.eyebrow { color: var(--color-primary); font-weight: 700; letter-spacing: .06em; }
-.hero h1 { font-size: var(--fs-h1); margin: .4rem 0 1rem; letter-spacing: .01em; }
-.hero p { color: var(--color-muted); }
-.actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: var(--space-6); }
-@container (min-width: 760px) { .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center; } }
-.hero__image { position: relative; aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-1); }
-.hero__image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 10%, transparent), transparent); pointer-events: none; }
+.hero { position: relative; padding: 0 0 var(--space-12); }
+.hero__bg { position: absolute; inset: 0; z-index: 0; width: 100vw; left: 50%; transform: translateX(-50%); }
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero__bg::after { content:""; position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 70%); }
 
-/* === Mobile: 画像を上・テキストを重ね気味に === */
-@container (max-width: 759px) {
-  /* 画像を1行目、テキストを2行目に明示配置（Gridはorderが効かないため） */
-  .hero__grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
-  .hero__image { grid-row: 1; width: 100%; height: clamp(260px, 52vh, 420px); margin-inline: auto; }
-  .hero__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero__panel { position: relative; z-index: 1; }
+.hero__content {
+  /* 画面幅いっぱい／左右24pxの安全余白 */
+  width: 100vw; margin: 0 auto; padding: clamp(12px, 2vw, 24px);
+  display: grid; gap: clamp(12px, 2vw, 18px); justify-items: center; text-align: center;
+  color: #fff;
+  /* 背景は薄いグラス感：画面いっぱい */
+  background: color-mix(in oklab, black 22%, transparent);
+  border-top: 1px solid color-mix(in oklab, white 10%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, white 10%, transparent);
+  backdrop-filter: blur(2px) saturate(1.02);
+}
+.eyebrow { color: color-mix(in oklab, var(--color-primary) 75%, white); font-weight: 700; letter-spacing: .06em; text-align: center; }
+.hero h1 { font-size: var(--fs-h1); margin: .4rem 0 .5rem; line-height: 1.15; white-space: pre-line; word-break: keep-all; text-shadow: 0 2px 12px rgba(0,0,0,.28); }
+.hero__sub { color: color-mix(in oklab, white 86%, var(--color-muted)); max-width: 60ch; }
 
-  /* テキストカードを2行目に置き、画像に軽くオーバーラップ */
-  .hero__grid > :not(figure) {
-    grid-row: 2;
-    margin-top: calc(-1 * var(--space-8));
-    background: color-mix(in oklab, var(--color-surface) 88%, transparent);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: var(--space-6);
-    box-shadow: var(--shadow-1);
-    backdrop-filter: saturate(1.05) blur(6px);
-  }
-}
-  .hero__grid > :first-child {
-    margin-top: calc(-1 * var(--space-8));
-    background: color-mix(in oklab, var(--color-surface) 88%, transparent);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    padding: var(--space-6);
-    box-shadow: var(--shadow-1);
-    backdrop-filter: saturate(1.05) blur(6px);
-  }
-}
+/* CTA横並び（PC/タブレット）／スマホ縦積み */
+.actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.actions .btn { white-space: nowrap; padding-inline: 1.2rem 1.4rem; }
+
+/* 評価は1行風（HTMLに • 記載済み） */
+.trustline { color: color-mix(in oklab, white 92%, var(--color-muted)); }
+
+/* HERO 高さ（13インチに収まる） */
+.hero { min-height: clamp(420px, 58vh, 620px); }
 
 /* -----------------------------
-   About (Section 2)
+   ABOUT（2カラム）
 ----------------------------- */
-.about__grid { display:grid; gap: var(--space-8); }
-@container (min-width: 860px) { .about__grid { grid-template-columns: 1.1fr .9fr; align-items: center; } }
-.about__media { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-1); }
-.checklist { display:grid; gap:.6rem; }
-.checklist li { list-style:'✓ '; padding-left:.2rem; }
+.about__grid { display: grid; gap: var(--space-8); }
+@media (min-width: 760px) {
+  .about__grid { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+.about__media { aspect-ratio: 16/10; max-height: 520px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-1); }
+.about__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 /* -----------------------------
-   Instructors (Section 3)
+   TEACHERS
 ----------------------------- */
 .teachers h2 { margin-bottom: var(--space-6); font-size: var(--fs-h2); }
 .teacher-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-6); }
@@ -137,10 +126,9 @@ section { padding: var(--space-12) 0; container-type: inline-size; }
 .teacher__photo { aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: #ddd; }
 .teacher__name { font-weight: 800; font-size: var(--fs-h3); }
 .teacher__bio { color: var(--color-muted); }
-@supports (grid-template-rows: subgrid) { .teacher { grid-template-rows: subgrid; grid-row: span 4; align-content: start; } }
 
 /* -----------------------------
-   Pricing (Section 4)
+   PRICING
 ----------------------------- */
 .pricing { background: color-mix(in oklab, var(--color-bg) 90%, var(--color-surface)); }
 .pricing h2 { font-size: var(--fs-h2); margin: 0 0 var(--space-6); }
@@ -152,7 +140,7 @@ section { padding: var(--space-12) 0; container-type: inline-size; }
 .card .btn { margin-top: auto; }
 
 /* -----------------------------
-   FAQ (Section 5)
+   FAQ
 ----------------------------- */
 .faq h2 { font-size: var(--fs-h2); margin-bottom: var(--space-6); }
 .faq details { background: var(--color-surface); border:1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-4) var(--space-5); margin-bottom: var(--space-4); box-shadow: var(--shadow-1); }
@@ -160,288 +148,17 @@ section { padding: var(--space-12) 0; container-type: inline-size; }
 .faq summary::marker { color: var(--color-primary); }
 
 /* -----------------------------
-   Visit / Access (Section 6)
+   VISIT / Access
 ----------------------------- */
 .visit { background: var(--color-surface); }
 .visit h2 { font-size: var(--fs-h2); margin-bottom: var(--space-6); }
 .visit__grid { display:grid; gap: var(--space-6); }
-@container (min-width: 960px) { .visit__grid { grid-template-columns: 1.2fr .8fr; } }
+@media (min-width: 960px) { .visit__grid { grid-template-columns: 1.2fr .8fr; } }
 .map-wrap { border:1px solid var(--color-border); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow-1); }
 .contact-card { display:grid; gap: var(--space-4); background: color-mix(in oklab, var(--color-bg) 88%, var(--color-surface)); border:1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-6); box-shadow: var(--shadow-1); }
 .small { color: var(--color-muted); font-size: .9em; }
-
-/* ちょいアクセント */
-.trust__item { border-left: 4px solid var(--color-accent); }
-
-/* -----------------------------
-   Form spec (handoff) (Section 7)
------------------------------ */
-.form-spec h2 { font-size: var(--fs-h2); margin-bottom: var(--space-6); }
 
 /* -----------------------------
    Footer
 ----------------------------- */
 footer { border-top: 1px solid var(--color-border); padding: var(--space-8) 0; color: var(--color-muted); }
-
-/* motion safety */
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-
-/* =============================
-   Patch: モバイル横スクロール解消 & 画像フィット
-   （既存定義の“後ろ”に置くことで上書き）
-============================= */
-html, body { overflow-x: hidden; }
-
-/* コンテナは width 計算をやめ、左右パディングで余白を確保 */
-.container { max-width: var(--container-max); margin-inline: auto; padding-inline: 1rem; width: auto; }
-
-/* ヒーロー画像が親の高さにフィットしつつ横幅100%に */
-.hero__image { width: 100%; }
-.hero__image img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Map iframe のはみ出し防止 */
-.map-wrap iframe { display: block; width: 100% !important; }
-
-
-/* =============================
-   Patch 2: PC/Tablet レイアウトの右余白＆ヒーロー密着感
-   - .container を元のセンター収まりに戻す（右側の奇妙な余白の解消）
-   - PC/Tablet でテキストと写真を軽くオーバーラップ
-   - HTML変更なし
-============================= */
-/* 1) コンテナを中央寄せ＋左右16px相当の余白に戻す */
-.container { width: min(100% - 2rem, var(--container-max)); margin-inline: auto; padding-inline: 0; }
-
-/* 2) PC/Tablet のヒーロー：2カラム＆軽めの重なり */
-@container (min-width: 760px) {
-  .hero__grid { grid-template-columns: 1.15fr .85fr; align-items: center; gap: clamp(1rem, 2vw, 1.75rem); }
-  .hero__image { grid-column: 2; grid-row: 1; height: auto; margin: 0; }
-  .hero__image img { width: 100%; height: auto; object-fit: cover; display: block; }
-  .hero__grid > :first-child { grid-column: 1; grid-row: 1; position: relative; z-index: 2;
-    /* 写真側へ少しはみ出させて“さなる（重なる）” */
-    margin-right: clamp(-32px, -3vw, -56px);
-    padding: var(--space-6);
-    background: color-mix(in oklab, var(--color-surface) 86%, transparent);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-1);
-  }
-}
-
-/* 3) WIDE での重なり量を微増（見た目が間延びしないように） */
-@container (min-width: 1100px) {
-  .hero__grid > :first-child { margin-right: clamp(-48px, -4vw, -72px); }
-}
-
-
-/* =============================
-   Patch 3: ヒーローを全面オーバーレイ（Z軸で画像の“上”に文字＆CTA）
-   ※ HTML変更なし。既存のスマホ用重なり指定を上書き
-============================= */
-.hero { position: relative; isolation: isolate; }
-.hero__grid { display: grid; min-height: clamp(520px, 72vh, 760px); }
-/* 画像とテキストを同じグリッド領域に重ねる */
-.hero__image, .hero__grid > :first-child { grid-area: 1 / 1; }
-
-/* 背景画像（下層） */
-.hero__image { z-index: 0; position: relative; }
-.hero__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* 読みやすさのためのスクリーン（濃さはお好みで） */
-.hero__image::after { content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.38) 70%);
-  pointer-events: none; }
-
-/* テキスト＆CTA（上層） */
-.hero__grid > :first-child {
-  z-index: 1; align-self: center; justify-self: center; text-align: center;
-  color: #fff; max-width: 48rem; margin: 0 1rem;
-  padding: clamp(1rem, 2.5vw, 2rem);
-  border-radius: var(--radius);
-  background: color-mix(in oklab, black 46%, transparent);
-  border: 1px solid color-mix(in oklab, white 14%, transparent);
-  box-shadow: var(--shadow-1);
-}
-/* 眉・サブテキストの色補正 */
-.hero .eyebrow { color: color-mix(in oklab, var(--color-primary) 70%, white); }
-.hero p { color: color-mix(in oklab, white 84%, var(--color-muted)); }
-
-/* 二次ボタンが白地だと浮くので半透明に（任意） */
-.hero .btn:not(.btn--primary) { background: color-mix(in oklab, white 85%, transparent); border-color: transparent; }
-
-/* 小画面の微調整：カード余白を少し減らす */
-@container (max-width: 759px) {
-  .hero__grid { min-height: clamp(460px, 68vh, 640px); }
-  .hero__grid > :first-child { margin: 0 1rem; padding: clamp(.75rem, 2.2vw, 1.25rem); }
-}
-
-
-/* =============================
-   Patch 4: ヒーローをフルブリード＋自然改行＋薄モザイク
-   - 画像は横幅いっぱい（100vw）
-   - 文字は左右に余白を持って中央寄せ、自然な改行
-   - PC/Tabletではカード内を左右2カラム、スマホは縦積み
-   - 既存HTMLのまま
-============================= */
-.hero { position: relative; isolation: isolate; padding: 0 0 var(--space-12); }
-.hero__grid { position: relative; display: grid; min-height: clamp(560px, 72vh, 820px); }
-
-/* 背景画像：コンテナ外までフルブリード */
-.hero__image { position: absolute; inset: 0; z-index: 0; width: 100vw; height: 100%; left: 50%; transform: translateX(-50%); border-radius: 0; box-shadow: none; }
-.hero__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* 読みやすさ用の薄めスクリーン（濃すぎる場合は数値↓） */
-.hero__image::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.22) 70%);
-}
-
-/* オーバーレイのテキストパネル */
-.hero__grid > :first-child {
-  z-index: 1; justify-self: center; align-self: center; /* センター */
-  width: min(100% - 2rem, 1100px); /* 左右に余白を確保 */
-  padding: clamp(1rem, 2.6vw, 2rem);
-  text-align: center; color: #fff;
-  background: color-mix(in oklab, black 25%, transparent); /* 薄め */
-  border: 1px solid color-mix(in oklab, white 12%, transparent);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-1);
-  backdrop-filter: blur(2px) saturate(1.02);
-}
-/* 見出しの読みやすさ向上＆不自然な改行を抑制 */
-.hero h1 { max-width: 18ch; margin-inline: auto; text-shadow: 0 2px 12px rgba(0,0,0,.28); }
-.hero .eyebrow { color: color-mix(in oklab, var(--color-primary) 75%, white); }
-.hero p { color: color-mix(in oklab, white 86%, var(--color-muted)); max-width: 48ch; margin-inline: auto; }
-
-/* PC/Tablet：カード内を2カラムで中央寄せ（左=テキスト、右=CTA&実績） */
-@container (min-width: 760px) {
-  .hero__grid > :first-child { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(1rem, 2vw, 2rem); text-align: left; }
-  .hero .eyebrow, .hero h1, .hero p { grid-column: 1; justify-self: start; }
-  .hero .actions, .hero .trust { grid-column: 2; align-self: center; justify-self: center; text-align: left; }
-}
-
-/* スマホ：縦積み（現状維持） */
-@container (max-width: 759px) {
-  .hero__grid > :first-child { display: block; text-align: center; }
-}
-
-
-/* =============================
-   Patch 5: ヒーロー高さを短く / 2行見出し / 左右24px余白 / 薄モザイク
-   （HTML変更なし。末尾で既存ルールを上書き）
-============================= */
-/* 1) 高さを縮める（13インチ以内でも余裕） */
-.hero__grid { min-height: clamp(420px, 58vh, 620px); }
-
-/* 2) フルブリード画像はそのまま。スクリーンをさらに薄く */
-.hero__image::after { background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 70%); }
-
-/* 3) テキストパネルの横幅 = 画像幅いっぱい - 24px×2（左右余白） */
-.hero .hero__grid > div:first-of-type {
-  width: min(calc(100vw - 48px), 1100px);
-  padding: clamp(12px, 2vw, 24px);
-}
-
-/* 4) 見出しを“2行”想定に。<br>を活かして強制3行化を回避 */
-.hero h1 {
-  max-width: none;               /* 18ch制限を解除 */
-  white-space: pre-line;          /* <br> を改行として採用 */
-  word-break: keep-all;           /* 和文の途中改行を極力抑止 */
-  line-height: 1.15;              /* 2行でもタイトに見せる */
-  text-shadow: 0 2px 12px rgba(0,0,0,.28);
-}
-
-/* 5) PC/Tablet のカード2カラムは維持（中央寄せ） */
-@container (min-width: 760px) {
-  .hero .hero__grid > div:first-of-type { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(1rem, 2vw, 2rem); text-align: left; }
-  .hero .eyebrow, .hero h1, .hero p { grid-column: 1; justify-self: start; }
-  .hero .actions, .hero .trust { grid-column: 2; align-self: center; justify-self: center; text-align: left; }
-}
-
-/* 6) スマホは縦積み（見出しが窮屈なら一時的に幅制御） */
-@container (max-width: 759px) {
-  .hero .hero__grid > div:first-of-type { display: block; text-align: center; }
-  .hero h1 { max-width: 22ch; margin-inline: auto; }
-}
-
-
-/* =============================
-   Patch 6: HERO 下段を横並び（2ボタン＋評価）/ ABOUTを2カラム＆画像調整
-   HTML変更なし。既存ルールより後ろで上書き。
-============================= */
-/* --- HERO: 下段横並び --- */
-@container (min-width: 760px) {
-  /* オーバーレイパネルのレイアウトをエリア指定に */
-  .hero .hero__grid > div:first-of-type {
-    display: grid;
-    grid-template-columns: 1fr auto; /* 左テキスト / 右 評価 or 余白 */
-    grid-template-areas:
-      "eyebrow eyebrow"
-      "title   title"
-      "subtitle subtitle"
-      "cta     meta";
-    gap: clamp(12px, 2vw, 20px);
-    text-align: left;
-    justify-items: start;
-    align-items: center;
-  }
-  .hero .eyebrow { grid-area: eyebrow; }
-  .hero h1 { grid-area: title; }
-  .hero p { grid-area: subtitle; }
-  .hero .actions { grid-area: cta; display: flex; gap: .8rem; flex-wrap: nowrap; }
-  .hero .trust { grid-area: meta; align-self: center; }
-}
-
-/* HERO: 評価ブロックを一行風に（•で区切る）。左罫線は非表示 */
-.hero .trust { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
-.hero .trust__item { border-left: none; padding: 0; color: color-mix(in oklab, white 92%, var(--color-muted)); }
-.hero .trust__item + .trust__item::before { content: "•"; opacity: .55; margin: 0 .25rem; }
-
-/* --- ABOUT: 2カラム固定＆画像を見栄えよく --- */
-@container (min-width: 760px) {
-  .about__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(16px, 2.5vw, 32px); }
-}
-.about__media { aspect-ratio: 16/10; max-height: 520px; }
-.about__media img { width: 100%; height: 100%; object-fit: cover; }
-
-
-/* =============================
-   Patch 7: HERO 配置微調整（2ボタン横並び→下段 / 評価はボタンの下）
-            ABOUT を2カラム固定＋画像サイズ調整（CQ未対応ブラウザ対策含む）
-   HTML変更なし。既存の定義を末尾で上書きします。
-============================= */
-/* --- HERO: PC/Tablet は ①ボタン横並び ②その下に評価 --- */
-@container (min-width: 760px) {
-  .hero .hero__grid > div:first-of-type {
-    display: grid;
-    grid-template-columns: 1fr; /* 1カラムで上下に並べる */
-    grid-template-areas:
-      "eyebrow"
-      "title"
-      "subtitle"
-      "cta"
-      "meta";
-    gap: clamp(12px, 2vw, 20px);
-    text-align: center; justify-items: center; align-items: center;
-  }
-  .hero .eyebrow { grid-area: eyebrow; }
-  .hero h1 { grid-area: title; }
-  .hero p { grid-area: subtitle; max-width: 60ch; }
-  .hero .actions { grid-area: cta; display: flex; gap: 1rem; flex-wrap: nowrap; }
-  .hero .trust { grid-area: meta; align-self: start; }
-}
-/* ボタンは横長・改行させない */
-.hero .btn { white-space: nowrap; padding-inline: 1.2rem 1.4rem; }
-
-/* HERO: 評価は「•」区切りの一行風。ヒーロー内では罫線を消す */
-.hero .trust { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
-.hero .trust__item { border-left: none; padding: 0; color: color-mix(in oklab, white 92%, var(--color-muted)); }
-.hero .trust__item + .trust__item::before { content: "•"; opacity: .55; margin: 0 .25rem; }
-
-/* --- ABOUT: 2カラム固定（左=画像 / 右=本文）。CQ未対応には通常の MQ でフォールバック --- */
-@container (min-width: 760px) {
-  .about__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(16px, 2.5vw, 32px); }
-}
-@media (min-width: 900px) {
-  .about__grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(16px, 2.5vw, 32px); }
-}
-.about__media { aspect-ratio: 16/10; max-height: 520px; }
-.about__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-
