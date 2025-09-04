@@ -202,3 +202,34 @@ html, body { overflow-x: hidden; }
 /* Map iframe のはみ出し防止 */
 .map-wrap iframe { display: block; width: 100% !important; }
 
+
+/* =============================
+   Patch 2: PC/Tablet レイアウトの右余白＆ヒーロー密着感
+   - .container を元のセンター収まりに戻す（右側の奇妙な余白の解消）
+   - PC/Tablet でテキストと写真を軽くオーバーラップ
+   - HTML変更なし
+============================= */
+/* 1) コンテナを中央寄せ＋左右16px相当の余白に戻す */
+.container { width: min(100% - 2rem, var(--container-max)); margin-inline: auto; padding-inline: 0; }
+
+/* 2) PC/Tablet のヒーロー：2カラム＆軽めの重なり */
+@container (min-width: 760px) {
+  .hero__grid { grid-template-columns: 1.15fr .85fr; align-items: center; gap: clamp(1rem, 2vw, 1.75rem); }
+  .hero__image { grid-column: 2; grid-row: 1; height: auto; margin: 0; }
+  .hero__image img { width: 100%; height: auto; object-fit: cover; display: block; }
+  .hero__grid > :first-child { grid-column: 1; grid-row: 1; position: relative; z-index: 2;
+    /* 写真側へ少しはみ出させて“さなる（重なる）” */
+    margin-right: clamp(-32px, -3vw, -56px);
+    padding: var(--space-6);
+    background: color-mix(in oklab, var(--color-surface) 86%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-1);
+  }
+}
+
+/* 3) WIDE での重なり量を微増（見た目が間延びしないように） */
+@container (min-width: 1100px) {
+  .hero__grid > :first-child { margin-right: clamp(-48px, -4vw, -72px); }
+}
+
