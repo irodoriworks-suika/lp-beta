@@ -233,3 +233,44 @@ html, body { overflow-x: hidden; }
   .hero__grid > :first-child { margin-right: clamp(-48px, -4vw, -72px); }
 }
 
+
+
+/* =============================
+   Patch 3: ヒーローを全面オーバーレイ（Z軸で画像の“上”に文字＆CTA）
+   ※ HTML変更なし。既存のスマホ用重なり指定を上書き
+============================= */
+.hero { position: relative; isolation: isolate; }
+.hero__grid { display: grid; min-height: clamp(520px, 72vh, 760px); }
+/* 画像とテキストを同じグリッド領域に重ねる */
+.hero__image, .hero__grid > :first-child { grid-area: 1 / 1; }
+
+/* 背景画像（下層） */
+.hero__image { z-index: 0; position: relative; }
+.hero__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* 読みやすさのためのスクリーン（濃さはお好みで） */
+.hero__image::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.38) 70%);
+  pointer-events: none; }
+
+/* テキスト＆CTA（上層） */
+.hero__grid > :first-child {
+  z-index: 1; align-self: center; justify-self: center; text-align: center;
+  color: #fff; max-width: 48rem; margin: 0 1rem;
+  padding: clamp(1rem, 2.5vw, 2rem);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, black 46%, transparent);
+  border: 1px solid color-mix(in oklab, white 14%, transparent);
+  box-shadow: var(--shadow-1);
+}
+/* 眉・サブテキストの色補正 */
+.hero .eyebrow { color: color-mix(in oklab, var(--color-primary) 70%, white); }
+.hero p { color: color-mix(in oklab, white 84%, var(--color-muted)); }
+
+/* 二次ボタンが白地だと浮くので半透明に（任意） */
+.hero .btn:not(.btn--primary) { background: color-mix(in oklab, white 85%, transparent); border-color: transparent; }
+
+/* 小画面の微調整：カード余白を少し減らす */
+@container (max-width: 759px) {
+  .hero__grid { min-height: clamp(460px, 68vh, 640px); }
+  .hero__grid > :first-child { margin: 0 1rem; padding: clamp(.75rem, 2.2vw, 1.25rem); }
+}
