@@ -91,7 +91,23 @@ section { padding: var(--space-12) 0; container-type: inline-size; }
 
 /* === Mobile: 画像を上・テキストを重ね気味に === */
 @container (max-width: 759px) {
-  .hero__image { order: -1; height: min(52vh, 420px); }
+  /* 画像を1行目、テキストを2行目に明示配置（Gridはorderが効かないため） */
+  .hero__grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .hero__image { grid-row: 1; width: 100%; height: clamp(260px, 52vh, 420px); margin-inline: auto; }
+  .hero__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* テキストカードを2行目に置き、画像に軽くオーバーラップ */
+  .hero__grid > :not(figure) {
+    grid-row: 2;
+    margin-top: calc(-1 * var(--space-8));
+    background: color-mix(in oklab, var(--color-surface) 88%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-1);
+    backdrop-filter: saturate(1.05) blur(6px);
+  }
+}
   .hero__grid > :first-child {
     margin-top: calc(-1 * var(--space-8));
     background: color-mix(in oklab, var(--color-surface) 88%, transparent);
@@ -170,7 +186,6 @@ footer { border-top: 1px solid var(--color-border); padding: var(--space-8) 0; c
 /* motion safety */
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
-
 /* =============================
    Patch: モバイル横スクロール解消 & 画像フィット
    （既存定義の“後ろ”に置くことで上書き）
@@ -186,3 +201,4 @@ html, body { overflow-x: hidden; }
 
 /* Map iframe のはみ出し防止 */
 .map-wrap iframe { display: block; width: 100% !important; }
+
