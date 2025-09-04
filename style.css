@@ -118,3 +118,40 @@ h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-lin
 /* もしヘッダーのゴーストボタンが薄すぎる場合の軽い補強（任意） */
 .btn.btn--ghost { background: var(--surface); color: var(--ink); }
 
+/* === Tighten spacing in pricing cards (PC/Tablet/Smartphone) === */
+/* カード間のグリッド間隔を少し詰める */
+.packages .cards { gap: var(--s5); }          /* 事業LP */
+.pricing__grid { gap: var(--s5); }            /* ヨガLP */
+
+/* カード内パディングと要素間の隙間を圧縮 */
+.packages .card,
+.pricing .card,
+.pricing__grid .card {
+  padding: clamp(1rem, 1.6vw, 1.25rem);       /* 既存より-15〜25% */
+  gap: .5rem;                                 /* 見出し/価格/本文の基本ギャップ */
+}
+
+/* タイトル直下の余白を小さく */
+.packages .card h3,
+.pricing .card h3,
+.pricing__grid .card h3 {
+  margin: 0 0 .25rem;
+}
+
+/* 価格まわりの上下マージンと行高を詰める */
+.packages .card .price,
+.pricing .card .price,
+.pricing__grid .card .price {
+  margin: .1rem 0 .2rem;
+  line-height: 1.1;
+}
+
+/* 特徴リストの間隔を微縮小 */
+.packages .card .features,
+.pricing .card .features,
+.pricing__grid .features {
+  gap: .3rem;
+  margin-top: .2rem;
+}
+
+
