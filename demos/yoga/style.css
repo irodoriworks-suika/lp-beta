@@ -234,7 +234,6 @@ html, body { overflow-x: hidden; }
 }
 
 
-
 /* =============================
    Patch 3: ヒーローを全面オーバーレイ（Z軸で画像の“上”に文字＆CTA）
    ※ HTML変更なし。既存のスマホ用重なり指定を上書き
@@ -274,3 +273,4 @@ html, body { overflow-x: hidden; }
   .hero__grid { min-height: clamp(460px, 68vh, 640px); }
   .hero__grid > :first-child { margin: 0 1rem; padding: clamp(.75rem, 2.2vw, 1.25rem); }
 }
+
