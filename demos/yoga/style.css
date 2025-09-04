@@ -361,3 +361,43 @@ html, body { overflow-x: hidden; }
   .hero h1 { max-width: 22ch; margin-inline: auto; }
 }
 
+
+/* =============================
+   Patch 6: HERO 下段を横並び（2ボタン＋評価）/ ABOUTを2カラム＆画像調整
+   HTML変更なし。既存ルールより後ろで上書き。
+============================= */
+/* --- HERO: 下段横並び --- */
+@container (min-width: 760px) {
+  /* オーバーレイパネルのレイアウトをエリア指定に */
+  .hero .hero__grid > div:first-of-type {
+    display: grid;
+    grid-template-columns: 1fr auto; /* 左テキスト / 右 評価 or 余白 */
+    grid-template-areas:
+      "eyebrow eyebrow"
+      "title   title"
+      "subtitle subtitle"
+      "cta     meta";
+    gap: clamp(12px, 2vw, 20px);
+    text-align: left;
+    justify-items: start;
+    align-items: center;
+  }
+  .hero .eyebrow { grid-area: eyebrow; }
+  .hero h1 { grid-area: title; }
+  .hero p { grid-area: subtitle; }
+  .hero .actions { grid-area: cta; display: flex; gap: .8rem; flex-wrap: nowrap; }
+  .hero .trust { grid-area: meta; align-self: center; }
+}
+
+/* HERO: 評価ブロックを一行風に（•で区切る）。左罫線は非表示 */
+.hero .trust { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+.hero .trust__item { border-left: none; padding: 0; color: color-mix(in oklab, white 92%, var(--color-muted)); }
+.hero .trust__item + .trust__item::before { content: "•"; opacity: .55; margin: 0 .25rem; }
+
+/* --- ABOUT: 2カラム固定＆画像を見栄えよく --- */
+@container (min-width: 760px) {
+  .about__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(16px, 2.5vw, 32px); }
+}
+.about__media { aspect-ratio: 16/10; max-height: 520px; }
+.about__media img { width: 100%; height: 100%; object-fit: cover; }
+
