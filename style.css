@@ -154,4 +154,46 @@ h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-lin
   margin-top: .2rem;
 }
 
+/* =============================
+   Assets mapping (business LP)
+   画像パスは /lp-beta/ を基準に解決
+============================= */
+:root{
+  /* ヒーロー実画像 & デモ・サムネ */
+  --hero-img: url("lp-hero-01.png");
+  --thumb-yoga: url("lp-yoga-01.png");
+}
+
+/* -----------------------------
+   HERO: 画像を背景に設定（全面）
+   既存のグラデ演出は ::after 側で維持
+----------------------------- */
+.hero__bg::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: var(--hero-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(1.02);
+}
+/* 読みやすさのための薄いスクリーン（既存より少し薄めでもOK） */
+.hero__bg::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 70%);
+}
+
+/* -----------------------------
+   DEMOS: ヨガ向けサムネを実画像に
+----------------------------- */
+.demo__thumb--yoga{
+  background-image: var(--thumb-yoga);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* 画像が暗いときは薄スクリーンで締める場合
+     background-blend-mode: multiply;
+     background-color: rgba(0,0,0,.05);
+  */
+}
 
