@@ -401,3 +401,47 @@ html, body { overflow-x: hidden; }
 .about__media { aspect-ratio: 16/10; max-height: 520px; }
 .about__media img { width: 100%; height: 100%; object-fit: cover; }
 
+
+/* =============================
+   Patch 7: HERO 配置微調整（2ボタン横並び→下段 / 評価はボタンの下）
+            ABOUT を2カラム固定＋画像サイズ調整（CQ未対応ブラウザ対策含む）
+   HTML変更なし。既存の定義を末尾で上書きします。
+============================= */
+/* --- HERO: PC/Tablet は ①ボタン横並び ②その下に評価 --- */
+@container (min-width: 760px) {
+  .hero .hero__grid > div:first-of-type {
+    display: grid;
+    grid-template-columns: 1fr; /* 1カラムで上下に並べる */
+    grid-template-areas:
+      "eyebrow"
+      "title"
+      "subtitle"
+      "cta"
+      "meta";
+    gap: clamp(12px, 2vw, 20px);
+    text-align: center; justify-items: center; align-items: center;
+  }
+  .hero .eyebrow { grid-area: eyebrow; }
+  .hero h1 { grid-area: title; }
+  .hero p { grid-area: subtitle; max-width: 60ch; }
+  .hero .actions { grid-area: cta; display: flex; gap: 1rem; flex-wrap: nowrap; }
+  .hero .trust { grid-area: meta; align-self: start; }
+}
+/* ボタンは横長・改行させない */
+.hero .btn { white-space: nowrap; padding-inline: 1.2rem 1.4rem; }
+
+/* HERO: 評価は「•」区切りの一行風。ヒーロー内では罫線を消す */
+.hero .trust { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+.hero .trust__item { border-left: none; padding: 0; color: color-mix(in oklab, white 92%, var(--color-muted)); }
+.hero .trust__item + .trust__item::before { content: "•"; opacity: .55; margin: 0 .25rem; }
+
+/* --- ABOUT: 2カラム固定（左=画像 / 右=本文）。CQ未対応には通常の MQ でフォールバック --- */
+@container (min-width: 760px) {
+  .about__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(16px, 2.5vw, 32px); }
+}
+@media (min-width: 900px) {
+  .about__grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(16px, 2.5vw, 32px); }
+}
+.about__media { aspect-ratio: 16/10; max-height: 520px; }
+.about__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
