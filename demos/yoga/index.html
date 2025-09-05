@@ -7,6 +7,29 @@
   <title>Yoga Studio | 体験レッスン受付中</title>
   <meta name="description" content="ヨガスタジオの体験レッスン予約ページ。初心者歓迎、少人数制、インストラクター紹介、料金プラン、FAQ、アクセス。" />
   <link rel="stylesheet" href="style.css?v=rev-hero-7" />
+<!-- GA4（いろどりワークス） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config','G-9W0QCF2510');
+  // クリック計測（data-gtag-* を読む）
+  addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-gtag-event]').forEach(el => {
+      el.addEventListener('click', () => {
+        try {
+          gtag('event', el.dataset.gtagEvent, {
+            event_label: el.dataset.gtagLabel || '',
+            section: el.dataset.gtagSection || ''
+          });
+        } catch(e){}
+      });
+    });
+  });
+</script>
+
+  
 </head>
 <body>
   <!-- Header -->
