@@ -25,32 +25,28 @@
   <!-- 体感高速化：ヒーロー画像を先読み（CSS背景で使用） -->
   <link rel="preload" as="image" href="/lp-date/img/lp-hero-01.png" imagesrcset="/lp-date/img/lp-hero-01.png 1x">
 
-  <!-- GA4：ID差し替え必須（同意バナーなしなら consent 行は外す or granted に） -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-
-    /* ▼Cookie同意を運用していない場合は以下2行は削除 or grantedに変更 */
-    // gtag('consent','default',{ ad_storage:'denied', analytics_storage:'denied' });
-
-    gtag('js', new Date());
-    gtag('config','G-9W0QCF2510'); // ←あなたのGA4 IDに置換
-
-    // CTAクリック計測（data-gtag-* を読むだけ）
-    addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('[data-gtag-event]').forEach(el => {
-        el.addEventListener('click', () => {
-          try {
-            gtag('event', el.dataset.gtagEvent, {
-              event_label: el.dataset.gtagLabel || '',
-              section: el.dataset.gtagSection || ''
-            });
-          } catch(e){}
-        });
+<!-- GA4（いろどりワークス） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config','G-9W0QCF2510');
+  // クリック計測（data-gtag-* を読む）
+  addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-gtag-event]').forEach(el => {
+      el.addEventListener('click', () => {
+        try {
+          gtag('event', el.dataset.gtagEvent, {
+            event_label: el.dataset.gtagLabel || '',
+            section: el.dataset.gtagSection || ''
+          });
+        } catch(e){}
       });
     });
-  </script>
+  });
+</script>
+
 </head>
 
 <body>
