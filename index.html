@@ -28,24 +28,33 @@
 <!-- GA4（いろどりワークス） -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
 <script>
+  const GA_ID = 'G-9W0QCF2510';
+
+  // URLに ?debug=1 を付けたときだけ DebugView に流す
+  const isDebug = /(^|[?&])debug=1(&|$)/.test(location.search) || localStorage.getItem('ga_debug') === '1';
+
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
+
   gtag('js', new Date());
-  gtag('config','G-9W0QCF2510');
-  // クリック計測（data-gtag-* を読む）
+  gtag('config', GA_ID, { debug_mode: isDebug }); // ← DebugView 対応
+
+  // CTAクリック計測（data-gtag-* を読む）
   addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('[data-gtag-event]').forEach(el => {
       el.addEventListener('click', () => {
-        try {
-          gtag('event', el.dataset.gtagEvent, {
-            event_label: el.dataset.gtagLabel || '',
-            section: el.dataset.gtagSection || ''
-          });
-        } catch(e){}
+        gtag('event', el.dataset.gtagEvent, {
+          event_label: el.dataset.gtagLabel || '',
+          section: el.dataset.gtagSection || '',
+          debug_mode: isDebug // ← DebugView 対応（イベントにも付与）
+        });
       });
     });
   });
+
+  // 同意バナーが無いなら consent:denied の行は入れない（ヒット抑止になるため）
 </script>
+
 
 </head>
 
