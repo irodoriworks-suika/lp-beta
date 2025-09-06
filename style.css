@@ -1,30 +1,48 @@
-/* ===== Tokens (A: Calm Indigo × Sage) ===== */
+/* =========================
+   TOKENS (Calm Indigo × Sage)
+   ========================= */
 :root{
-  --bg:#F7F5F1;--surface:#fff;--ink:#1F2933;--muted:#5F6B76;
-  --pri:#4F63C7;--accent:#8FBFA3;--ink-on:#fff;--border:#E6E8EC;
-  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.06);
-  --r:14px;--max:1200px;
-  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.25rem;--s6:1.5rem;--s8:2rem;--s10:2.5rem;--s12:3rem;
-  --h1:clamp(2rem,1.1rem + 3vw,3.1rem);--h2:clamp(1.4rem,1.05rem + 1.6vw,2rem);--body:clamp(.98rem,.94rem + .3vw,1.05rem);
+  --bg:#F7F5F1; --surface:#fff;
+  --ink:#1F2933; --muted:#5F6B76;
+  --pri:#4F63C7; --accent:#8FBFA3; --ink-on:#fff;
+  --border:#E6E8EC; --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.06);
+  --r:14px; --max:1200px;
+  --s1:.25rem; --s2:.5rem; --s3:.75rem; --s4:1rem; --s5:1.25rem; --s6:1.5rem; --s8:2rem; --s10:2.5rem; --s12:3rem;
+  --h1:clamp(2rem,1.1rem + 3vw,3.1rem);
+  --h2:clamp(1.4rem,1.05rem + 1.6vw,2rem);
+  --body:clamp(.98rem,.94rem + .3vw,1.05rem);
   --lead:1.7;
+
+  /* assets mapping */
+  --hero-img: url("img/lp-hero-01.png");
+  --thumb-yoga: url("img/lp-yoga-01.png");
 }
 @media (prefers-color-scheme:dark){
-  :root{--bg:#0f1115;--surface:#141820;--ink:#E9EEF5;--muted:#A7B2BF;--border:#1f2530;--pri:#7C8DE6;--accent:#9AD2B2;
-        --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.28);}
+  :root{
+    --bg:#0f1115; --surface:#141820; --ink:#E9EEF5; --muted:#A7B2BF; --border:#1f2530;
+    --pri:#7C8DE6; --accent:#9AD2B2;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.28);
+  }
 }
 
-/* ===== Base ===== */
-*{box-sizing:border-box} html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 var(--body)/var(--lead) system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP","Hiragino Kaku Gothic ProN","Meiryo",sans-serif}
+/* ========== BASE / LAYOUT ========== */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font:400 var(--body)/var(--lead) system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans JP","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;
+}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid color-mix(in oklab,var(--pri) 70%,white);outline-offset:3px;border-radius:10px}
 .container{width:min(100% - 2rem,var(--max));margin-inline:auto}
 section{padding:var(--s12) 0}
-:focus-visible{outline:3px solid color-mix(in oklab,var(--pri) 70%,white);outline-offset:3px;border-radius:10px}
 
-/* ===== Header ===== */
-.site-header{position:sticky;top:0;z-index:10;backdrop-filter:saturate(1.2) blur(6px);
-  background:color-mix(in oklab,var(--bg) 80%,transparent);border-bottom:1px solid var(--border)}
+/* ========== HEADER ========== */
+.site-header{
+  position:sticky;top:0;z-index:10;backdrop-filter:saturate(1.2) blur(6px);
+  background:color-mix(in oklab,var(--bg) 80%,transparent);border-bottom:1px solid var(--border);
+}
 .nav-row{display:grid;grid-template-columns:auto 1fr;gap:var(--s4);align-items:center;padding:var(--s4) 0}
 .brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
 .brand__dot{width:28px;aspect-ratio:1;border-radius:999px;background:var(--pri);box-shadow:var(--shadow)}
@@ -32,26 +50,28 @@ section{padding:var(--s12) 0}
 .links{display:none;gap:1rem;align-items:center;justify-content:flex-end}
 @media (min-width:860px){.links{display:flex}}
 
-/* ===== Buttons ===== */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;
-  padding:.78rem 1.05rem;border-radius:999px;border:1px solid var(--border);background:var(--surface);
-  font-weight:700;box-shadow:var(--shadow)}
+/* ========== BUTTONS ========== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  padding:.78rem 1.05rem;border-radius:999px;border:1px solid var(--border);
+  background:var(--surface);font-weight:700;box-shadow:var(--shadow);color:var(--ink);
+}
 .btn--primary{background:var(--pri);color:var(--ink-on);border-color:transparent}
+.btn.btn--ghost{background:var(--surface);color:var(--ink)}
 
-/* ===== HERO ===== */
+/* ========== HERO ========== */
 .hero{position:relative;min-height:clamp(420px,58vh,620px);padding:0 0 var(--s12)}
 .hero__bg{position:absolute;inset:0;z-index:0}
 .hero__bg::before{
   content:"";position:absolute;inset:0;
-  /* 画像が無い想定 → グラデ＋ノイズでビジュアル表現 */
-  background:
-    radial-gradient(1200px 600px at 10% 0%, color-mix(in oklab,var(--pri) 26%, transparent), transparent 60%),
-    radial-gradient(1000px 600px at 90% 20%, color-mix(in oklab,var(--accent) 20%, transparent), transparent 60%),
-    linear-gradient(180deg, #dbe6ff, #f7f5f1);
-  filter: saturate(1.05);
+  background-image: var(--hero-img);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  filter:saturate(1.02);
 }
-.hero__bg::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 70%)}
+.hero__bg::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 70%);
+}
 .hero__panel{position:relative;z-index:1}
 .hero__content{
   width:100vw;margin:0 auto;padding:clamp(12px,2vw,24px);
@@ -62,138 +82,46 @@ section{padding:var(--s12) 0}
   backdrop-filter: blur(2px) saturate(1.02);
 }
 .eyebrow{color:color-mix(in oklab,var(--pri) 75%,white);font-weight:700;letter-spacing:.06em;text-align:center}
-h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-line;word-break:keep-all;
-  text-shadow:0 2px 12px rgba(0,0,0,.28)}
+h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-line;word-break:keep-all;text-shadow:0 2px 12px rgba(0,0,0,.28)}
 .lead{color:color-mix(in oklab,white 86%,var(--muted));max-width:60ch;margin:0 auto}
 .actions{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
 .actions .btn{white-space:nowrap;padding-inline:1.25rem 1.5rem}
 .trustline{color:color-mix(in oklab,white 92%,var(--muted))}
 
-/* ===== Services ===== */
+/* ========== SERVICES ========== */
 .services .bullets{display:grid;gap:.5rem;margin:0;padding:0 0 var(--s6) 1.2rem}
 .services .bullets li{margin:.2rem 0}
 .reasons{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:var(--s6);box-shadow:var(--shadow)}
 .reasons h3{margin:0 0 .6rem 0}
 .reasons ul{margin:0;padding-left:1.2rem;display:grid;gap:.4rem}
 
-/* ===== Packages ===== */
-.packages .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s6)}
-.card{display:flex;flex-direction:column;gap:var(--s4);background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:var(--s6);box-shadow:var(--shadow)}
-.card .price{font-weight:900;font-size:clamp(1.3rem,1.1rem + 1.2vw,1.9rem)}
-.card .features{display:grid;gap:.35rem;margin-top:.2rem}
+/* ========== PRICING ========== */
+.packages .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--s5)}
+.card{display:flex;flex-direction:column;gap:.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1rem,1.6vw,1.25rem);box-shadow:var(--shadow)}
+.card .price{font-weight:900;font-size:clamp(1.3rem,1.1rem + 1.2vw,1.9rem);margin:.1rem 0 .2rem;line-height:1.1}
+.card .features{display:grid;gap:.3rem;margin-top:.2rem}
+.packages .note{color:var(--muted);margin-top:var(--s4)}
 
-/* ===== Demos ===== */
+/* ========== DEMOS ========== */
 .demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s6)}
 .demo{display:flex;flex-direction:column;gap:.6rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:var(--s6);box-shadow:var(--shadow)}
 .demo__thumb{height:140px;border-radius:10px;background:color-mix(in oklab, var(--pri) 10%, #cfd8ff)}
-.demo__thumb--yoga{background:linear-gradient(135deg, #cfd8ff, #b7e3d0)}
+.demo__thumb--yoga{
+  background-image: var(--thumb-yoga);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
 .demo.is-soon{opacity:.7}
 
-/* ===== Process ===== */
+/* ========== PROCESS ========== */
 .steps{display:grid;gap:.6rem;counter-reset:stp}
 .steps li{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:var(--s4) var(--s5);box-shadow:var(--shadow)}
 
-/* ===== FAQ ===== */
+/* ========== FAQ ========== */
 .faq details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:var(--s4) var(--s5);margin-bottom:var(--s4);box-shadow:var(--shadow)}
 .faq summary{cursor:pointer;font-weight:700}
 .faq summary::marker{color:var(--pri)}
 
-/* ===== Contact ===== */
+/* ========== CONTACT / FOOTER ========== */
 .contact__grid .actions{margin-top:var(--s6)}
 .site-footer{border-top:1px solid var(--border);padding:var(--s8) 0;color:var(--muted)}
 .site-footer address{font-style:normal;display:block;margin-bottom:.5rem}
-
-/* === Contrast Fix: secondary buttons inside HERO (light/dark両対応) === */
-/* 継承を断って常に読みやすい色に */
-.btn { color: var(--ink); }                 /* 文字色を明示（継承しない） */
-.btn.btn--primary { color: var(--ink-on); } /* プライマリは従来どおり */
-
-.hero .btn:not(.btn--primary) {
-  /* セカンダリ（例: メールで相談）をはっきり表示 */
-  background: var(--surface);
-  color: var(--ink);
-  border-color: color-mix(in oklab, var(--surface) 40%, var(--border));
-}
-
-/* もしヘッダーのゴーストボタンが薄すぎる場合の軽い補強（任意） */
-.btn.btn--ghost { background: var(--surface); color: var(--ink); }
-
-/* === Tighten spacing in pricing cards (PC/Tablet/Smartphone) === */
-/* カード間のグリッド間隔を少し詰める */
-.packages .cards { gap: var(--s5); }          /* 事業LP */
-.pricing__grid { gap: var(--s5); }            /* ヨガLP */
-
-/* カード内パディングと要素間の隙間を圧縮 */
-.packages .card,
-.pricing .card,
-.pricing__grid .card {
-  padding: clamp(1rem, 1.6vw, 1.25rem);       /* 既存より-15〜25% */
-  gap: .5rem;                                 /* 見出し/価格/本文の基本ギャップ */
-}
-
-/* タイトル直下の余白を小さく */
-.packages .card h3,
-.pricing .card h3,
-.pricing__grid .card h3 {
-  margin: 0 0 .25rem;
-}
-
-/* 価格まわりの上下マージンと行高を詰める */
-.packages .card .price,
-.pricing .card .price,
-.pricing__grid .card .price {
-  margin: .1rem 0 .2rem;
-  line-height: 1.1;
-}
-
-/* 特徴リストの間隔を微縮小 */
-.packages .card .features,
-.pricing .card .features,
-.pricing__grid .features {
-  gap: .3rem;
-  margin-top: .2rem;
-}
-
-/* =============================
-   Assets mapping (business LP)
-   画像パスは /lp-beta/ を基準に解決
-============================= */
-:root{
-  /* ヒーロー実画像 & デモ・サムネ */
-  --hero-img: url("img/lp-hero-01.png");
-  --thumb-yoga: url("img/lp-yoga-01.png");
-}
-
-/* -----------------------------
-   HERO: 画像を背景に設定（全面）
-   既存のグラデ演出は ::after 側で維持
------------------------------ */
-.hero__bg::before{
-  content:"";
-  position:absolute; inset:0;
-  background-image: var(--hero-img);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: saturate(1.02);
-}
-/* 読みやすさのための薄いスクリーン（既存より少し薄めでもOK） */
-.hero__bg::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.18) 70%);
-}
-
-/* -----------------------------
-   DEMOS: ヨガ向けサムネを実画像に
------------------------------ */
-.demo__thumb--yoga{
-  background-image: var(--thumb-yoga);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* 画像が暗いときは薄スクリーンで締める場合
-     background-blend-mode: multiply;
-     background-color: rgba(0,0,0,.05);
-  */
-}
-
