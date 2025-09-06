@@ -5,63 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>いろどりワークス｜スマホ最適化LP制作（テンプレ＋半カスタム）</title>
-  <meta name="description" content="ヨガ/サロンなど個人事業向け。見栄えと導線を両立。最短7日で公開。β価格あり。" />
+  <meta name="description" content="個人サロン/ヨガ等むけに、見やすく押しやすいスマホ最適化LPを制作。テンプレ＋半カスタムで運用前提。目安7〜10日（素材確定後）。" />
 
-  <!-- 相対パスは /lp-beta/ を基準に -->
+  <!-- ルート：GitHub Pages /lp-beta/ 基準 -->
   <base href="/lp-beta/">
   <meta name="color-scheme" content="light dark" />
-  <link rel="stylesheet" href="style.css?v=business-v5" />
+  <link rel="stylesheet" href="style.css?v=business-v6" />
 
   <!-- canonical / OGP -->
   <link rel="canonical" href="https://irodoriworks-suika.github.io/lp-beta/">
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="いろどりワークス" />
   <meta property="og:title" content="いろどりワークス｜スマホ最適化LP制作" />
-  <meta property="og:description" content="テンプレ＋半カスタムで、見栄えと導線を両立。最短7日で公開。β価格あり。" />
+  <meta property="og:description" content="テンプレ＋半カスタムで、見栄えと導線を両立。目安7〜10日（素材確定後）。" />
   <meta property="og:url" content="https://irodoriworks-suika.github.io/lp-beta/" />
   <meta property="og:image" content="https://irodoriworks-suika.github.io/lp-date/img/ogp_default.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- 体感高速化：ヒーロー画像を先読み（CSS背景で使用） -->
-  <link rel="preload" as="image" href="/lp-date/img/lp-hero-01.png" imagesrcset="/lp-date/img/lp-hero-01.png 1x">
+  <!-- 体感高速化：ヒーロー背景（CSS varで使用） -->
+  <link rel="preload" as="image" href="/lp-beta/img/lp-hero-01.png">
 
-<!-- GA4（いろどりワークス） -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
-<script>
-  const GA_ID = 'G-9W0QCF2510';
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
+  <script>
+    const GA_ID = 'G-9W0QCF2510';
+    const isDebug = /(^|[?&])debug=1(&|$)/.test(location.search) || localStorage.getItem('ga_debug') === '1';
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', GA_ID, { debug_mode: isDebug });
 
-  // URLに ?debug=1 を付けたときだけ DebugView に流す
-  const isDebug = /(^|[?&])debug=1(&|$)/.test(location.search) || localStorage.getItem('ga_debug') === '1';
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-
-  gtag('js', new Date());
-  gtag('config', GA_ID, { debug_mode: isDebug }); // ← DebugView 対応
-
-  // CTAクリック計測（data-gtag-* を読む）
-  addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-gtag-event]').forEach(el => {
-      el.addEventListener('click', () => {
-        gtag('event', el.dataset.gtagEvent, {
-          event_label: el.dataset.gtagLabel || '',
-          section: el.dataset.gtagSection || '',
-          debug_mode: isDebug // ← DebugView 対応（イベントにも付与）
+    addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('[data-gtag-event]').forEach(el => {
+        el.addEventListener('click', () => {
+          gtag('event', el.dataset.gtagEvent, {
+            event_label: el.dataset.gtagLabel || '',
+            section: el.dataset.gtagSection || '',
+            debug_mode: isDebug
+          });
         });
       });
     });
-  });
-
-  // 同意バナーが無いなら consent:denied の行は入れない（ヒット抑止になるため）
-</script>
-<meta name="google-site-verification" content="k6wBmokz-SrFcDXeZaDJzwRidlx694kak9dpaQQiNgw" />
-
+  </script>
+  <meta name="google-site-verification" content="k6wBmokz-SrFcDXeZaDJzwRidlx694kak9dpaQQiNgw" />
 </head>
 
 <body>
-
-  <!-- Header -->
-  <header class="site-header">
+  <!-- ===== Header ===== -->
+  <header class="site-header" role="banner">
     <div class="container nav-row">
       <a class="brand" href="#top" aria-label="ホームへ">
         <span class="brand__dot" aria-hidden="true"></span>
@@ -69,7 +60,7 @@
       </a>
       <nav class="links" aria-label="メニュー">
         <a href="#services">サービス</a>
-        <a href="#packages">料金</a>
+        <a href="#pricing">料金</a>
         <a href="#demos">デモ</a>
         <a href="#process">進め方</a>
         <a href="#faq">FAQ</a>
@@ -79,19 +70,18 @@
   </header>
 
   <main id="top">
-    <!-- HERO（全面BG＋中央パネル／スマホ2タップ導線） -->
+    <!-- ===== HERO ===== -->
     <section class="hero" aria-label="ファーストビュー">
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="hero__panel">
         <div class="hero__content">
-          <p class="eyebrow">スマホで“予約が増える”LP制作</p>
+          <p class="eyebrow">スマホ最適化LP制作</p>
           <h1>テンプレ＋半カスタムで、<br>見栄えと導線を両立。</h1>
-          <p class="lead">最短7日で公開。β価格で受付中（先着3件）。</p>
+          <p class="lead">目安7〜10日（素材確定後）／計測・公開チェック込み</p>
 
           <div class="actions">
-            <!-- 事前審査フォーム（HUB用UTM） -->
             <a class="btn btn--primary"
-               href="https://docs.google.com/forms/d/e/1FAIpQLSfNh2xVe-bDgS5WsyXwro9YdnwuMQ4D3pE2JoA_hrithut_8w/viewform?usp=header&utm_source=hub&utm_medium=website&utm_campaign=lp-beta"
+               href="https://docs.google.com/forms/d/e/1FAIpQLSfNh2xVe-bDgS5WsyXwro9YdnwuMQ4D3pE2JoA_hrithut_8w/viewform?utm_source=hub&utm_medium=website&utm_campaign=lp-beta"
                target="_blank" rel="noopener"
                data-gtag-event="generate_lead" data-gtag-label="hero_primary" data-gtag-section="hero">
                事前審査フォームへ
@@ -99,78 +89,78 @@
             <a class="btn"
                href="mailto:hello@irodori-works.biz?subject=%E3%80%90LP%E7%9B%B8%E8%AB%87%E3%80%91&body=%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A%E6%A5%AD%E7%A8%AE%EF%BC%9A%0D%0A%E3%81%94%E8%A6%81%E6%9C%9B%EF%BC%9A"
                data-gtag-event="contact_email" data-gtag-label="hero_secondary" data-gtag-section="hero">
-               メールで相談する
+               メールで相談
             </a>
           </div>
 
-          <p class="trustline">スマホ最適 • 大きめCTA • 2タップ導線 • GA4/Plausible対応</p>
+          <p class="trustline">大きめCTA／2タップ導線／GA4対応／OGP・カノニカル・404</p>
         </div>
       </div>
     </section>
 
-    <!-- SERVICES（提供サービス） -->
-    <section id="services" class="services">
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="services" aria-labelledby="services-title">
       <div class="container">
-        <h2>提供サービス</h2>
+        <h2 id="services-title">提供サービス</h2>
         <ul class="bullets">
-          <li>テンプレート販売（コード一式）</li>
-          <li>色 / 写真 / 文言の差し替え対応</li>
-          <li>セクション追加（FAQ / 料金 / アクセス 等）</li>
-          <li>OGP / 速度最適化（軽量化・画像最適化）</li>
-          <li>GA4 または Plausible 初期設定とイベント計測</li>
+          <li>テンプレート提供（コード一式）</li>
+          <li>色・写真・文言の差し替え</li>
+          <li>セクション追加（FAQ／料金／アクセス など）</li>
+          <li>OGP／速度最適化（軽量化・画像最適化）</li>
+          <li>GA4 初期設定とイベント計測</li>
         </ul>
+
         <div class="reasons">
           <h3>選ばれる理由</h3>
           <ul>
             <li>スマホ最適：大きめCTA、迷子ゼロの2タップ導線</li>
-            <li>必要十分な構成：ヒーロー／プログラム／料金／アクセス／体験予約</li>
-            <li>短納期：素材到着後 最短7日</li>
-            <li>わかりやすい料金：ライト/スタンダードの2プラン</li>
-            <li>将来拡張：セクション追加や計測の強化に対応</li>
+            <li>必要十分な構成：ヒーロー／プログラム／料金／アクセス／予約</li>
+            <li>短納期：素材確定から目安7〜10日</li>
+            <li>わかりやすい料金：基本プラン＋オプション</li>
+            <li>将来拡張：セクション追加や計測強化に柔軟対応</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- PACKAGES（料金） -->
-    <section id="packages" class="packages">
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" class="packages" aria-labelledby="pricing-title">
       <div class="container">
-        <h2>料金（β・税込／先着3件）</h2>
+        <h2 id="pricing-title">料金（税込）</h2>
         <div class="cards">
           <article class="card">
-            <h3>ライト</h3>
+            <h3>基本プラン</h3>
             <p class="price">34,800円</p>
             <ul class="features">
-              <li>1ページ</li><li>色・画像差し替え</li><li>修正2回</li><li>納期7–10日</li>
+              <li>1ページ</li><li>色・画像差し替え</li><li>修正2回</li><li>目安7〜10日</li>
             </ul>
           </article>
           <article class="card">
-            <h3>スタンダード</h3>
-            <p class="price">69,800円</p>
+            <h3>オプション例</h3>
             <ul class="features">
-              <li>微調整追加</li><li>修正3回</li><li>納期10–14日</li>
+              <li>1セクション追加</li><li>簡易画像作成</li><li>公開後30日サポート</li>
             </ul>
           </article>
         </div>
-        <p class="note">※ ドメイン/サーバー費用は含まず。素材到着後に納期カウント。</p>
+        <p class="note">※ 価格は参考です。最新の条件は出品ページをご確認ください。<br>※ ドメイン/サーバー費用は含みません。</p>
       </div>
     </section>
 
-    <!-- DEMOS（実績→デモで品質確認） -->
-    <section id="demos" class="demos">
+    <!-- ===== DEMOS ===== -->
+    <section id="demos" class="demos" aria-labelledby="demos-title">
       <div class="container">
-        <h2>デモで品質確認</h2>
+        <h2 id="demos-title">デモで品質確認</h2>
         <div class="demo-grid">
-          <a class="demo" href="https://irodoriworks-suika.github.io/lp-beta/demos/yoga/" target="_blank" rel="noopener"
+          <a class="demo" href="demos/yoga/" target="_blank" rel="noopener"
              data-gtag-event="select_content" data-gtag-label="demo_yoga" data-gtag-section="demos">
             <div class="demo__thumb demo__thumb--yoga" aria-hidden="true"></div>
             <div class="demo__title">ヨガ向けデモLP</div>
           </a>
-          <div class="demo is-soon">
+          <div class="demo is-soon" aria-disabled="true">
             <div class="demo__thumb" aria-hidden="true"></div>
             <div class="demo__title">カフェ（公開予定）</div>
           </div>
-          <div class="demo is-soon">
+          <div class="demo is-soon" aria-disabled="true">
             <div class="demo__thumb" aria-hidden="true"></div>
             <div class="demo__title">スポーツジム（公開予定）</div>
           </div>
@@ -178,10 +168,10 @@
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section id="process" class="process">
+    <!-- ===== PROCESS ===== -->
+    <section id="process" class="process" aria-labelledby="process-title">
       <div class="container">
-        <h2>制作の流れ</h2>
+        <h2 id="process-title">制作の流れ</h2>
       </div>
       <div class="container">
         <ol class="steps">
@@ -194,29 +184,28 @@
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="faq">
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="faq" aria-labelledby="faq-title">
       <div class="container">
-        <h2>FAQ</h2>
-        <details><summary>納期の目安は？</summary><p>素材到着後、ライト7–10日／スタンダード10–14日が目安です。</p></details>
-        <details><summary>修正は何回まで？</summary><p>ライト2回／スタンダード3回（軽微な調整想定）です。</p></details>
-        <details><summary>写真や文章が揃っていないのですが？</summary><p>こちらで簡易の文章叩き台は作れます。写真はフリー素材提案も可能です。</p></details>
+        <h2 id="faq-title">FAQ</h2>
+        <details><summary>納期の目安は？</summary><p>素材確定後の目安は7〜10日です（修正2回）。</p></details>
+        <details><summary>修正は何回まで？</summary><p>基本プランは2回（軽微な調整想定）です。</p></details>
+        <details><summary>写真や文章が不足しています。</summary><p>簡易の文章叩き台やフリー素材のご提案が可能です。</p></details>
         <details><summary>ドメインやサーバーもお願いできますか？</summary><p>取得・設定のガイドは可能ですが、費用はお客様負担です。</p></details>
-        <details><summary>計測は対応しますか？</summary><p>GA4またはPlausibleの初期設定（イベント＝フォーム送信）に対応します。</p></details>
+        <details><summary>計測は対応しますか？</summary><p>GA4またはPlausibleの初期設定（イベント計測）に対応します。</p></details>
       </div>
     </section>
 
-    <!-- CONTACT（ページ下部の第2CTA） -->
-    <section id="contact" class="contact">
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
       <div class="container contact__grid">
-        <h2>お問い合わせ</h2>
+        <h2 id="contact-title">お問い合わせ</h2>
         <p>まずは事前審査フォームから。要件が固まっていなくてもOKです。</p>
         <div class="actions">
-          <!-- 事前審査フォーム（HUB用UTM） -->
           <a class="btn btn--primary"
-             href="https://docs.google.com/forms/d/e/1FAIpQLSfNh2xVe-bDgS5WsyXwro9YdnwuMQ4D3pE2JoA_hrithut_8w/viewform?usp=header&utm_source=hub&utm_medium=website&utm_campaign=lp-beta"
+             href="https://docs.google.com/forms/d/e/1FAIpQLSfNh2xVe-bDgS5WsyXwro9YdnwuMQ4D3pE2JoA_hrithut_8w/viewform?utm_source=hub&utm_medium=website&utm_campaign=lp-beta"
              target="_blank" rel="noopener"
-             data-gtag-event="generate_lead" data-gtag-label="hero_primary" data-gtag-section="hero">
+             data-gtag-event="generate_lead" data-gtag-label="contact_primary" data-gtag-section="contact">
              事前審査フォームへ
           </a>
           <a class="btn"
@@ -229,7 +218,8 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
       <address>
         屋号：いろどりワークス／Irodori Works　
@@ -239,5 +229,9 @@
       <small>© 2025 Irodori Works</small>
     </div>
   </footer>
+
+  <!-- JS（遅延読込） -->
+  <script defer src="js/patterns/accordion/index.js"></script>
+  <script defer src="js/patterns/io-reveal/index.js"></script>
 </body>
 </html>
