@@ -134,3 +134,33 @@ h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-lin
   transition:opacity .5s ease, transform .5s ease; will-change:opacity, transform;
 }
 .is-in { opacity:1; transform:none; }
+
+/* 視覚的に隠すがスクリーンリーダーには読む */
+.visually-hidden{position:absolute!important;width:1px;height:1px;margin:-1px;border:0;padding:0;
+  clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+
+/* Topへ戻るボタン */
+.to-top{
+  position:fixed; right:16px; bottom:16px; z-index:40;
+  width:48px; height:48px; border-radius:999px;
+  display:grid; place-items:center;
+  background:var(--pri); color:var(--ink-on);
+  border:1px solid var(--border); box-shadow:var(--shadow);
+  transition:opacity .25s ease, transform .25s ease; transform:translateY(10px);
+}
+
+/* JSが有効なときはスクロール量で表示制御（初期は非表示） */
+.js-enabled .to-top{opacity:0; pointer-events:none}
+.js-enabled .to-top.is-visible{opacity:1; pointer-events:auto; transform:none}
+
+.to-top:hover{filter:saturate(1.06)}
+.to-top:active{transform:translateY(1px)}
+.to-top svg{display:block}
+
+/* 余白少なめ端末向け微調整 */
+@media (min-width:1024px){
+  .to-top{ right:24px; bottom:24px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .to-top{ transition:none }
+}
