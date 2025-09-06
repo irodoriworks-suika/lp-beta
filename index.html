@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>いろどりワークス｜スマホ最適化LP制作（テンプレ＋半カスタム）</title>
-  <meta name="description" content="個人サロン/ヨガ等むけに、見やすく押しやすいスマホ最適化LPを制作。テンプレ＋半カスタムで運用前提。目安7〜10日（素材確定後）。" />
+  <meta name="description" content="個人サロン/ヨガ等向けのスマホ最適化LP制作。テンプレ＋半カスタムで運用前提。目安7〜10日（素材確定後）。GA4/UTM/OGP/404 対応。" />
 
-  <!-- ルート：GitHub Pages /lp-beta/ 基準 -->
+  <!-- GitHub Pages base -->
   <base href="/lp-beta/">
   <meta name="color-scheme" content="light dark" />
-  <link rel="stylesheet" href="style.css?v=business-v6" />
+  <link rel="stylesheet" href="style.css?v=business-v7" />
 
   <!-- canonical / OGP -->
   <link rel="canonical" href="https://irodoriworks-suika.github.io/lp-beta/">
@@ -22,18 +22,18 @@
   <meta property="og:image" content="https://irodoriworks-suika.github.io/lp-date/img/ogp_default.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- 体感高速化：ヒーロー背景（CSS varで使用） -->
+  <!-- 体感高速化：ヒーロー背景（CSS var で使用） -->
   <link rel="preload" as="image" href="/lp-beta/img/lp-hero-01.png">
 
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
   <script>
-    const GA_ID = 'G-9W0QCF2510';
-    const isDebug = /(^|[?&])debug=1(&|$)/.test(location.search) || localStorage.getItem('ga_debug') === '1';
+    const GA_ID='G-9W0QCF2510';
+    const isDebug = /(^|[?&])debug=1(&|$)/.test(location.search) || localStorage.getItem('ga_debug')==='1';
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', GA_ID, { debug_mode: isDebug });
+    gtag('config', GA_ID, { debug_mode:isDebug });
 
     addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('[data-gtag-event]').forEach(el => {
@@ -71,7 +71,7 @@
 
   <main id="top">
     <!-- ===== HERO ===== -->
-    <section class="hero" aria-label="ファーストビュー">
+    <section class="hero" aria-label="ファーストビュー" data-reveal>
       <div class="hero__bg" aria-hidden="true"></div>
       <div class="hero__panel">
         <div class="hero__content">
@@ -99,7 +99,7 @@
     </section>
 
     <!-- ===== SERVICES ===== -->
-    <section id="services" class="services" aria-labelledby="services-title">
+    <section id="services" class="services" aria-labelledby="services-title" data-reveal>
       <div class="container">
         <h2 id="services-title">提供サービス</h2>
         <ul class="bullets">
@@ -110,7 +110,7 @@
           <li>GA4 初期設定とイベント計測</li>
         </ul>
 
-        <div class="reasons">
+        <div class="reasons" data-reveal-children>
           <h3>選ばれる理由</h3>
           <ul>
             <li>スマホ最適：大きめCTA、迷子ゼロの2タップ導線</li>
@@ -124,10 +124,10 @@
     </section>
 
     <!-- ===== PRICING ===== -->
-    <section id="pricing" class="packages" aria-labelledby="pricing-title">
+    <section id="pricing" class="packages" aria-labelledby="pricing-title" data-reveal>
       <div class="container">
         <h2 id="pricing-title">料金（税込）</h2>
-        <div class="cards">
+        <div class="cards" data-reveal-children>
           <article class="card">
             <h3>基本プラン</h3>
             <p class="price">34,800円</p>
@@ -147,10 +147,10 @@
     </section>
 
     <!-- ===== DEMOS ===== -->
-    <section id="demos" class="demos" aria-labelledby="demos-title">
+    <section id="demos" class="demos" aria-labelledby="demos-title" data-reveal>
       <div class="container">
         <h2 id="demos-title">デモで品質確認</h2>
-        <div class="demo-grid">
+        <div class="demo-grid" data-reveal-children>
           <a class="demo" href="demos/yoga/" target="_blank" rel="noopener"
              data-gtag-event="select_content" data-gtag-label="demo_yoga" data-gtag-section="demos">
             <div class="demo__thumb demo__thumb--yoga" aria-hidden="true"></div>
@@ -169,69 +169,10 @@
     </section>
 
     <!-- ===== PROCESS ===== -->
-    <section id="process" class="process" aria-labelledby="process-title">
+    <section id="process" class="process" aria-labelledby="process-title" data-reveal>
       <div class="container">
         <h2 id="process-title">制作の流れ</h2>
       </div>
       <div class="container">
-        <ol class="steps">
+        <ol class="steps" data-reveal-children>
           <li><strong>事前審査</strong>（要件ヒアリング）</li>
-          <li><strong>ご発注・素材受領</strong>（テキスト/写真）</li>
-          <li><strong>初稿提出</strong>（スマホ優先／確認）</li>
-          <li><strong>修正対応</strong>（回数はプラン準拠）</li>
-          <li><strong>公開・計測設定</strong>（GA4/Plausible）</li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section id="faq" class="faq" aria-labelledby="faq-title">
-      <div class="container">
-        <h2 id="faq-title">FAQ</h2>
-        <details><summary>納期の目安は？</summary><p>素材確定後の目安は7〜10日です（修正2回）。</p></details>
-        <details><summary>修正は何回まで？</summary><p>基本プランは2回（軽微な調整想定）です。</p></details>
-        <details><summary>写真や文章が不足しています。</summary><p>簡易の文章叩き台やフリー素材のご提案が可能です。</p></details>
-        <details><summary>ドメインやサーバーもお願いできますか？</summary><p>取得・設定のガイドは可能ですが、費用はお客様負担です。</p></details>
-        <details><summary>計測は対応しますか？</summary><p>GA4またはPlausibleの初期設定（イベント計測）に対応します。</p></details>
-      </div>
-    </section>
-
-    <!-- ===== CONTACT ===== -->
-    <section id="contact" class="contact" aria-labelledby="contact-title">
-      <div class="container contact__grid">
-        <h2 id="contact-title">お問い合わせ</h2>
-        <p>まずは事前審査フォームから。要件が固まっていなくてもOKです。</p>
-        <div class="actions">
-          <a class="btn btn--primary"
-             href="https://docs.google.com/forms/d/e/1FAIpQLSfNh2xVe-bDgS5WsyXwro9YdnwuMQ4D3pE2JoA_hrithut_8w/viewform?utm_source=hub&utm_medium=website&utm_campaign=lp-beta"
-             target="_blank" rel="noopener"
-             data-gtag-event="generate_lead" data-gtag-label="contact_primary" data-gtag-section="contact">
-             事前審査フォームへ
-          </a>
-          <a class="btn"
-             href="mailto:hello@irodori-works.biz?subject=%E3%80%90LP%E7%9B%B8%E8%AB%87%E3%80%91&body=%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A%E6%A5%AD%E7%A8%AE%EF%BC%9A%0D%0A%E3%81%94%E8%A6%81%E6%9C%9B%EF%BC%9A"
-             data-gtag-event="contact_email" data-gtag-label="contact_secondary" data-gtag-section="contact">
-             メールで相談
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <address>
-        屋号：いろどりワークス／Irodori Works　
-        <a href="mailto:hello@irodori-works.biz">hello@irodori-works.biz</a>　
-        <a href="https://irodoriworks-suika.github.io/lp-beta/" target="_blank" rel="noopener">Web</a>
-      </address>
-      <small>© 2025 Irodori Works</small>
-    </div>
-  </footer>
-
-  <!-- JS（遅延読込） -->
-  <script defer src="js/patterns/accordion/index.js"></script>
-  <script defer src="js/patterns/io-reveal/index.js"></script>
-</body>
-</html>
