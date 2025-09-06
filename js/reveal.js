@@ -1,28 +1,31 @@
 (() => {
-  const singles  = [...document.querySelectorAll('[data-reveal]')];
-  const children = [...document.querySelectorAll('[data-reveal-children]')]
-                    .flatMap(el => [...el.children]);
+  // 収集（flatMap非使用・古い環境でも安全）
+  var singles  = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  var parents  = Array.prototype.slice.call(document.querySelectorAll('[data-reveal-children]'));
+  var children = [];
+  parents.forEach(function(el){ Array.prototype.push.apply(children, el.children); });
+  var targets  = singles.concat(children);
 
-  const targets = [...new Set([...singles, ...children])];
   if (!targets.length) return;
 
-  // Fallback（古い環境）は即表示
+  // IO未対応ブラウザは即表示
   if (!('IntersectionObserver' in window)) {
-    targets.forEach(el => el.classList.add('is-in'));
+    targets.forEach(function(el){ el.classList.add('is-in'); });
     return;
   }
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(ent => {
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(ent){
       if (ent.isIntersecting) {
         ent.target.classList.add('is-in');
-        io.unobserve(ent.target); // 一度だけ
+        io.unobserve(ent.target); // 一回でOK
       }
     });
   }, {
-    // 画面中央に少し入ったら発火（上40%／下55%オフセット）
-    rootMargin: '-40% 0% -55% 0%', threshold: 0.01
+    // ちょい甘め（表示領域に少し入ったら出す）
+    rootMargin: '-30% 0% -50% 0%',
+    threshold: 0.01
   });
 
-  targets.forEach(el => io.observe(el));
+  targets.forEach(function(el){ io.observe(el); });
 })();
