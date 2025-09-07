@@ -172,3 +172,13 @@ h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-lin
 /* モーション弱め希望の端末ではアニメ無効化 */
 @media (prefers-reduced-motion: reduce){
   .reveal-active [data-reveal]:not(.is-in){ transition: none; transform: none; }
+
+/* === hero copy tune (A案用) === */
+.hero__content h1{
+  line-height:1.12; letter-spacing:.01em;
+  text-wrap:balance; /* 対応ブラウザで自然改行 */
+}
+@supports not (text-wrap: balance){
+  .hero__content h1{ word-break:keep-all }
+}
+.hero .lead{ font-weight:600 } /* サブを少し強めに */
