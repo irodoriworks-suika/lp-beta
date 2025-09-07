@@ -20,8 +20,9 @@
   <meta property="og:url" content="https://irodoriworks-suika.github.io/lp-beta/" />
   <meta property="og:image" content="https://irodoriworks-suika.github.io/lp-date/img/ogp_default.jpg" />
 
-  <!-- 体感高速化：ヒーロー背景 -->
-  <link rel="preload" as="image" href="/lp-beta/img/lp-hero-01.png" imagesrcset="/lp-beta/img/lp-hero-01.webp 1x">
+  <!-- 体感高速化：ヒーロー背景（PNGのみ） -->
+  <link rel="preload" as="image" href="/lp-beta/img/lp-hero-01.png">
+
 
   <!-- JS有効フラグ（Revealの保険） -->
   <script>document.documentElement.classList.add('js-enabled');</script>
@@ -127,19 +128,14 @@
         <h2 id="demos-title">デモで品質確認</h2>
         <div class="demo-grid">
          <a class="demo" href="demos/yoga/" target="_blank" rel="noopener"
-   data-gtag-event="select_content" data-gtag-label="demo_yoga" data-gtag-section="demos">
-  <picture style="display:block">
-    <!-- ① WebP（あれば） -->
-    <source srcset="img/lp-yoga-01.webp" type="image/webp">
-    <!-- ② PNG/JPG フォールバック -->
-    <img src="lp-beta/img/lp-yoga-01.png"
-         alt="ヨガ向けデモ"
-         width="640" height="400"
-         loading="lazy" decoding="async"
-         style="aspect-ratio:16/10; object-fit:cover; border-radius:10px">
-  </picture>
-  <span class="demo__title">ヨガ向けデモLP</span>
-</a>
+           data-gtag-event="select_content" data-gtag-label="demo_yoga" data-gtag-section="demos">
+          <img src="img/lp-yoga-01.png"
+               alt="ヨガ向けデモ"
+               width="640" height="400"
+               loading="lazy" decoding="async"
+               style="aspect-ratio:16/10; object-fit:cover; border-radius:10px">
+          <span class="demo__title">ヨガ向けデモLP</span>
+          </a>
           <div class="demo is-soon" aria-disabled="true">
             <div class="demo__thumb" aria-hidden="true"></div>
             <span class="demo__title">カフェ（公開予定）</span>
