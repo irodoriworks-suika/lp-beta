@@ -158,14 +158,17 @@ h1{font-size:var(--h1);margin:.4rem 0 .4rem;line-height:1.15;white-space:pre-lin
   .to-top{ transition:none }
 }
 
-/* === JS連携：Reveal（準備完了以降、.is-in 以外だけ隠す） === */
-.reveal-active [data-reveal]:not(.is-in),
-.reveal-active [data-reveal-children] > :not(.is-in) {
+/* === Reveal（準備完了以降、.is-in 以外だけ隠す / セクション単位） === */
+.reveal-active [data-reveal]:not(.is-in) {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity .5s ease, transform .5s ease;
+  transform: translate3d(0, 12px, 0);   /* GPU合成で滑らか */
+  transition: opacity .42s ease-out, transform .6s cubic-bezier(.22,1,.36,1);
   will-change: opacity, transform;
 }
 
-/* 表示状態（優先度競合なし） */
+/* 表示状態（勝ちやすいシンプルなルール） */
 .is-in { opacity: 1; transform: none; }
+
+/* モーション弱め希望の端末ではアニメ無効化 */
+@media (prefers-reduced-motion: reduce){
+  .reveal-active [data-reveal]:not(.is-in){ transition: none; transform: none; }
