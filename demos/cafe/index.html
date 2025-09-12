@@ -25,7 +25,7 @@
       <a href="#menu">メニュー</a>
       <a href="#seasonal">オススメ</a>
       <a href="#features">こだわり</a>
-      <a href="#info">アクセス</a><!-- 旧：店舗情報 -->
+      <a href="#info">アクセス</a>
     </nav>
     <!-- 右：お問い合わせボタン -->
     <a class="header-cta btn btn--mini" href="#contact">お問い合わせ</a>
@@ -110,7 +110,7 @@
     </div>
   </section>
 
-  <!-- === features（縦並び／交互／説明約100字） === -->
+  <!-- === features（縦並び／交互） === -->
   <section id="features" class="section" aria-label="こだわり">
     <div class="container">
       <h2 class="section__title">こだわり</h2>
@@ -149,43 +149,76 @@
 
   <!-- === info（統合：店舗情報・アクセス） === -->
   <section id="info" class="section section--alt" aria-label="店舗情報・アクセス">
-    <div class="container info-grid">
-      <!-- 左：地図（東京スカイツリー） -->
-      <div class="map-wrap card">
-        <iframe
-          title="東京スカイツリー周辺地図"
-          src="https://www.google.com/maps?q=Tokyo+Skytree,1-1-2+Oshiage,Sumida+City,Tokyo&hl=ja&z=16&output=embed"
-          width="600" height="450" loading="lazy" style="border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <!-- 右：店舗情報 -->
-      <div class="content">
-        <h2 class="section__title">店舗情報・アクセス</h2>
-        <dl class="kv">
-          <div><dt>住所</dt><dd>東京都墨田区押上1-1-2（東京スカイツリー）</dd></div>
-          <div><dt>営業時間</dt><dd>平日 8:00–19:00／土日 9:00–18:00</dd></div>
-          <div><dt>定休日</dt><dd>火</dd></div>
-          <div><dt>席数</dt><dd>22</dd></div>
-          <div><dt>支払</dt><dd>現金／各種キャッシュレス</dd></div>
-        </dl>
+    <div class="container">
+      <!-- タイトルを先に出す（地図が見出しより前に出ないよう修正） -->
+      <h2 class="section__title">店舗情報・アクセス</h2>
+
+      <div class="info-grid">
+        <!-- 左：地図（東京スカイツリー） -->
+        <div class="map-wrap card">
+          <iframe
+            title="東京スカイツリー周辺地図"
+            src="https://www.google.com/maps?q=Tokyo+Skytree,1-1-2+Oshiage,Sumida+City,Tokyo&hl=ja&z=16&output=embed"
+            width="600" height="450" loading="lazy" style="border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- 右：店舗情報（住所を2段／ラベルとのギャップを統一＆最小化） -->
+        <div class="content">
+          <dl class="kv">
+            <div>
+              <dt>住所</dt>
+              <dd>
+                <span class="nowrap">〒131-0045</span>
+                <span class="nowrap">東京都墨田区押上1-1-2（東京スカイツリー）</span>
+              </dd>
+            </div>
+            <div><dt>営業時間</dt><dd>平日 8:00–19:00／土日 9:00–18:00</dd></div>
+            <div><dt>定休日</dt><dd>火</dd></div>
+            <div><dt>席数</dt><dd>22</dd></div>
+            <div><dt>支払</dt><dd>現金／各種キャッシュレス</dd></div>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- === contact（左揃え・前枠に合わせる） === -->
+  <!-- === contact（情報を追加して“寂しさ”改善） === -->
   <section id="contact" class="section" aria-label="お問い合わせ">
     <div class="container">
-      <div class="card contact-card content">
-        <h2 class="section__title">お問い合わせ</h2>
-        <p>ご予約・ご相談はフォームへ（約1分）。</p>
-        <a class="btn" href="https://forms.gle/xxxxxxxx?utm_source=website&utm_medium=site&utm_campaign=cafe"
-           data-gtag-event="generate_lead" data-gtag-label="contact_btn">フォームを開く</a>
+      <div class="card contact-card">
+        <div class="contact-grid">
+          <div class="contact-main content">
+            <h2 class="section__title">お問い合わせ</h2>
+            <p>ご予約・ご相談はフォームへ（約1分）。</p>
+            <div class="cta-bar">
+              <a class="btn" href="https://forms.gle/xxxxxxxx?utm_source=website&utm_medium=site&utm_campaign=cafe"
+                 data-gtag-event="generate_lead" data-gtag-label="contact_btn">フォームを開く</a>
+              <a class="btn btn--ghost" href="#menu">メニューを見る</a>
+            </div>
+            <ul class="trust">
+              <li>返信目安：当日内</li>
+              <li>最短ご案内：翌営業日</li>
+              <li>個人情報は用途限定</li>
+            </ul>
+          </div>
+          <div class="contact-side">
+            <h3>よくあるご相談</h3>
+            <ul class="bullets">
+              <li>混雑時間の確認</li>
+              <li>アレルギー対応について</li>
+              <li>席の電源・Wi-Fiの有無</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer section" aria-label="フッター">
-  <div class="container content"><small>© 2025 いろどりカフェ · irodoriwrks</small></div>
+  <div class="container content">
+    <small>© 2025 いろどりカフェ ／ 制作：いろどりワークス（irodoriwrks）</small>
+  </div>
 </footer>
 
 <script>
