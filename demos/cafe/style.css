@@ -269,3 +269,35 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 .site-footer a{ color:#fff; opacity:.9; }
 .site-footer a:hover{ opacity:1; text-decoration:underline; text-underline-offset:2px; }
 
+/* ===== Header: responsive fix（崩れ対策） ===== */
+@media (max-width: 767.98px){
+  .header-grid{
+    /* 2行レイアウト：上=brand+cta、下=nav */
+    display:grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "brand cta"
+      "nav   nav";
+    align-items:center;
+    row-gap:.5rem;
+  }
+  .brand{ grid-area:brand; }
+  .header-cta{ grid-area:cta; justify-self:end; }
+
+  /* ナビは1行・横スクロールで折返し禁止 */
+  .nav{
+    grid-area:nav;
+    display:flex;
+    gap:.75rem;
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:.25rem; /* スクロールバー分の余白 */
+  }
+  .nav a{ display:inline-block; }
+
+  /* モバイルのCTAを少しだけ小さくして圧迫回避 */
+  .btn.btn--mini{ padding:.46rem .7rem; border-radius:.9rem; }
+}
+
+
