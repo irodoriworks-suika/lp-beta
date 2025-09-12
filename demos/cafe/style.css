@@ -106,36 +106,53 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
 .kv dt{font-weight:700}
 .nowrap{white-space:nowrap}
 
-/* === info（2カラム：地図＋情報） === */
+/* === info（2カラム：地図＋情報） 安定版 === */
 .info-grid{
   display:grid;
   gap:var(--space-4);
-  align-items:stretch;            /* ← 行の高さを両カラムで共有 */
-}
-.map-wrap iframe{
-  width:100%;
-  aspect-ratio:1 / 1;             /* 正方形のまま */
-  height:auto;
-  border:0;
-  display:block;
-}
-/* 右カラム：dl全体を“縦に均等配置”して地図の高さに寄せる */
-.info-grid .content{display:flex}
-.kv{
-  --label-w: 6.75rem;             /* 左端そろえ用（既存） */
-  display:flex; flex-direction:column;
-  gap:.6rem;
+  grid-template-columns:1fr;              /* モバイルは1列 */
+  align-items:start;                       /* 伸ばさない */
 }
 @media (min-width:768px){
-  .kv{ height:100%; justify-content:space-between; gap:1.1rem; } /* ← ここで“縦のギャップ”を広げる */
+  .info-grid{
+    grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);  /* 横幅あふれ防止 */
+  }
+}
+
+/* 地図は親に比率、iframe は絶対配置でフィット（潰れ防止） */
+.map-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / 1;                      /* 正方形 */
+  border-radius:1rem; overflow:hidden;     /* 角丸維持（任意） */
+  box-shadow:var(--shadow);
+}
+.map-wrap iframe{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border:0; display:block;
+}
+
+/* 右カラム（店舗情報）：flexをやめて通常フローに戻す */
+.info-grid .content{display:block}
+
+/* 左端そろえ＋ラベル幅を可変に（崩れ防止） */
+.kv{
+  --label-w:6rem;                          /* モバイルのラベル幅 */
+  display:grid; gap:.6rem;                 /* ほどよく間隔 */
+}
+@media (min-width:768px){
+  .kv{ --label-w:6.75rem; gap:.9rem; }     /* タブレット以上で少し広げる */
 }
 .kv > div{
-  display:grid; grid-template-columns: var(--label-w) 1fr;
+  display:grid;
+  grid-template-columns:var(--label-w) minmax(0,1fr);  /* 本文側は縮退許容 */
   gap:.5rem; align-items:start;
   background:#fff; border-radius:1rem; box-shadow:var(--shadow); padding:1rem 1.1rem;
 }
 .kv dt{font-weight:700}
 .nowrap{white-space:nowrap}
+
 
 
 /* === contact（情報追加で密度UP） === */
