@@ -89,7 +89,16 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
   background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.20) 50%, rgba(0,0,0,.12) 100%);
 }
 .hero__content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start; }
-.hero__inner { max-width: 42rem; margin-left: clamp(1rem,4vw,3rem); margin-right: auto; }
+.hero__inner{
+  max-width: var(--maxw);
+  margin: 0 auto;                 /* container と同じ中央寄せ */
+  padding: 0 var(--space-3);      /* 左右パディングも統一 */
+}
+/* 見出し/本文/CTA の可読幅だけ絞る（PCでも崩さない） */
+.hero__inner > *{
+  max-width: 42rem;
+}
+
 .hero h1 { margin: 0 0 .5rem; color: var(--offwhite); font-size: clamp(1.9rem,3.2vw + 1rem,2.6rem); line-height: 1.25; }
 .hero .sub { margin: 0 0 var(--space-3); color: var(--offwhite); }
 .cta-bar { display: flex; gap: .75rem; flex-wrap: wrap; }
