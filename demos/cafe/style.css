@@ -83,14 +83,41 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
   .seasonal-card{height:100%}
 }
 
-/* === features（縦並び／交互） === */
-.feature-row{display:grid;grid-template-columns:1fr;gap:var(--space-4);align-items:center;margin-bottom:var(--space-4)}
-.feature-text{background:#fff;border-radius:1rem;box-shadow:var(--shadow);padding:var(--space-4)}
-.feature-media img{width:100%;height:auto;object-fit:cover;border-radius:1rem}
-@media (min-width:768px){
-  .feature-row{grid-template-columns:1.1fr 1fr}
-  .feature-row--reverse{grid-template-columns:1fr 1.1fr}
+/* === features：写真＋文章を同一カードに === */
+.features-stack{ display:grid; gap:var(--space-4); }
+
+.feature-card{
+  display:grid;
+  grid-template-columns:1fr;           /* モバイル：1列（写真→文章） */
+  grid-template-rows:auto auto;
+  background:#fff;
+  border-radius:1rem;
+  box-shadow:var(--shadow);
+  overflow:hidden;                     /* 角丸を保つ */
 }
+
+.feature-media{ margin:0; }            /* figure の余白を消す */
+.feature-media img{
+  width:100%; height:auto;
+  aspect-ratio:16/10; object-fit:cover; display:block;
+}
+
+.feature-body{ padding:var(--space-4); }
+
+/* タブレット以上：2カラム化し、交互配置にする */
+@media (min-width:768px){
+  .feature-card{
+    grid-template-columns:1.1fr 1fr;
+    grid-template-rows:unset;
+  }
+  .feature-card .feature-media img{ height:100%; aspect-ratio:auto; }
+  /* デフォルト（自家焙煎・居心地）：文→画像に並べ替え */
+  .feature-card:not(.reverse) .feature-media{ order:2; }
+  .feature-card:not(.reverse) .feature-body{ order:1; }
+  /* reverse（焼きたて）：画像→文（交互） */
+  .feature-card.reverse{ grid-template-columns:1fr 1.1fr; }
+}
+
 
 /* === key-value（ラベル↔内容の隙間を短くして住所のはみ出しを防ぐ） === */
 .kv{
