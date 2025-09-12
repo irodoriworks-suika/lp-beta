@@ -133,29 +133,38 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 @media (min-width: 768px)  { .menu-row { grid-auto-columns: 45%; } }
 @media (min-width: 1024px) { .menu-row { grid-auto-columns: 28%; } }
 
-/* === Seasonal（写真を少し小さく） === */
-.seasonal-grid {
-  display: grid;
-  gap: var(--space-4);
-  grid-template-columns: 1fr;         /* モバイル：1列 */
+/* === Seasonal（画像サイズ微調整） === */
+.seasonal-grid{
+  display:grid;
+  gap:var(--space-4);
+  grid-template-columns:1fr;          /* モバイル：1列 */
 }
-.seasonal-card { display: grid; grid-template-rows: auto auto; }
+.seasonal-card{ display:grid; grid-template-rows:auto auto; }
 .seasonal-card img{
-  width: 100%;
-  height: auto;                       /* ← 伸び切らせない */
-  aspect-ratio: 4 / 3;                /* モバイル比率：控えめ */
-  object-fit: cover;
+  width:100%;
+  height:auto;
+  aspect-ratio:4/3;                   /* モバイルは少し控えめ */
+  object-fit:cover;
 }
-.seasonal__body { padding: var(--space-3); }
+.seasonal__body{ padding:var(--space-3); }
 
-@media (min-width: 1024px){           /* PC：2カラムは維持、写真をさらに控えめに */
-  .seasonal-grid{ grid-template-columns: 1fr 1fr; }
-  .seasonal-card{ align-self: start; }/* 高さを必要分だけに */
+/* タブレット以上：2カラム維持＆やや大きめ */
+@media (min-width:768px){
+  .seasonal-grid{ grid-template-columns:1fr 1fr; } /* ← タブレットでも2列 */
+  .seasonal-card{ align-self:start; }
   .seasonal-card img{
-    aspect-ratio: 3 / 2;
-    max-height: clamp(220px, 26vh, 320px); /* 画面に応じて上限を設定 */
+    aspect-ratio:3/2;
+    max-height: clamp(220px, 24vh, 320px);        /* タブレットの基準高さ */
   }
 }
+
+/* PC：高さを“約+40px”だけ上積み（横幅は変えない） */
+@media (min-width:1024px){
+  .seasonal-card img{
+    max-height: clamp(260px, 26vh, 360px);        /* 320px → 360px（+40px） */
+  }
+}
+
 
 
 /* === Features (photo + text in one white card) === */
