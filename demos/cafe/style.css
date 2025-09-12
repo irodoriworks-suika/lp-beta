@@ -148,13 +148,35 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
   .contact-grid{grid-template-columns:1.2fr 1fr;align-items:start}
 }
 
-/* === contact：Q/A === */
-.qa{display:grid; gap:.75rem; margin:0}
-.qa > div{background:#fff; border-radius:1rem; box-shadow:var(--shadow); padding:.9rem 1rem}
-.qa dt{margin:0 0 .25rem; font-weight:700; color:var(--brown)}
-.qa dd{margin:0}
-.qa dt::before{content:"Q "; font-weight:800; color:var(--green)}
-.qa dd::before{content:"A "; font-weight:800; color:var(--brown); margin-right:.25rem}
+/* === contact：Q/A（details/summary でトグル） === */
+.qa-accordion{display:grid; gap:.75rem}
+.qa-panel{
+  background:#fff; border-radius:1rem; box-shadow:var(--shadow);
+  overflow:hidden; /* 角丸を保つ */
+}
+.qa-panel + .qa-panel{margin-top:0} /* gap管理は親で */
+
+.qa-accordion summary{
+  list-style:none; cursor:pointer; outline:0;
+  display:flex; align-items:center; gap:.5rem;
+  padding:.9rem 1rem; font-weight:700; color:var(--brown);
+}
+.qa-accordion summary::-webkit-details-marker{display:none}
+.qa-accordion summary::after{
+  content:"▾"; margin-left:auto; transform:rotate(-90deg); transition:transform .2s ease;
+  opacity:.7;
+}
+.qa-panel[open] summary::after{transform:rotate(0deg)}
+
+.qa-a{padding:0 1rem 1rem 1rem; color:var(--ink); line-height:1.65}
+.q-badge,.a-badge{
+  display:inline-grid; place-items:center;
+  width:1.4rem; height:1.4rem; border-radius:999px;
+  font-size:.85rem; font-weight:800; line-height:1;
+}
+.q-badge{background:var(--green); color:#fff}
+.a-badge{background:var(--brown); color:#fff; margin-right:.35rem}
+
 
 
 /* === footer === */
