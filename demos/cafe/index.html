@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>〇〇カフェ｜朝の一杯で、今日が整う。</title>
+  <title>いろどりカフェ｜朝の一杯で、今日が整う。</title>
   <meta name="description" content="焼きたてと自家焙煎。席でゆっくり、テイクアウトも。">
-  <!-- LCP画像を先読み（相対パス） -->
   <link rel="preload" as="image" href="img/cafe_hero.png">
   <link rel="stylesheet" href="style.css">
   <!-- GA4 -->
@@ -17,12 +16,13 @@
   </script>
 </head>
 <body>
+
 <header class="site-header" aria-label="サイトヘッダー">
   <div class="container">
-    <a class="brand" href="#top" aria-label="〇〇カフェ">〇〇カフェ</a>
+    <a class="brand" href="#top" aria-label="いろどりカフェ">いろどりカフェ</a>
     <nav class="nav">
       <a href="#menu">メニュー</a>
-      <a href="#seasonal">季節</a>
+      <a href="#seasonal">オススメ</a><!-- 「季節」→「オススメ」 -->
       <a href="#features">こだわり</a>
       <a href="#info">店舗情報</a>
       <a href="#access">アクセス</a>
@@ -88,10 +88,10 @@
     </div>
   </section>
 
-  <!-- === seasonal === -->
-  <section id="seasonal" class="section section--alt" aria-label="季節のおすすめ">
+  <!-- === seasonal (オススメ) === -->
+  <section id="seasonal" class="section section--alt" aria-label="オススメ">
     <div class="container">
-      <h2 class="section__title">季節のおすすめ</h2>
+      <h2 class="section__title">オススメ</h2>
       <div class="seasonal-grid">
         <article class="card row">
           <img src="img/seasonal_autumn.png" width="1600" height="1000"
@@ -118,9 +118,9 @@
     <div class="container content">
       <h2 class="section__title">こだわり</h2>
       <div class="features-grid">
-        <div class="card"><h3>自家焙煎</h3><p>香りを閉じ込めた中深煎り。すっきり後味。</p></div>
-        <div class="card"><h3>焼きたて</h3><p>毎朝焼くタルトとキッシュ。サクッと香ばしく。</p></div>
-        <div class="card"><h3>居心地</h3><p>光が入る窓辺。ゆったり席で長居も歓迎。</p></div>
+        <div class="card feature-card"><h3>自家焙煎</h3><p>香りを閉じ込めた中深煎り。すっきり後味。</p></div>
+        <div class="card feature-card"><h3>焼きたて</h3><p>毎朝焼くタルトとキッシュ。サクッと香ばしく。</p></div>
+        <div class="card feature-card"><h3>居心地</h3><p>光が入る窓辺。ゆったり席で長居も歓迎。</p></div>
       </div>
     </div>
   </section>
@@ -143,12 +143,12 @@
   <section id="access" class="section" aria-label="アクセス">
     <div class="container">
       <h2 class="section__title">アクセス</h2>
-      <div class="row card">
+      <div class="row card access-card">
         <img src="img/map_thumb.png" width="1600" height="1000"
              decoding="async" loading="lazy" alt="店舗周辺地図サムネイル">
         <div class="row__body">
           <p>〇〇駅 東口より徒歩5分。大通り沿い、青い看板が目印です。</p>
-          <a class="btn btn--sage" href="https://maps.google.com/?q=〇〇カフェ"
+          <a class="btn btn--sage" href="https://maps.google.com/?q=いろどりカフェ"
              data-gtag-event="select_content" data-gtag-label="maps_btn">Googleマップを開く</a>
         </div>
       </div>
@@ -157,20 +157,21 @@
 
   <!-- === contact === -->
   <section id="contact" class="section section--alt" aria-label="お問い合わせ">
-    <div class="container content">
-      <h2 class="section__title">お問い合わせ</h2>
-      <p>ご予約・ご相談はフォームへ（約1分）。</p>
-      <a class="btn" href="https://forms.gle/xxxxxxxx?utm_source=website&utm_medium=site&utm_campaign=cafe"
-         data-gtag-event="generate_lead" data-gtag-label="contact_btn">フォームを開く</a>
+    <div class="container">
+      <div class="card contact-card content"><!-- 左揃え・前枠に合わせる -->
+        <h2 class="section__title">お問い合わせ</h2>
+        <p>ご予約・ご相談はフォームへ（約1分）。</p>
+        <a class="btn" href="https://forms.gle/xxxxxxxx?utm_source=website&utm_medium=site&utm_campaign=cafe"
+           data-gtag-event="generate_lead" data-gtag-label="contact_btn">フォームを開く</a>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer section" aria-label="フッター">
-  <div class="container content"><small>© 2025 〇〇カフェ</small></div>
+  <div class="container content"><small>© 2025 いろどりカフェ · irodoriwrks</small></div>
 </footer>
 
-<!-- CTA計測（data属性から送信） -->
 <script>
   document.addEventListener('click',(e)=>{
     const a=e.target.closest('a[data-gtag-event]');
