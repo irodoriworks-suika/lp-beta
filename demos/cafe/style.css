@@ -218,25 +218,25 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
 /* 既存：info-grid は stretch で同じ行の高さを共有 */
 .info-grid{ display:grid; gap:var(--space-4); align-items:stretch; }
 
-/* モバイル：地図は正方形のまま（既存） */
+/* 既存：モバイルは正方形 */
 .map-wrap{
   position:relative; width:100%;
-  aspect-ratio:1 / 1;            /* ← スマホは正方形 */
-  border-radius:1rem; overflow:hidden;
-  box-shadow:var(--shadow);
+  aspect-ratio:1 / 1; border-radius:1rem; overflow:hidden; box-shadow:var(--shadow);
 }
 .map-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
 
-/* ★タブレットだけ：地図を縦長＝右カラムの高さにフィット */
+/* タブレット（既存）：右カラムの高さにフィット */
 @media (min-width:768px) and (max-width:1023.98px){
   .info-grid{ grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); align-items:stretch; }
-  .map-wrap{ aspect-ratio:auto; height:100%; }   /* 行の高さ（= 右カラムの高さ）に伸びる */
+  .map-wrap{ aspect-ratio:auto; height:100%; }
   .map-wrap iframe{ height:100%; }
 }
 
-/* PCはこれまで通り（必要なら任意で明示） */
+/* ★PCにも同じ挙動を適用（縦長・右カラムに合わせる） */
 @media (min-width:1024px){
-  .info-grid{ grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); }
-  .map-wrap{ aspect-ratio:1 / 1; height:auto; }  /* PCは正方形維持 */
+  .info-grid{ grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); align-items:stretch; }
+  .map-wrap{ aspect-ratio:auto; height:100%; }   /* ← 正方形指定をやめて伸ばす */
+  .map-wrap iframe{ height:100%; }
 }
+
 
