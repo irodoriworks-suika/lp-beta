@@ -258,6 +258,14 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 /* prevent awkward wraps inside QA (PC unaffected) */
 .qa-accordion .nb { white-space: nowrap; display: inline; }
 
-/* === Footer === */
-.site-footer { border-top: 1px solid #e6ded3; }
-.site-footer .container { display: flex; justify-content: center; }
+/* footer */
+.site-footer{
+  background:var(--brown-900);
+  color:var(--offwhite);
+  border-top:none;
+}
+.site-footer .container{ justify-content:center; }
+.site-footer small{ color:rgba(246,243,236,.92); }
+.site-footer a{ color:#fff; opacity:.9; }
+.site-footer a:hover{ opacity:1; text-decoration:underline; text-underline-offset:2px; }
+
