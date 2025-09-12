@@ -161,7 +161,7 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 /* PC：高さを“約+40px”だけ上積み（横幅は変えない） */
 @media (min-width:1024px){
   .seasonal-card img{
-    max-height: clamp(260px, 26vh, 360px);        /* 320px → 360px（+40px） */
+    max-height: clamp(260px, 26vh, 400px);        /* 320px → 360px（+40px） */
   }
 }
 
