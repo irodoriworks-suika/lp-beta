@@ -92,19 +92,30 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
   .feature-row--reverse{grid-template-columns:1fr 1.1fr}
 }
 
-/* === key-value（統一ギャップ／改行制御） === */
+/* === key-value（ラベル↔内容の隙間を短くして住所のはみ出しを防ぐ） === */
 .kv{
-  --label-w: 6.75rem;   /* ラベル列の幅：全行で固定（必要なら調整） */
-  display:grid; gap:.5rem;
+  /* ラベル列の固定幅：狭めて本文側の幅を確保（モバイル優先） */
+  --label-w: 5rem;                 /* 既存: 6rem または 6.75rem → 5rem に縮小 */
+  display: grid;
+  gap: .6rem;
 }
+@media (min-width:768px){
+  .kv{ --label-w: 5.75rem; }      /* タブレット以上は少し広め（でも従来より狭い） */
+}
+
 .kv > div{
-  display:grid;
-  grid-template-columns: var(--label-w) 1fr; /* ← 全行で同じ幅 */
-  gap:.5rem; align-items:start;
-  background:#fff; border-radius:1rem; box-shadow:var(--shadow); padding:1rem 1.1rem;
+  display: grid;
+  grid-template-columns: var(--label-w) minmax(0, 1fr);
+  column-gap: .35rem;             /* ← ラベルと内容の“ギャップ”を短く */
+  align-items: start;
+  background:#fff; border-radius:1rem; box-shadow:var(--shadow);
+  padding: 1rem 1.1rem;
 }
-.kv dt{font-weight:700}
-.nowrap{white-space:nowrap}
+
+.kv dt{ font-weight:700; }
+.kv dd{ margin:0; font-size: clamp(.95rem, 3.2vw, 1rem); }  /* モバイルでわずかに縮小 */
+.nowrap{ white-space: nowrap; display:block; }              /* 2行をそれぞれ1行固定のまま */
+
 
 /* === info（2カラム：地図＋情報） 安定版 === */
 .info-grid{
