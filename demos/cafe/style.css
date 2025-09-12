@@ -89,21 +89,16 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
   background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.20) 50%, rgba(0,0,0,.12) 100%);
 }
 .hero__content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start; }
-/* ヒーロー文言の左端を .container と正確に一致させる */
+/* ヒーロー：左端を常に .container と同じに。狭幅でも余白を必ず確保 */
 .hero__inner{
-  /* 画面幅に応じて .container と同じ左位置を計算して作る */
-  margin: 0;                                    /* 中央寄せしない */
-  padding-left: calc((100vw - var(--maxw)) / 2 + var(--space-3));
+  padding-left: max( var(--space-3),
+                     calc((100vw - var(--maxw))/2 + var(--space-3)) );
   padding-right: var(--space-3);
-  max-width: none;                               /* 幅は自由（左端だけ揃える） */
+  margin: 0;            /* 中央寄せしない */
+  max-width: none;
 }
+.hero__inner > *{ max-width: 42rem; text-align: left; }
 
-/* 中の見出し/本文/CTA の可読幅だけを制限。必ず左寄せ */
-.hero__inner > *{
-  max-width: 42rem;
-  margin-left: 0 !important;
-  text-align: left;
-}
 
 
 .hero h1 { margin: 0 0 .5rem; color: var(--offwhite); font-size: clamp(1.9rem,3.2vw + 1rem,2.6rem); line-height: 1.25; }
