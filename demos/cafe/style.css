@@ -1,8 +1,8 @@
 /* === theme (Green × Brown / calm) === */
 :root{
   --green:#4A7C59; --brown:#7A5C3F; --ink:#2B2B2B;
-  --paper:#F1ECE4;     /* サイト全体の背景（白から置換） */
-  --cream:#EDE7DD;     /* セクション交互の下地 */
+  --paper:#F1ECE4;     /* サイト全体の背景 */
+  --cream:#EDE7DD;     /* 交互セクションの下地 */
   --offwhite:#F6F3EC;  /* ヒーロー文字など白系(#FFF以外) */
   --bg:var(--paper);
 
@@ -57,7 +57,7 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
 .hero .sub{margin:0 0 var(--space-3);color:var(--offwhite)}
 .cta-bar{display:flex;gap:.75rem;flex-wrap:wrap}
 
-/* === cards/rows === */
+/* === cards === */
 .card{background:#fff;border-radius:1rem;box-shadow:var(--shadow);overflow:hidden}
 .card figure{margin:0}
 
@@ -92,10 +92,15 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
   .feature-row--reverse{grid-template-columns:1fr 1.1fr}
 }
 
-/* === key-value === */
-.kv{display:grid;gap:.8rem}
-.kv>div{display:grid;grid-template-columns:6rem 1fr;gap:.8rem;background:#fff;border-radius:1rem;box-shadow:var(--shadow);padding:1rem 1.1rem}
+/* === key-value（統一ギャップ／改行制御） === */
+.kv{display:grid;gap:.5rem} /* ギャップを最小＆統一 */
+.kv>div{
+  display:grid; grid-template-columns:max-content 1fr; /* ラベル列は最長幅に統一 */
+  gap:.5rem; align-items:baseline;
+  background:#fff; border-radius:1rem; box-shadow:var(--shadow); padding:1rem 1.1rem;
+}
 .kv dt{font-weight:700}
+.nowrap{white-space:nowrap}
 
 /* === info（2カラム：地図＋情報） === */
 .info-grid{display:grid;gap:var(--space-4)}
@@ -105,8 +110,16 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
   .map-wrap iframe{height:100%}
 }
 
-/* === contact === */
-.contact-card{padding:var(--space-4);text-align:left}
+/* === contact（情報追加で密度UP） === */
+.contact-card{padding:var(--space-4)}
+.contact-grid{display:grid;gap:var(--space-4)}
+.contact-grid .trust{display:flex;flex-wrap:wrap;gap:.5rem;margin:var(--space-3) 0 0;padding:0;list-style:none}
+.contact-grid .trust li{border:1px solid #d8d0c7;border-radius:999px;padding:.35rem .6rem;font-size:.9rem;background:#fff}
+.contact-side h3{margin:0 0 .5rem}
+.contact-side .bullets{margin:0;padding-left:1.1rem}
+@media (min-width:768px){
+  .contact-grid{grid-template-columns:1.2fr 1fr;align-items:start}
+}
 
 /* === footer === */
 .site-footer{border-top:1px solid #e6ded3}
