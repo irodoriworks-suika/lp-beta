@@ -211,3 +211,6 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
 /* === footer === */
 .site-footer{border-top:1px solid #e6ded3}
 .site-footer .container{display:flex;justify-content:center}
+
+/* Q/A内で“改行させたくない塊”用（PC表示はそのまま） */
+.qa-accordion .nb { white-space: nowrap; display: inline; }
