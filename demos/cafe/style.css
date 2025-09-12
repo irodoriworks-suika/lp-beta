@@ -93,10 +93,14 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
 }
 
 /* === key-value（統一ギャップ／改行制御） === */
-.kv{display:grid;gap:.5rem} /* ギャップを最小＆統一 */
-.kv>div{
-  display:grid; grid-template-columns:max-content 1fr; /* ラベル列は最長幅に統一 */
-  gap:.5rem; align-items:baseline;
+.kv{
+  --label-w: 6.75rem;   /* ラベル列の幅：全行で固定（必要なら調整） */
+  display:grid; gap:.5rem;
+}
+.kv > div{
+  display:grid;
+  grid-template-columns: var(--label-w) 1fr; /* ← 全行で同じ幅 */
+  gap:.5rem; align-items:start;
   background:#fff; border-radius:1rem; box-shadow:var(--shadow); padding:1rem 1.1rem;
 }
 .kv dt{font-weight:700}
