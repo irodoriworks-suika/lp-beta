@@ -310,3 +310,30 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 }
 
 
+/* === enforce dark header/footer === */
+:root{ --brown-900:#3F2E23; } /* 未定義でもここで拾う */
+
+.site-header{
+  background: var(--brown-900) !important;
+  color: var(--offwhite) !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,.18);
+}
+.site-header .brand,
+.site-header .nav a{ color: var(--offwhite) !important; opacity: .95; }
+.site-header .nav a:hover{ opacity:1; text-decoration: underline; text-underline-offset:3px; }
+.site-header .header-cta{
+  background: var(--green) !important;
+  color:#fff !important;
+  border: 2px solid rgba(255,255,255,.18) !important;
+}
+
+/* footer と揃える */
+.site-footer{
+  background: var(--brown-900) !important;
+  color: var(--offwhite) !important;
+  border-top: none !important;
+}
+.site-footer a{ color:#fff !important; opacity:.9; }
+.site-footer a:hover{ opacity:1; text-decoration: underline; text-underline-offset:2px; }
