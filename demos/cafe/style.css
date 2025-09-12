@@ -337,3 +337,27 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 }
 .site-footer a{ color:#fff !important; opacity:.9; }
 .site-footer a:hover{ opacity:1; text-decoration: underline; text-underline-offset:2px; }
+
+/* 1行固定：左=brand / 中央=nav / 右=CTA */
+.header-grid{
+  display:grid;
+  grid-template-columns: auto 1fr auto; /* ナビが可変領域 */
+  align-items:center;
+  column-gap:.75rem;
+}
+
+/* ナビは横スクロールで折り返さない（幅が足りない時も縦落ちしない） */
+.nav{
+  display:flex; gap:.9rem; justify-content:center;
+  overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;
+  min-width:0; /* ← Gridの“はみ出し”防止に重要 */
+}
+
+/* ボタン・ブランドは折り返さない */
+.header-cta, .brand{ white-space:nowrap; }
+
+/* さらに狭い端末での微調整（任意） */
+@media (max-width: 480px){
+  .nav{ gap:.7rem; }
+  .btn.btn--mini{ padding:.44rem .66rem; border-radius:.9rem; }
+}
