@@ -111,41 +111,49 @@
   </section>
 
   <!-- === features（縦並び／交互） === -->
-  <section id="features" class="section" aria-label="こだわり">
-    <div class="container">
-      <h2 class="section__title">こだわり</h2>
+ <section id="features" class="section" aria-label="こだわり">
+  <div class="container">
+    <h2 class="section__title">こだわり</h2>
 
-      <div class="feature-row">
-        <div class="feature-text">
-          <h3>自家焙煎</h3>
-          <p>豆の状態を毎朝チェックし、湿度と焙煎時間を微調整。中深煎りを基調に、香りを閉じ込めつつ苦味はすっきり。ブラックでもミルクでも、最後の一口まで心地よい余韻を目指しています。</p>
-        </div>
+    <div class="features-stack">
+
+      <!-- 1) 自家焙煎｜スマホ: 写真→文／PC: 文←→写真（左文・右写真） -->
+      <article class="feature-card">
         <figure class="feature-media">
           <img src="img/feature_roast.png" width="1600" height="1000" decoding="async" loading="lazy" alt="自家焙煎のイメージ">
         </figure>
-      </div>
+        <div class="feature-body">
+          <h3>自家焙煎</h3>
+          <p>豆の状態を毎朝チェックし、湿度と焙煎時間を微調整。中深煎りを基調に、香りを閉じ込めつつ苦味はすっきり。ブラックでもミルクでも、最後の一口まで心地よい余韻を目指しています。</p>
+        </div>
+      </article>
 
-      <div class="feature-row feature-row--reverse">
+      <!-- 2) 焼きたて｜スマホ: 写真→文／PC: 画像左・文右（交互） -->
+      <article class="feature-card reverse">
         <figure class="feature-media">
           <img src="img/feature_bake.png" width="1600" height="1000" decoding="async" loading="lazy" alt="焼きたてのイメージ">
         </figure>
-        <div class="feature-text">
+        <div class="feature-body">
           <h3>焼きたて</h3>
           <p>タルトやキッシュは店内オーブンで小まめに焼成。焼き上がり時間をずらして提供することで、香り高い状態を長くキープ。素材の甘さを活かし、午後の小腹満たしにも程よいサイズ感です。</p>
         </div>
-      </div>
+      </article>
 
-      <div class="feature-row">
-        <div class="feature-text">
-          <h3>居心地</h3>
-          <p>大きな窓から自然光が入り、席間もゆったり。会話や読書の邪魔にならない音量で音楽を流し、電源のある席もご用意。短い休憩から作業時間まで、過ごし方に合わせて選べる空間です。</p>
-        </div>
+      <!-- 3) 居心地｜スマホ: 写真→文／PC: 文左・画像右 -->
+      <article class="feature-card">
         <figure class="feature-media">
           <img src="img/feature_space.png" width="1600" height="1000" decoding="async" loading="lazy" alt="居心地の良い空間のイメージ">
         </figure>
-      </div>
+        <div class="feature-body">
+          <h3>居心地</h3>
+          <p>大きな窓から自然光が入り、席間もゆったり。会話や読書の邪魔にならない音量で音楽を流し、電源のある席もご用意。短い休憩から作業時間まで、過ごし方に合わせて選べる空間です。</p>
+        </div>
+      </article>
+
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- === info（統合：店舗情報・アクセス） === -->
   <section id="info" class="section section--alt" aria-label="店舗情報・アクセス">
