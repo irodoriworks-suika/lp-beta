@@ -137,6 +137,7 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
 .kv dt{font-weight:700}
 .nowrap{white-space:nowrap}
 
+
 /* === contact（情報追加で密度UP） === */
 .contact-card{padding:var(--space-4)}
 .contact-grid{display:grid;gap:var(--space-4)}
