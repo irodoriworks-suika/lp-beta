@@ -361,3 +361,34 @@ h3 { margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
   .nav{ gap:.7rem; }
   .btn.btn--mini{ padding:.44rem .66rem; border-radius:.9rem; }
 }
+
+/* ヘッダー：縦方向に余白を確保（常に1列のまま） */
+.header-grid{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  column-gap:.75rem;
+
+  /* ↓ ここを追加（余白） */
+  padding-block: .7rem;           /* モバイル */
+  min-height: 60px;               /* ボタンより少し高く */
+}
+@media (min-width:768px){
+  .header-grid{
+    padding-block: .85rem;        /* タブレット */
+    min-height: 68px;
+  }
+}
+@media (min-width:1024px){
+  .header-grid{
+    padding-block: 1rem;          /* PC */
+    min-height: 72px;
+  }
+}
+
+/* ナビは中央で横スクロール、折返し防止（既存のまま念のため） */
+.nav{
+  display:flex; gap:.9rem; justify-content:center;
+  overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;
+  min-width:0;
+}
