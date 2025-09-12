@@ -1,10 +1,9 @@
 /* === tokens === */
 :root{
-  --indigo:#4F63C7; --sage:#8FBFA3; --ink:#1F2933; --cream:#F7F5F1;
-  --bg:#ffffff;
-  --maxw:72rem;         /* ~1152px */
-  --content:45rem;      /* ~720px 読みやすさの最適点 */
-  --r:1rem; --r2:1.5rem; --r3:2rem;
+  --indigo:#4F63C7; --sage:#8FBFA3; --ink:#1F2933; --cream:#F7F5F1; --bg:#fff;
+  --offwhite:#F7F5F1;                 /* 白系（#FFFFFF以外） */
+  --maxw:72rem; --content:45rem;
+  --r:.75rem; --r2:1rem; --r3:1.5rem;
   --space-1:.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2rem; --space-6:3rem; --space-8:4rem;
   --shadow:0 6px 24px rgba(31,41,51,.10);
   --bp-tab:768px; --bp-pc:1024px;
@@ -15,7 +14,7 @@
 html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--ink); background:var(--bg);
-  font-family:ui-sans-serif, system-ui, -apple-system, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Noto Sans JP","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;
   line-height:1.6;
 }
 img{max-width:100%; height:auto; display:block}
@@ -28,58 +27,69 @@ a{color:inherit; text-decoration:none}
 h3{margin:.25rem 0 var(--space-2); font-size:1.1rem}
 
 /* === header === */
-.site-header{position:sticky; top:0; background:rgba(255,255,255,.9); backdrop-filter:saturate(140%) blur(6px); border-bottom:1px solid #eee; z-index:20}
+.site-header{position:sticky; top:0; background:rgba(255,255,255,.92); backdrop-filter:saturate(140%) blur(6px); border-bottom:1px solid #eee; z-index:20}
 .site-header .container{display:flex; align-items:center; justify-content:space-between; padding-block:.75rem}
 .brand{font-weight:800}
-.nav{display:flex; gap:1rem; align-items:center}
-.btn--mini{padding:.5rem .8rem; border-radius:.75rem; background:var(--indigo); color:#fff; font-weight:700}
-
-/* === hero === */
-.hero{position:relative; padding:0}
-.hero__media{margin:0}
-.hero__media img{
-  width:100%; aspect-ratio:16/10; object-fit:cover; display:block;
-}
-.hero__content{
-  position:relative; margin-top:-4.5rem; /* 画像の上に重ねる余白 */
-  padding-bottom:var(--space-6);
-}
-.hero h1{margin:0 0 .5rem; font-size:clamp(1.8rem, 3.2vw + 1rem, 2.4rem); line-height:1.25}
-.hero .sub{margin:0 0 var(--space-3); color:#334}
-.cta-bar{display:flex; gap:.75rem; flex-wrap:wrap}
+.nav{display:flex; gap:.9rem; align-items:center; overflow:auto hidden}
 
 /* === buttons === */
 .btn{
-  display:inline-block; padding:.9rem 1.2rem; border-radius:var(--r2);
+  display:inline-block; padding:.9rem 1.1rem; border-radius:1rem;
   background:var(--indigo); color:#fff; font-weight:700;
   box-shadow:var(--shadow); transform:translateY(0);
   transition:transform .15s ease, box-shadow .2s ease, opacity .2s;
 }
 .btn:hover{transform:translateY(-2px)}
-.btn:active{transform:translateY(0)}
+.btn--mini{padding:.5rem .75rem; border-radius:.75rem}
 .btn--ghost{background:#fff; color:var(--indigo); border:2px solid var(--indigo)}
 .btn--sage{background:var(--sage); color:#0d2818}
 
+/* === hero === */
+.hero{position:relative; padding:0}
+.hero__media{margin:0; position:relative}
+.hero__media img{width:100%; aspect-ratio:16/10; object-fit:cover; display:block}
+/* 画像カバー（読みやすさ向上） */
+.hero__media::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  /* 下部をやや濃くする透明グラデ */
+  background:linear-gradient(180deg, rgba(31,41,51,.32) 0%, rgba(31,41,51,.26) 40%, rgba(31,41,51,.12) 100%);
+}
+.hero__content{position:relative; z-index:1; margin-top:-4.5rem; padding-bottom:var(--space-6)}
+.hero h1{margin:0 0 .5rem; color:var(--offwhite); font-size:clamp(1.8rem, 3.2vw + 1rem, 2.4rem); line-height:1.25}
+.hero .sub{margin:0 0 var(--space-3); color:var(--offwhite)}
+.cta-bar{display:flex; gap:.75rem; flex-wrap:wrap}
+
 /* === cards & rows === */
-.card{background:#fff; border-radius:var(--r2); box-shadow:var(--shadow); overflow:hidden}
+.card{background:#fff; border-radius:1rem; box-shadow:var(--shadow); overflow:hidden}
 .card figure{margin:0}
 .row{display:grid; grid-template-columns:1fr; gap:var(--space-3); padding:var(--space-3)}
-.row img{border-radius:var(--r)}
+.row img{border-radius:.75rem}
 .row__body{display:grid; gap:.5rem}
 
 /* === grids === */
-.menu-grid{
-  display:grid; gap:var(--space-4);
-  grid-template-columns:1fr 1fr; /* モバイル2列 */
-}
+.menu-grid{display:grid; gap:var(--space-4); grid-template-columns:1fr 1fr}
 .menu-grid .card{padding:var(--space-3)}
-.menu-grid img{aspect-ratio:1/1; object-fit:cover; border-radius:var(--r)}
+.menu-grid img{aspect-ratio:1/1; object-fit:cover; border-radius:.75rem}
 .menu-grid .price{font-weight:800}
 
-/* === kv list === */
+/* === features (こだわり) === */
+.features-grid{display:grid; gap:var(--space-4); grid-template-columns:1fr} /* ギャップ拡大 */
+.feature-card{padding:var(--space-4);}                                    /* 余白増やす（左右とも） */
+
+/* === key-value list === */
 .kv{display:grid; gap:.75rem}
-.kv > div{display:grid; grid-template-columns:6rem 1fr; gap:.75rem; background:#fff; border-radius:var(--r2); box-shadow:var(--shadow); padding:.9rem 1rem}
+.kv > div{
+  display:grid; grid-template-columns:6rem 1fr; gap:.75rem;
+  background:#fff; border-radius:1rem; box-shadow:var(--shadow); padding:1rem 1.1rem;
+}
 .kv dt{font-weight:700}
+
+/* === access === */
+.access-card{padding:var(--space-3)}  /* PCでは高さ調整、モバイルは通常 */
+.access-card > img{width:100%; height:auto; object-fit:cover}
+
+/* === contact === */
+.contact-card{padding:var(--space-4); text-align:left} /* 左揃え＆カード枠に合わせる */
 
 /* === footer === */
 .site-footer{border-top:1px solid #eee}
@@ -92,9 +102,15 @@ h3{margin:.25rem 0 var(--space-2); font-size:1.1rem}
   .row{grid-template-columns:1.3fr 1fr; align-items:center}
   .section__title{font-size:1.7rem}
   .hero h1{font-size:clamp(2rem, 2.6vw + 1rem, 2.6rem)}
+  .features-grid{grid-template-columns:repeat(3,1fr)} /* 3カラム化 */
 }
 @media (min-width: 1024px){ /* pc */
+  /* ヒーロー画像：画面高の8割程度に縮小（上書き） */
+  .hero__media img{aspect-ratio:auto; height:min(80vh, 700px); width:100%; object-fit:cover}
   .hero__content{margin-top:-7rem}
+  /* アクセス：同様に高さ8割 */
+  #access .access-card{min-height:80vh}
+  #access .access-card > img{height:100%}
   .menu-grid{grid-template-columns:repeat(4,1fr)}
   .container{padding-inline:var(--space-4)}
   .section__title{font-size:1.9rem}
