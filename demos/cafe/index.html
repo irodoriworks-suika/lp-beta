@@ -10,8 +10,7 @@
   <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
   <script>
-    window.dataLayer=window.dataLayer||[];
-    function gtag(){dataLayer.push(arguments);}
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
     gtag('js',new Date()); gtag('config','G-9W0QCF2510');
   </script>
 </head>
@@ -19,139 +18,127 @@
 
 <header class="site-header" aria-label="サイトヘッダー">
   <div class="container header-grid">
-    <!-- 左：お問い合わせ（左寄せ） -->
-    <a class="header-cta btn btn--mini" href="#contact">お問い合わせ</a>
-    <!-- 中央：メニュー（中央揃え） -->
+    <!-- 左：タイトル -->
+    <a class="brand" href="#top" aria-label="いろどりカフェ">いろどりカフェ</a>
+    <!-- 中央：ナビ -->
     <nav class="nav">
       <a href="#menu">メニュー</a>
       <a href="#seasonal">オススメ</a>
       <a href="#features">こだわり</a>
-      <a href="#info">店舗情報</a>
-      <a href="#access">アクセス</a>
+      <a href="#info">アクセス</a><!-- 旧：店舗情報 -->
     </nav>
-    <!-- 右：タイトル（右寄せ） -->
-    <a class="brand" href="#top" aria-label="いろどりカフェ">いろどりカフェ</a>
+    <!-- 右：お問い合わせボタン -->
+    <a class="header-cta btn btn--mini" href="#contact">お問い合わせ</a>
   </div>
 </header>
 
 <main id="top">
-  <!-- === hero === -->
+  <!-- === hero（左寄せ・縦中央／画像内に収める） === -->
   <section class="hero" aria-label="店内写真とキャッチ">
     <figure class="hero__media">
       <img src="img/cafe_hero.png" width="1600" height="1000"
            decoding="async" loading="eager" fetchpriority="high"
            alt="窓から光が差す木のテーブル席とカウンターのあるカフェ店内">
     </figure>
-
-    <!-- 画像の縦中央・左寄せ／余白維持 -->
     <div class="hero__content">
-      <div class="hero__inner container">
+      <div class="hero__inner">
         <h1>朝の一杯で、今日が整う。</h1>
         <p class="sub">焼きたてと自家焙煎。席でゆっくり、テイクアウトも。</p>
         <div class="cta-bar">
           <a class="btn" href="https://forms.gle/xxxxxxxx"
              data-gtag-event="generate_lead" data-gtag-label="hero_primary">お問い合わせ（約1分）</a>
-          <a class="btn btn--ghost" href="#access"
+          <a class="btn btn--ghost" href="#info"
              data-gtag-event="select_content" data-gtag-label="hero_access">アクセスを見る</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- === menu === -->
+  <!-- === menu（横並び1列の横スクロール） === -->
   <section id="menu" class="section" aria-label="メニュー">
     <div class="container">
       <h2 class="section__title">メニュー</h2>
-      <ul class="menu-grid">
+      <ul class="menu-row">
         <li class="card">
           <figure>
-            <img src="img/menu_coffee.png" width="1600" height="1600"
-                 decoding="async" loading="lazy" alt="ブレンドコーヒー">
-            <figcaption><h3>ブレンドコーヒー</h3><p class="price">480</p></figcaption>
+            <img src="img/menu_coffee.png" width="1600" height="1600" decoding="async" loading="lazy" alt="ブレンドコーヒー">
+            <figcaption><h3>ブレンドコーヒー</h3><p class="price">¥480</p></figcaption>
           </figure>
         </li>
         <li class="card">
           <figure>
-            <img src="img/menu_latte.png" width="1600" height="1600"
-                 decoding="async" loading="lazy" alt="カフェラテ">
-            <figcaption><h3>カフェラテ</h3><p class="price">560</p></figcaption>
+            <img src="img/menu_latte.png" width="1600" height="1600" decoding="async" loading="lazy" alt="カフェラテ">
+            <figcaption><h3>カフェラテ</h3><p class="price">¥560</p></figcaption>
           </figure>
         </li>
         <li class="card">
           <figure>
-            <img src="img/menu_cake.png" width="1600" height="1600"
-                 decoding="async" loading="lazy" alt="季節のケーキ">
-            <figcaption><h3>季節のケーキ</h3><p class="price">620</p></figcaption>
+            <img src="img/menu_cake.png" width="1600" height="1600" decoding="async" loading="lazy" alt="季節のケーキ">
+            <figcaption><h3>季節のケーキ</h3><p class="price">¥620</p></figcaption>
           </figure>
         </li>
         <li class="card">
           <figure>
-            <img src="img/menu_quiche.png" width="1600" height="1600"
-                 decoding="async" loading="lazy" alt="キッシュ">
-            <figcaption><h3>キッシュ</h3><p class="price">640</p></figcaption>
+            <img src="img/menu_quiche.png" width="1600" height="1600" decoding="async" loading="lazy" alt="キッシュ">
+            <figcaption><h3>キッシュ</h3><p class="price">¥640</p></figcaption>
           </figure>
         </li>
       </ul>
     </div>
   </section>
 
-  <!-- === seasonal (オススメ/高さ8割・2カラム) === -->
+  <!-- === seasonal（2カラム／高さ8割≒700px） === -->
   <section id="seasonal" class="section section--alt" aria-label="オススメ">
     <div class="container">
       <h2 class="section__title">オススメ</h2>
       <div class="seasonal-grid seasonal-box">
         <article class="card seasonal-card">
-          <img src="img/seasonal_autumn.png" width="1600" height="1000"
-               decoding="async" loading="lazy" alt="秋限定パンプキンラテ">
+          <img src="img/seasonal_autumn.png" width="1600" height="1000" decoding="async" loading="lazy" alt="秋限定パンプキンラテ">
           <div class="seasonal__body">
             <h3>パンプキンラテ</h3>
-            <p>やさしい甘さとスパイスで、ほっと一息。</p>
+            <p>かぼちゃのやさしい甘さにシナモンを少し。ほっと落ち着く一杯を、ミルク多めでまろやかに仕上げました。</p>
           </div>
         </article>
         <article class="card seasonal-card">
-          <img src="img/seasonal_apple.png" width="1600" height="1000"
-               decoding="async" loading="lazy" alt="林檎タルト">
+          <img src="img/seasonal_apple.png" width="1600" height="1000" decoding="async" loading="lazy" alt="林檎タルト">
           <div class="seasonal__body">
             <h3>林檎タルト</h3>
-            <p>焼きたての香り。バニラアイスを添えて。</p>
+            <p>旬の林檎をバターでソテーし、香ばしいタルト生地に重ねました。温かい状態にアイスを添えるのがおすすめ。</p>
           </div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- === features（縦並び：画像と文の左右を交互） === -->
+  <!-- === features（縦並び／交互／説明約100字） === -->
   <section id="features" class="section" aria-label="こだわり">
     <div class="container">
       <h2 class="section__title">こだわり</h2>
 
-      <!-- 1) 自家焙煎｜左テキスト／右画像 -->
       <div class="feature-row">
         <div class="feature-text">
           <h3>自家焙煎</h3>
-          <p>香りを閉じ込めた中深煎り。すっきり後味。</p>
+          <p>豆の状態を毎朝チェックし、湿度と焙煎時間を微調整。中深煎りを基調に、香りを閉じ込めつつ苦味はすっきり。ブラックでもミルクでも、最後の一口まで心地よい余韻を目指しています。</p>
         </div>
         <figure class="feature-media">
           <img src="img/feature_roast.png" width="1600" height="1000" decoding="async" loading="lazy" alt="自家焙煎のイメージ">
         </figure>
       </div>
 
-      <!-- 2) 焼きたて｜左画像／右テキスト -->
       <div class="feature-row feature-row--reverse">
         <figure class="feature-media">
           <img src="img/feature_bake.png" width="1600" height="1000" decoding="async" loading="lazy" alt="焼きたてのイメージ">
         </figure>
         <div class="feature-text">
           <h3>焼きたて</h3>
-          <p>毎朝焼くタルトとキッシュ。サクッと香ばしく。</p>
+          <p>タルトやキッシュは店内オーブンで小まめに焼成。焼き上がり時間をずらして提供することで、香り高い状態を長くキープ。素材の甘さを活かし、午後の小腹満たしにも程よいサイズ感です。</p>
         </div>
       </div>
 
-      <!-- 3) 居心地｜左テキスト／右画像 -->
       <div class="feature-row">
         <div class="feature-text">
           <h3>居心地</h3>
-          <p>光が入る窓辺。ゆったり席で長居も歓迎。</p>
+          <p>大きな窓から自然光が入り、席間もゆったり。会話や読書の邪魔にならない音量で音楽を流し、電源のある席もご用意。短い休憩から作業時間まで、過ごし方に合わせて選べる空間です。</p>
         </div>
         <figure class="feature-media">
           <img src="img/feature_space.png" width="1600" height="1000" decoding="async" loading="lazy" alt="居心地の良い空間のイメージ">
@@ -160,38 +147,32 @@
     </div>
   </section>
 
-  <!-- === info === -->
-  <section id="info" class="section section--alt" aria-label="店舗情報">
-    <div class="container content">
-      <h2 class="section__title">店舗情報</h2>
-      <dl class="kv">
-        <div><dt>住所</dt><dd>〇〇区〇〇 1-2-3</dd></div>
-        <div><dt>営業時間</dt><dd>平日 8:00–19:00／土日 9:00–18:00</dd></div>
-        <div><dt>定休日</dt><dd>火</dd></div>
-        <div><dt>席数</dt><dd>22</dd></div>
-        <div><dt>支払</dt><dd>現金／各種キャッシュレス</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- === access（PC高さ8割） === -->
-  <section id="access" class="section" aria-label="アクセス">
-    <div class="container">
-      <h2 class="section__title">アクセス</h2>
-      <div class="row card access-card">
-        <img src="img/map_thumb.png" width="1600" height="1000"
-             decoding="async" loading="lazy" alt="店舗周辺地図サムネイル">
-        <div class="row__body">
-          <p>〇〇駅 東口より徒歩5分。大通り沿い、青い看板が目印です。</p>
-          <a class="btn btn--accent" href="https://maps.google.com/?q=いろどりカフェ"
-             data-gtag-event="select_content" data-gtag-label="maps_btn">Googleマップを開く</a>
-        </div>
+  <!-- === info（統合：店舗情報・アクセス） === -->
+  <section id="info" class="section section--alt" aria-label="店舗情報・アクセス">
+    <div class="container info-grid">
+      <!-- 左：地図（東京スカイツリー） -->
+      <div class="map-wrap card">
+        <iframe
+          title="東京スカイツリー周辺地図"
+          src="https://www.google.com/maps?q=Tokyo+Skytree,1-1-2+Oshiage,Sumida+City,Tokyo&hl=ja&z=16&output=embed"
+          width="600" height="450" loading="lazy" style="border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <!-- 右：店舗情報 -->
+      <div class="content">
+        <h2 class="section__title">店舗情報・アクセス</h2>
+        <dl class="kv">
+          <div><dt>住所</dt><dd>東京都墨田区押上1-1-2（東京スカイツリー）</dd></div>
+          <div><dt>営業時間</dt><dd>平日 8:00–19:00／土日 9:00–18:00</dd></div>
+          <div><dt>定休日</dt><dd>火</dd></div>
+          <div><dt>席数</dt><dd>22</dd></div>
+          <div><dt>支払</dt><dd>現金／各種キャッシュレス</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <!-- === contact（左揃え・枠合わせ） === -->
-  <section id="contact" class="section section--alt" aria-label="お問い合わせ">
+  <!-- === contact（左揃え・前枠に合わせる） === -->
+  <section id="contact" class="section" aria-label="お問い合わせ">
     <div class="container">
       <div class="card contact-card content">
         <h2 class="section__title">お問い合わせ</h2>
