@@ -148,6 +148,15 @@ h3{margin:.25rem 0 var(--space-2);font-size:1.15rem;color:var(--brown)}
   .contact-grid{grid-template-columns:1.2fr 1fr;align-items:start}
 }
 
+/* === contact：Q/A === */
+.qa{display:grid; gap:.75rem; margin:0}
+.qa > div{background:#fff; border-radius:1rem; box-shadow:var(--shadow); padding:.9rem 1rem}
+.qa dt{margin:0 0 .25rem; font-weight:700; color:var(--brown)}
+.qa dd{margin:0}
+.qa dt::before{content:"Q "; font-weight:800; color:var(--green)}
+.qa dd::before{content:"A "; font-weight:800; color:var(--brown); margin-right:.25rem}
+
+
 /* === footer === */
 .site-footer{border-top:1px solid #e6ded3}
 .site-footer .container{display:flex;justify-content:center}
