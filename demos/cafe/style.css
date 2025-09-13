@@ -58,7 +58,7 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 /* =========================================================
    ヘッダー（PC/タブレット：横1列 固定）
    - 左：ブランド / 中央：ナビ / 右：CTA
-   - モバイルは「ハンバーガー + ドロワー」に切り替え（下段）
+   - モバイルは「ハンバーガー + ドロワー」に切り替え
    ========================================================= */
 .site-header{
   position: sticky; top: 0; z-index: 20;
@@ -69,7 +69,7 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 .header-grid{
   display: grid; grid-template-columns: auto 1fr auto;
   align-items: center; column-gap: .75rem;
-  padding-block: .7rem; min-height: 60px;      /* 余白と最小高で“窮屈さ”回避 */
+  padding-block: .7rem; min-height: 60px;        /* 縦余白＋最小高 */
 }
 @media (min-width: 768px){
   .header-grid{ padding-block: .85rem; min-height: 68px; }
@@ -80,11 +80,11 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 .brand{ justify-self: start; font-weight: 800; color: var(--offwhite); white-space: nowrap; }
 .header-cta{ justify-self: end; white-space: nowrap; }
 
-/* ナビ：横スクロールで折返し防止（幅が足りない時だけスクロール） */
+/* ナビ：中央寄せ・幅不足時は横スクロール */
 .nav{
   display: flex; gap: .9rem; justify-content: center;
   overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;
-  min-width: 0;  /* Grid内のはみ出し防止に重要 */
+  min-width: 0;  /* Grid内のはみ出し防止 */
 }
 .nav a{ color: var(--offwhite); opacity: .95; }
 .nav a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
@@ -94,20 +94,19 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 
 /* =========================================================
    モバイル：ハンバーガー + ドロワー
-   - HTML前提：<input.nav-toggle>（非表示）→ <div.container> → <div.nav-drawer>
-   - ハンバーガーは右端（ヘッダーの右カラム）
+   - 構造：#nav-toggle（隠し） → .container → .nav-drawer（兄弟）
    ========================================================= */
-/* トグル本体は画面外に隠す（CSSでだけ制御） */
+/* トグル本体は画面外に隠す（CSS制御のみ） */
 .nav-toggle{
   position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
 }
 
-/* ハンバーガー（3本線） */
+/* ハンバーガー（3本線）を右端に配置 */
 .hamburger{
-  display: none;         /* PC/タブレットでは非表示 */
-  width: 44px; height: 44px;         /* 推奨タップ領域 */
-  justify-self: end;                  /* 右端に配置 */
-  cursor: pointer; position: relative; z-index: 30;
+  display: none;                    /* PC/タブは非表示 */
+  width: 44px; height: 44px;        /* 推奨タップ領域 */
+  justify-self: end; cursor: pointer;
+  position: relative; z-index: 30;
 }
 .hamburger span{
   position: absolute; left: 10px; right: 10px; height: 2px;
@@ -118,13 +117,13 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 .hamburger span:nth-child(2){ top: 21px; }
 .hamburger span:nth-child(3){ top: 28px; }
 
-/* モバイル時のみ表示切替：ナビ/CTAを隠してハンバーガーを出す */
+/* モバイル時：ナビ/CTAを隠し、ハンバーガーを表示 */
 @media (max-width: 767.98px){
   .hamburger{ display: inline-block; }
-  .nav, .header-cta{ display: none; } /* PC要素はしまう */
+  .nav, .header-cta{ display: none; }
 }
 
-/* ドロワー本体（閉：高さ0 / 開：高さ自動） */
+/* ドロワー（閉：高さ0／開：高さ自動） */
 .nav-drawer{
   background: var(--brown-900); color: var(--offwhite);
   overflow: hidden; max-height: 0; opacity: .0;
@@ -134,15 +133,13 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 .drawer-nav{ display: flex; flex-direction: column; gap: .75rem; }
 .drawer-nav a{ padding: .25rem 0; color: var(--offwhite); opacity: .95; }
 .drawer-nav a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
-.drawer-cta{ margin-top: 1rem; width: 100%; }
 
-/* チェックONで：ハンバーガーは“X”に、ドロワー展開 */
+/* チェックONで：アイコンは“X”、ドロワー展開（JS不要） */
 @media (max-width: 767.98px){
-  .nav-toggle:checked ~ .container .hamburger span:nth-child(1){ top: 21px; transform: rotate(45deg); }
-  .nav-toggle:checked ~ .container .hamburger span:nth-child(2){ opacity: 0; }
-  .nav-toggle:checked ~ .container .hamburger span:nth-child(3){ top: 21px; transform: rotate(-45deg); }
-
-  .nav-toggle:checked ~ .nav-drawer{
+  #nav-toggle:checked ~ .container .hamburger span:nth-child(1){ top: 21px; transform: rotate(45deg); }
+  #nav-toggle:checked ~ .container .hamburger span:nth-child(2){ opacity: 0; }
+  #nav-toggle:checked ~ .container .hamburger span:nth-child(3){ top: 21px; transform: rotate(-45deg); }
+  #nav-toggle:checked ~ .nav-drawer{
     max-height: 60vh; padding: .9rem var(--space-3) 1.2rem; opacity: 1;
   }
 }
@@ -174,12 +171,12 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 @media (max-width: 767.98px){
   .hero__media img{ aspect-ratio: 3 / 4; object-fit: cover; }
 }
-/* 読みやすさのためのカバー */
+/* 可読性のカバー */
 .hero__media::after{
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.20) 50%, rgba(0,0,0,.12) 100%);
 }
-/* テキストを左寄せ・縦中央に配置（左端は常にcontainerと一致） */
+/* テキストを左寄せ・縦中央。左端は常に .container と一致（狭幅でも余白を確保） */
 .hero__content{ position: absolute; inset: 0; display: flex; align-items: center; justify-content: flex-start; }
 .hero__inner{
   padding-left: max(var(--space-3), calc((100vw - var(--maxw))/2 + var(--space-3)));
@@ -319,7 +316,7 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
   padding: .35rem .6rem; font-size: .9rem; background: #fff;
 }
 
-/* QA（details/summary のJS不要トグル） */
+/* QA：details/summary でJS不要のトグル */
 .qa-accordion{ display: grid; gap: .75rem; }
 .qa-panel{ background: #fff; border-radius: 1rem; box-shadow: var(--shadow); overflow: hidden; }
 .qa-accordion summary{
@@ -355,15 +352,3 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 .site-footer small{ color: rgba(246,243,236,.92); }
 .site-footer a{ color: #fff; opacity: .9; }
 .site-footer a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 2px; }
-
-@media (max-width:767.98px){
-  /* 開くとドロワーの高さとパディングが付く */
-  #nav-toggle:checked ~ .nav-drawer{
-    max-height:60vh; padding:.9rem var(--space-3) 1.2rem; opacity:1;
-  }
-  /* アイコンをXに変形（任意） */
-  #nav-toggle:checked ~ .container .hamburger span:nth-child(1){ top:21px; transform:rotate(45deg); }
-  #nav-toggle:checked ~ .container .hamburger span:nth-child(2){ opacity:0; }
-  #nav-toggle:checked ~ .container .hamburger span:nth-child(3){ top:21px; transform:rotate(-45deg); }
-}
-
