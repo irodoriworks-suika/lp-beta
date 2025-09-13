@@ -96,53 +96,56 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
    モバイル：ハンバーガー + ドロワー
    - 構造：#nav-toggle（隠し） → .container → .nav-drawer（兄弟）
    ========================================================= */
-/* トグル本体は画面外に隠す（CSS制御のみ） */
-.nav-toggle{
-  position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;
-}
-
-/* ハンバーガー（3本線）を右端に配置 */
-.hamburger{
-  display: none;                    /* PC/タブは非表示 */
-  width: 44px; height: 44px;        /* 推奨タップ領域 */
-  justify-self: end; cursor: pointer;
-  position: relative; z-index: 30;
-}
-.hamburger span{
-  position: absolute; left: 10px; right: 10px; height: 2px;
-  background: #fff; border-radius: 2px;
-  transform-origin: center; transition: transform .2s ease, top .2s ease, opacity .2s ease;
-}
-.hamburger span:nth-child(1){ top: 14px; }
-.hamburger span:nth-child(2){ top: 21px; }
-.hamburger span:nth-child(3){ top: 28px; }
-
-/* モバイル時：ナビ/CTAを隠し、ハンバーガーを表示 */
+/* モバイルでPCナビ/CTAをしまう */
 @media (max-width: 767.98px){
-  .hamburger{ display: inline-block; }
-  .nav, .header-cta{ display: none; }
+  .site-header .nav,
+  .site-header .header-cta{ display:none; }
 }
 
-/* ドロワー（閉：高さ0／開：高さ自動） */
+/* ハンバーガーボタン（右端） */
+.hamburger-btn{
+  display:none; width:44px; height:44px; position:relative; cursor:pointer;
+  justify-self:end; z-index:40; background:transparent; border:0; padding:0;
+}
+.hamburger-btn span{
+  position:absolute; left:10px; right:10px; height:2px; background:#fff; border-radius:2px;
+  transition:transform .2s ease, top .2s ease, opacity .2s ease;
+}
+.hamburger-btn span:nth-child(1){ top:14px; }
+.hamburger-btn span:nth-child(2){ top:21px; }
+.hamburger-btn span:nth-child(3){ top:28px; }
+@media (max-width: 767.98px){ .hamburger-btn{ display:inline-block; } }
+
+/* 右からスライドするドロワー */
 .nav-drawer{
-  background: var(--brown-900); color: var(--offwhite);
-  overflow: hidden; max-height: 0; opacity: .0;
-  border-top: 1px solid rgba(255,255,255,.12);
-  transition: max-height .25s ease, padding .25s ease, opacity .2s ease;
+  position:fixed; top:0; right:0; bottom:0; width:min(82vw,360px);
+  background:var(--brown-900); color:var(--offwhite);
+  transform:translateX(100%); transition:transform .25s ease;
+  padding:1rem var(--space-3) calc(env(safe-area-inset-bottom) + 1rem);
+  display:flex; flex-direction:column; gap:1rem; z-index:35;
+  box-shadow: -12px 0 24px rgba(0,0,0,.18);
 }
-.drawer-nav{ display: flex; flex-direction: column; gap: .75rem; }
-.drawer-nav a{ padding: .25rem 0; color: var(--offwhite); opacity: .95; }
-.drawer-nav a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+.drawer-nav{ display:flex; flex-direction:column; gap:.9rem; }
+.drawer-nav a{ color:var(--offwhite); opacity:.95; }
+.drawer-nav a:hover{ opacity:1; text-decoration:underline; text-underline-offset:3px; }
+.drawer-cta{ margin-top:auto; } /* 一番下に固定 */
 
-/* チェックONで：アイコンは“X”、ドロワー展開（JS不要） */
-@media (max-width: 767.98px){
-  #nav-toggle:checked ~ .container .hamburger span:nth-child(1){ top: 21px; transform: rotate(45deg); }
-  #nav-toggle:checked ~ .container .hamburger span:nth-child(2){ opacity: 0; }
-  #nav-toggle:checked ~ .container .hamburger span:nth-child(3){ top: 21px; transform: rotate(-45deg); }
-  #nav-toggle:checked ~ .nav-drawer{
-    max-height: 60vh; padding: .9rem var(--space-3) 1.2rem; opacity: 1;
-  }
+/* 背景オーバーレイ */
+.backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.4);
+  opacity:0; pointer-events:none; transition:opacity .2s ease; z-index:30;
 }
+
+/* 開いた状態（bodyに付与） */
+.is-drawer-open .nav-drawer{ transform:translateX(0); }
+.is-drawer-open .backdrop{ opacity:1; pointer-events:auto; }
+.no-scroll{ overflow:hidden; } /* スクロール固定 */
+
+/* Xに変形（任意） */
+.is-drawer-open .hamburger-btn span:nth-child(1){ top:21px; transform:rotate(45deg); }
+.is-drawer-open .hamburger-btn span:nth-child(2){ opacity:0; }
+.is-drawer-open .hamburger-btn span:nth-child(3){ top:21px; transform:rotate(-45deg); }
+
 
 /* =========================================================
    ボタン（共通）
