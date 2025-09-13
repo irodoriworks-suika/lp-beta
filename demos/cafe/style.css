@@ -311,3 +311,80 @@ h3{ margin:.25rem 0 var(--space-2); font-size:1.15rem; color:var(--brown); }
   }
 }
 
+/* =========================================================
+   Header：ハンバーガー（モバイルのみ有効）
+   - PC/タブレット：従来どおり横一列（brand/nav/cta）
+   - モバイル：brand + hamburger ／ 押下で下にドロワー展開
+   ========================================================= */
+
+/* トグル本体は画面外に隠す（CSSだけで制御） */
+.nav-toggle{
+  position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;
+}
+
+/* ハンバーガーアイコン（3本線） */
+.hamburger{
+  display:none;                          /* デフォは非表示（PC/タブレット） */
+  width:34px; height:34px; cursor:pointer;
+  justify-self:end;
+  position:relative;
+}
+.hamburger::before, .hamburger::after, .hamburger{
+  /* 中央線＝要素本体、上下線＝疑似要素で描画 */
+}
+.hamburger::before, .hamburger::after{
+  content:""; position:absolute; left:6px; right:6px; height:2px; background:#fff;
+  transition:transform .2s ease, top .2s ease, opacity .2s ease;
+}
+.hamburger::before{ top:11px; }
+.hamburger::after{  top:21px; }
+/* 本体の中央線 */
+.hamburger{ background:linear-gradient(#fff,#fff) center 16px / calc(100% - 12px) 2px no-repeat; }
+
+/* モバイルでのみハンバーガー表示＆nav/cta 非表示 */
+@media (max-width: 767.98px){
+  .hamburger{ display:inline-block; }
+  .nav, .header-cta{ display:none; }    /* PC要素はしまう */
+}
+
+/* ドロワー：閉＝高さ0／開＝高さ自動。レイアウトは“押し下げ式”で崩れにくい */
+.nav-drawer{
+  background:var(--brown-900); color:var(--offwhite);
+  overflow:hidden; max-height:0; transition:max-height .25s ease, padding .25s ease, opacity .2s ease;
+  opacity:.0; border-top:1px solid rgba(255,255,255,.12);
+}
+.drawer-nav{
+  display:flex; flex-direction:column; gap:.75rem;
+}
+.drawer-nav a{ padding:.25rem 0; color:var(--offwhite); opacity:.95; }
+.drawer-nav a:hover{ opacity:1; text-decoration:underline; text-underline-offset:3px; }
+.drawer-cta{ margin-top:1rem; width:100%; }
+
+/* チェックONで開く */
+@media (max-width: 767.98px){
+  .nav-toggle:checked ~ .nav-drawer{
+    max-height: 60vh; padding: .9rem var(--space-3) 1.2rem; opacity:1;
+  }
+  /* “X”に変形 */
+  .nav-toggle:checked ~ .container .hamburger{
+    background:none;                     /* 中央線を消す */
+  }
+  .nav-toggle:checked ~ .container .hamburger::before{
+    top:16px; transform:rotate(45deg);
+  }
+  .nav-toggle:checked ~ .container .hamburger::after{
+    top:16px; transform:rotate(-45deg);
+  }
+}
+
+/* =========================================================
+   Hero：スマホだけ“縦長”に（PC/タブは従来の比率のまま）
+   ========================================================= */
+@media (max-width: 767.98px){
+  .hero__media img{
+    aspect-ratio: 3 / 4;  /* 縦長に。横幅はそのまま、object-fitでトリミング */
+    object-fit: cover;
+  }
+}
+
+
