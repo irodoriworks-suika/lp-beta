@@ -352,3 +352,10 @@ h3{ margin: .25rem 0 var(--space-2); font-size: 1.15rem; color: var(--brown); }
 .site-footer small{ color: rgba(246,243,236,.92); }
 .site-footer a{ color: #fff; opacity: .9; }
 .site-footer a:hover{ opacity: 1; text-decoration: underline; text-underline-offset: 2px; }
+
+/* モバイル幅ではヘッダーCTAを必ず隠す（btnの後勝ち対策） */
+@media (max-width: 767.98px){
+  .site-header .header-cta{ display: none; }   /* ← 末尾に置くこと */
+  /* （必要なら）ナビもここで明示 */
+  .site-header .nav{ display: none; }
+}
