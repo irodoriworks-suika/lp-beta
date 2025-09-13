@@ -17,18 +17,37 @@
 <body>
 
 <header class="site-header" aria-label="サイトヘッダー">
+  <!-- ハンバーガーのトグル（CSSで使うだけ。画面には出さない） -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+
   <div class="container header-grid">
-    <!-- 左：タイトル -->
+    <!-- 左：ブランド -->
     <a class="brand" href="#top" aria-label="いろどりカフェ">いろどりカフェ</a>
-    <!-- 中央：ナビ -->
-    <nav class="nav">
+
+    <!-- 中央：ナビ（PC/タブレットのみ表示） -->
+    <nav class="nav" aria-label="グローバルナビ">
       <a href="#menu">メニュー</a>
       <a href="#seasonal">オススメ</a>
       <a href="#features">こだわり</a>
       <a href="#info">アクセス</a>
     </nav>
-    <!-- 右：お問い合わせボタン -->
+
+    <!-- 右：お問い合わせ（PC/タブレットのみ表示） -->
     <a class="header-cta btn btn--mini" href="#contact">お問い合わせ</a>
+
+    <!-- 右端：ハンバーガー（モバイルのみ表示） -->
+    <label for="nav-toggle" class="hamburger" aria-label="メニュー"></label>
+  </div>
+
+  <!-- モバイル時のドロワー：ナビ＋お問い合わせを内包（押すと開閉） -->
+  <div class="nav-drawer" id="site-menu" aria-label="モバイルメニュー">
+    <nav class="drawer-nav">
+      <a href="#menu">メニュー</a>
+      <a href="#seasonal">オススメ</a>
+      <a href="#features">こだわり</a>
+      <a href="#info">アクセス</a>
+    </nav>
+    <a class="drawer-cta btn" href="#contact">お問い合わせ</a>
   </div>
 </header>
 
