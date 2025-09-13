@@ -6,8 +6,8 @@
   <title>いろどりカフェ｜朝の一杯で、今日が整う。</title>
   <meta name="description" content="焼きたてと自家焙煎。席でゆっくり、テイクアウトも。">
   <link rel="preload" as="image" href="img/cafe_hero.png">
-  <link rel="stylesheet" href="style.css">
-  <!-- GA4 -->
+  <link rel="stylesheet" href="style.css?v=20250912-4">
+  <!-- GA4（任意） -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W0QCF2510"></script>
   <script>
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
@@ -17,7 +17,7 @@
 <body>
 
 <header class="site-header" aria-label="サイトヘッダー">
-  <!-- ハンバーガーのトグル（CSSで使うだけ。画面には出さない） -->
+  <!-- モバイル用：CSSトグル（JS不要） -->
   <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
 
   <div class="container header-grid">
@@ -36,12 +36,12 @@
     <a class="header-cta btn btn--mini" href="#contact">お問い合わせ</a>
 
     <!-- 右端：ハンバーガー（モバイルのみ表示） -->
-   <label for="nav-toggle" class="hamburger" aria-label="メニュー" aria-controls="site-menu">
-  <span></span><span></span><span></span>
-</label>
+    <label for="nav-toggle" class="hamburger" aria-label="メニュー" aria-controls="site-menu">
+      <span></span><span></span><span></span>
+    </label>
+  </div><!-- /.header-grid -->
 
-
-  <!-- モバイル時のドロワー：ナビ＋お問い合わせを内包（押すと開閉） -->
+  <!-- モバイルのドロワー：ナビのみ（お問い合わせは非表示のご要望に沿って未配置） -->
   <div class="nav-drawer" id="site-menu" aria-label="モバイルメニュー">
     <nav class="drawer-nav">
       <a href="#menu">メニュー</a>
@@ -53,7 +53,7 @@
 </header>
 
 <main id="top">
-  <!-- === hero（左寄せ・縦中央／画像内に収める） === -->
+  <!-- === hero：画像上テキスト（左端は .container と一致） === -->
   <section class="hero" aria-label="店内写真とキャッチ">
     <figure class="hero__media">
       <img src="img/cafe_hero.png" width="1600" height="1000"
@@ -61,7 +61,7 @@
            alt="窓から光が差す木のテーブル席とカウンターのあるカフェ店内">
     </figure>
     <div class="hero__content">
-      <div class="hero__inner container">
+      <div class="hero__inner">
         <h1>朝の一杯で、今日が整う。</h1>
         <p class="sub">焼きたてと自家焙煎。席でゆっくり、テイクアウトも。</p>
         <div class="cta-bar">
@@ -74,7 +74,7 @@
     </div>
   </section>
 
-  <!-- === menu（横並び1列の横スクロール） === -->
+  <!-- === メニュー（横スクロール） === -->
   <section id="menu" class="section" aria-label="メニュー">
     <div class="container">
       <h2 class="section__title">メニュー</h2>
@@ -107,11 +107,11 @@
     </div>
   </section>
 
-  <!-- === seasonal（2カラム／高さ8割≒700px） === -->
+  <!-- === オススメ（2カラム） === -->
   <section id="seasonal" class="section section--alt" aria-label="オススメ">
     <div class="container">
       <h2 class="section__title">オススメ</h2>
-      <div class="seasonal-grid seasonal-box">
+      <div class="seasonal-grid">
         <article class="card seasonal-card">
           <img src="img/seasonal_autumn.png" width="1600" height="1000" decoding="async" loading="lazy" alt="秋限定パンプキンラテ">
           <div class="seasonal__body">
@@ -130,59 +130,52 @@
     </div>
   </section>
 
-  <!-- === features（縦並び／交互） === -->
- <section id="features" class="section" aria-label="こだわり">
-  <div class="container">
-    <h2 class="section__title">こだわり</h2>
+  <!-- === こだわり（写真＋文章を同一カード） === -->
+  <section id="features" class="section" aria-label="こだわり">
+    <div class="container">
+      <h2 class="section__title">こだわり</h2>
 
-    <div class="features-stack">
+      <div class="features-stack">
+        <article class="feature-card">
+          <figure class="feature-media">
+            <img src="img/feature_roast.png" width="1600" height="1000" decoding="async" loading="lazy" alt="自家焙煎のイメージ">
+          </figure>
+          <div class="feature-body">
+            <h3>自家焙煎</h3>
+            <p>豆の状態を毎朝チェックし、湿度と焙煎時間を微調整。中深煎りを基調に、香りを閉じ込めつつ苦味はすっきり。ブラックでもミルクでも、最後の一口まで心地よい余韻を目指しています。</p>
+          </div>
+        </article>
 
-      <!-- 1) 自家焙煎｜スマホ: 写真→文／PC: 文←→写真（左文・右写真） -->
-      <article class="feature-card">
-        <figure class="feature-media">
-          <img src="img/feature_roast.png" width="1600" height="1000" decoding="async" loading="lazy" alt="自家焙煎のイメージ">
-        </figure>
-        <div class="feature-body">
-          <h3>自家焙煎</h3>
-          <p>豆の状態を毎朝チェックし、湿度と焙煎時間を微調整。中深煎りを基調に、香りを閉じ込めつつ苦味はすっきり。ブラックでもミルクでも、最後の一口まで心地よい余韻を目指しています。</p>
-        </div>
-      </article>
+        <article class="feature-card reverse">
+          <figure class="feature-media">
+            <img src="img/feature_bake.png" width="1600" height="1000" decoding="async" loading="lazy" alt="焼きたてのイメージ">
+          </figure>
+          <div class="feature-body">
+            <h3>焼きたて</h3>
+            <p>タルトやキッシュは店内オーブンで小まめに焼成。焼き上がり時間をずらして提供することで、香り高い状態を長くキープ。素材の甘さを活かし、午後の小腹満たしにも程よいサイズ感です。</p>
+          </div>
+        </article>
 
-      <!-- 2) 焼きたて｜スマホ: 写真→文／PC: 画像左・文右（交互） -->
-      <article class="feature-card reverse">
-        <figure class="feature-media">
-          <img src="img/feature_bake.png" width="1600" height="1000" decoding="async" loading="lazy" alt="焼きたてのイメージ">
-        </figure>
-        <div class="feature-body">
-          <h3>焼きたて</h3>
-          <p>タルトやキッシュは店内オーブンで小まめに焼成。焼き上がり時間をずらして提供することで、香り高い状態を長くキープ。素材の甘さを活かし、午後の小腹満たしにも程よいサイズ感です。</p>
-        </div>
-      </article>
-
-      <!-- 3) 居心地｜スマホ: 写真→文／PC: 文左・画像右 -->
-      <article class="feature-card">
-        <figure class="feature-media">
-          <img src="img/feature_space.png" width="1600" height="1000" decoding="async" loading="lazy" alt="居心地の良い空間のイメージ">
-        </figure>
-        <div class="feature-body">
-          <h3>居心地</h3>
-          <p>大きな窓から自然光が入り、席間もゆったり。会話や読書の邪魔にならない音量で音楽を流し、電源のある席もご用意。短い休憩から作業時間まで、過ごし方に合わせて選べる空間です。</p>
-        </div>
-      </article>
-
+        <article class="feature-card">
+          <figure class="feature-media">
+            <img src="img/feature_space.png" width="1600" height="1000" decoding="async" loading="lazy" alt="居心地の良い空間のイメージ">
+          </figure>
+          <div class="feature-body">
+            <h3>居心地</h3>
+            <p>大きな窓から自然光が入り、席間もゆったり。会話や読書の邪魔にならない音量で音楽を流し、電源のある席もご用意。短い休憩から作業時間まで、過ごし方に合わせて選べる空間です。</p>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- === info（統合：店舗情報・アクセス） === -->
+  <!-- === 店舗情報・アクセス === -->
   <section id="info" class="section section--alt" aria-label="店舗情報・アクセス">
     <div class="container">
-      <!-- タイトルを先に出す（地図が見出しより前に出ないよう修正） -->
       <h2 class="section__title">店舗情報・アクセス</h2>
 
       <div class="info-grid">
-        <!-- 左：地図（東京スカイツリー） -->
+        <!-- 左：地図（モバイル=正方形／タブレット以上=右カラム高さにフィット） -->
         <div class="map-wrap card">
           <iframe
             title="東京スカイツリー周辺地図"
@@ -190,7 +183,7 @@
             width="600" height="450" loading="lazy" style="border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-        <!-- 右：店舗情報（住所を2段／ラベルとのギャップを統一＆最小化） -->
+        <!-- 右：店舗情報（ラベル列幅を固定／住所は3行） -->
         <div class="content">
           <dl class="kv">
             <div>
@@ -201,7 +194,6 @@
                 <span class="nowrap">東京スカイツリー</span>
               </dd>
             </div>
-
             <div><dt>営業時間</dt><dd>平日 8:00–19:00／土日祝 9:00–18:00</dd></div>
             <div><dt>定休日</dt><dd>火曜日</dd></div>
             <div><dt>席数</dt><dd>22席</dd></div>
@@ -212,7 +204,7 @@
     </div>
   </section>
 
-  <!-- === contact（情報を追加して“寂しさ”改善） === -->
+  <!-- === お問い合わせ === -->
   <section id="contact" class="section" aria-label="お問い合わせ">
     <div class="container">
       <div class="card contact-card">
@@ -231,37 +223,35 @@
               <li>個人情報は用途限定</li>
             </ul>
           </div>
-<div class="contact-side">
-  <h3>よくあるご相談</h3>
+          <div class="contact-side">
+            <h3>よくあるご相談</h3>
 
-  <div class="qa-accordion">
-<!-- 混雑時間 -->
-<details class="qa-panel">
-  <summary><span class="q-badge">Q</span> 混雑時間は？</summary>
-  <div class="qa-a"><span class="a-badge">A</span>
-    <span class="nb">平日は&nbsp;11–13時</span> と <span class="nb">16–18時</span> が混み合います。
-    オープン直後と夕方以降が比較的ゆったりです。
-  </div>
-</details>
+            <!-- details/summary でJS不要のトグル -->
+            <div class="qa-accordion">
+              <details class="qa-panel" open>
+                <summary><span class="q-badge">Q</span> 混雑時間は？</summary>
+                <div class="qa-a"><span class="a-badge">A</span>
+                  <span class="nb">平日は&nbsp;11–13時</span> と <span class="nb">16–18時</span> が混み合います。
+                  オープン直後と夕方以降が比較的ゆったりです。
+                </div>
+              </details>
 
-    <details class="qa-panel">
-      <summary><span class="q-badge">Q</span> アレルギー対応は？</summary>
-      <div class="qa-a"><span class="a-badge">A</span>
-        原材料表示をご用意。ナッツ／乳／卵不使用メニューも一部あり。
-        調理器具は共通のため重篤な方は事前にご相談ください。
-      </div>
-    </details>
+              <details class="qa-panel">
+                <summary><span class="q-badge">Q</span> アレルギー対応は？</summary>
+                <div class="qa-a"><span class="a-badge">A</span>
+                  原材料表示をご用意。ナッツ／乳／卵不使用メニューも一部あり。
+                  調理器具は共通のため重篤な方は事前にご相談ください。
+                </div>
+              </details>
 
- <!-- 電源・Wi-Fi -->
-<details class="qa-panel">
-  <summary><span class="q-badge">Q</span> 電源・Wi-Fiは使える？</summary>
-  <div class="qa-a"><span class="a-badge">A</span>
-    窓側とカウンター席に電源、無料Wi-Fiあり。<span class="nb">ご利用は&nbsp;2時間</span> を目安にご協力ください。
-  </div>
-</details>
-  </div>
-</div>
-
+              <details class="qa-panel">
+                <summary><span class="q-badge">Q</span> 電源・Wi-Fiは使える？</summary>
+                <div class="qa-a"><span class="a-badge">A</span>
+                  窓側とカウンター席に電源、無料Wi-Fiあり。<span class="nb">ご利用は&nbsp;2時間</span> を目安にご協力ください。
+                </div>
+              </details>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -275,6 +265,7 @@
 </footer>
 
 <script>
+  // CTAの計測（任意）
   document.addEventListener('click',(e)=>{
     const a=e.target.closest('a[data-gtag-event]'); if(!a) return;
     gtag('event', a.dataset.gtagEvent, {event_label:a.dataset.gtagLabel||''});
