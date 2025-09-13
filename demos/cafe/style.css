@@ -290,3 +290,24 @@ h3{ margin:.25rem 0 var(--space-2); font-size:1.15rem; color:var(--brown); }
 .site-footer small{ color:rgba(246,243,236,.92); }
 .site-footer a{ color:#fff; opacity:.9; }
 .site-footer a:hover{ opacity:1; text-decoration:underline; text-underline-offset:2px; }
+
+
+/* === モバイル(〜375px)でのヒーロー調整 === */
+/* 375pxでh1が2行になるのを防ぐ：既存30.4px → 22.4px（-8px） */
+@media (max-width: 380px){
+  .hero h1{
+    font-size: 1.4rem;         /* 22.4px相当（既存より -8px） */
+    line-height: 1.2;          /* 文字を詰めすぎない程度に */
+  }
+  /* ヒーロー内のCTAを一回り小さく（PCはそのまま） */
+  .hero .cta-bar{ gap: .6rem; }
+  .hero .btn{
+    padding: .68rem .9rem;
+    font-size: .95rem;
+    border-radius: .9rem;
+  }
+  .hero .btn.btn--ghost{
+    border-width: 2px;         /* 太さは維持して視認性キープ */
+  }
+}
+
