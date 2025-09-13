@@ -387,4 +387,42 @@ h3{ margin:.25rem 0 var(--space-2); font-size:1.15rem; color:var(--brown); }
   }
 }
 
+/* ハンバーガー本体（モバイルのみ表示） */
+.hamburger{
+  display:none;
+  width:44px; height:44px;           /* 推奨タップ領域 */
+  justify-self:end; cursor:pointer;
+  position:relative; z-index:30;     /* ほか要素より前面 */
+}
+@media (max-width:767.98px){
+  .hamburger{ display:inline-block; }
+  .nav, .header-cta{ display:none; } /* モバイルではナビ/CTAを隠す */
+}
+
+/* 3本線（span×3で描画） */
+.hamburger span{
+  position:absolute; left:10px; right:10px; height:2px;
+  background:#fff; border-radius:2px;
+  transform-origin:center; transition:transform .2s ease, top .2s ease, opacity .2s ease;
+}
+.hamburger span:nth-child(1){ top:14px; }
+.hamburger span:nth-child(2){ top:21px; }
+.hamburger span:nth-child(3){ top:28px; }
+
+/* チェックONで “X” に変形＆ドロワー展開 */
+@media (max-width:767.98px){
+  .nav-toggle:checked ~ .container .hamburger span:nth-child(1){
+    top:21px; transform:rotate(45deg);
+  }
+  .nav-toggle:checked ~ .container .hamburger span:nth-child(2){
+    opacity:0;
+  }
+  .nav-toggle:checked ~ .container .hamburger span:nth-child(3){
+    top:21px; transform:rotate(-45deg);
+  }
+  .nav-toggle:checked ~ .nav-drawer{
+    max-height:60vh; padding:.9rem var(--space-3) 1.2rem; opacity:1;
+  }
+}
+
 
